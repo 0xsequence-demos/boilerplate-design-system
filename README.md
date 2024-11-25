@@ -7,6 +7,7 @@ The design system has a BoilderplateTemplate component that:
   - a title
   - a description
   - a github link
+  - a link to docs to most relevant guide or page
 - wraps any children, styling them
 - changes the page or root style
   - a nice background
@@ -16,6 +17,7 @@ The design system should also provide common UI elements such as:
 - wallet/profile display with logout button
 
 The design system should be maintained on npm with semver, via automatic publishing based on version tags
+
 
 ### Open questions
 
