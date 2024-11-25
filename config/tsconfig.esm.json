@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig-package.json",
+  "compilerOptions": {
+    "module": "es6",
+    "outDir": "../package/dist/esm",
+  }
+}

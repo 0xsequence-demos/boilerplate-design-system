@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "es6"
+    ],
+    "noImplicitAny": false,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+  },
+  "include": [
+    "../src/package/**/*.ts",
+    "../src/package/**/*.tsx",
+    "../src/package/**/*.css",
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.test.js",
+    "dist"
+  ]
+}
