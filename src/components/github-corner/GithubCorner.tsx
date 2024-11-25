@@ -1,3 +1,4 @@
+import React from "react";
 import "./github-corner.css";
 
 export function GithubCorner({ to }: { to: string }) {

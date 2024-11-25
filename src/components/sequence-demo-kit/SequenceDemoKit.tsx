@@ -1,3 +1,4 @@
+import React from "react";
 import { GithubCorner } from "../github-corner/GithubCorner";
 import { SequenceDemoKitContext } from "./SequenceDemoKitContext";
 import "./sequence-demo-kit.css";
