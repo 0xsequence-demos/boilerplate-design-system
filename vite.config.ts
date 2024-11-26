@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 
 import dts from "vite-plugin-dts";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { peerDependencies } from "./package.json";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -25,6 +26,7 @@ export default defineConfig({
       output: {
         dir: "dist", // Output directory
       },
+      external: Object.keys(peerDependencies),
       plugins: [],
     },
     watch: {
