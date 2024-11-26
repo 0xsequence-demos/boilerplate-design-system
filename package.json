@@ -6,9 +6,10 @@
   "description": "",
   "scripts": {
     "dev": "vite build --watch",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build-svg": "npx @svgr/cli --typescript --no-dimensions --svg-props role=img --out-dir src/components/svg -- svg"
   },
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
@@ -27,24 +28,31 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "rollup-plugin-dts": "^6.1.1",
-    "vite-plugin-css-injected-by-js": "^3.5.2",
-    "vite-plugin-dts": "^4.3.0",
-    "vite-tsconfig-paths": "^5.1.3",
     "@eslint/js": "^9.13.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
     "eslint": "^9.13.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "glob": "^11.0.0",
     "globals": "^15.11.0",
+    "postcss": "^8.4.49",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "rimraf": "^6.0.1",
+    "rollup-plugin-dts": "^6.1.1",
+    "tailwindcss": "^3.4.15",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.11.0",
-    "vite": "^5.4.10"
+    "vite": "^5.4.10",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vite-plugin-dts": "^4.3.0",
+    "vite-tsconfig-paths": "^5.1.3"
+  },
+  "dependencies": {
+    "@svgr/cli": "^8.1.0",
+    "clsx": "^2.1.1"
   }
 }
