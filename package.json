@@ -22,9 +22,9 @@
       "types": "./dist/index.d.ts"
     },
     "./styles.css": {
-      "import": "./dist/styles.css",
-      "require": "./dist/styles.css",
-      "default": "./dist/styles.css"
+      "import": "./dist/style.css",
+      "require": "./dist/style.css",
+      "default": "./dist/style.css"
     }
   },
   "author": "",
