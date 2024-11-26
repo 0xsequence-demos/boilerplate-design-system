@@ -1,20 +1,12 @@
-import React from "react";
 import "./github-corner.css";
 import * as TooltipPrimative from "@radix-ui/react-tooltip";
 
 export function GithubCorner({ to }: { to: string }) {
   return (
-    <TooltipPrimative.Provider>
+    <TooltipPrimative.Provider delayDuration={100}>
       <TooltipPrimative.Root>
-        <TooltipPrimative.Trigger>
-          <a
-            href={to}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="github-corner"
-          >
-            <span className="sr-only">View source on GitHub</span>
-
+        <TooltipPrimative.Trigger className="github-corner" asChild>
+          <a href={to} target="_blank" rel="noopener noreferrer">
             <svg
               width="80"
               height="80"
@@ -36,8 +28,11 @@ export function GithubCorner({ to }: { to: string }) {
           </a>
         </TooltipPrimative.Trigger>
         <TooltipPrimative.Portal>
-          <TooltipPrimative.Content>
-            Open on GitHub
+          <TooltipPrimative.Content
+            side="right"
+            className="bg-white rounded-md text-black px-2 py-0.5"
+          >
+            View source on GitHub
             <TooltipPrimative.Arrow />
           </TooltipPrimative.Content>
         </TooltipPrimative.Portal>
