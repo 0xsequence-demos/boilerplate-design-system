@@ -8,11 +8,11 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [
     tsconfigPaths(),
-    react(),
     cssInjectedByJsPlugin(),
+    react(),
     dts({
       exclude: ["node_modules", "tests", "**/*.stories.tsx", "**/*.test.tsx"],
-      outDir: "./dist/",
+      outDir: "dist",
     }),
   ],
   build: {
