@@ -3,7 +3,7 @@
 @layer components {
   html body [data-component="group"] {
     &:where([data-variant="initial"]) {
-      @apply flex flex-col gap-4 border-t border-white/10 py-4;
+      @apply flex flex-col py-8 gap-2;
     }
 
     &:where([data-mods~="space-lg"]) {

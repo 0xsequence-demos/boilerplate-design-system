@@ -31,7 +31,7 @@ export function GithubCorner({ to }: { to: string }) {
         <TooltipPrimative.Portal>
           <TooltipPrimative.Content
             side="right"
-            className="bg-white rounded-md text-black px-2 py-0.5"
+            className="bg-white rounded-md text-black text-14 px-2 py-0.5"
           >
             View source on GitHub
             <TooltipPrimative.Arrow />

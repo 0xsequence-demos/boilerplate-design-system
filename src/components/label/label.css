@@ -1,8 +1,8 @@
 @layer components {
-  html body [data-component="card"] {
+  html body [data-component="label"] {
     /* Variants */
     &:where([data-variant="initial"]) {
-      @apply bg-white/10 backdrop-blur-[24px] rounded-xl p-4;
+      @apply text-14 font-medium text-grey-50;
     }
 
     &:where([data-variant="primary"]) {

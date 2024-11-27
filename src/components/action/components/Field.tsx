@@ -6,10 +6,10 @@ export function Field({
   name,
   children,
   asChild = false,
-  className = "flex flex-col gap-2",
+  className = "flex flex-col items-start gap-1",
 }: {
   name: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   asChild?: boolean;
   className?: string;
 }) {
