@@ -14,12 +14,12 @@
     } */
 
     /* Modifiers */
-    /* &:where([data-mods~="rounded-none"]) {
+    /* &:where([data-subvariants~="rounded-none"]) {
       @apply rounded-none;
     } */
 
     /* Padding */
-    &:where([data-mods~="width-full"]) {
+    &:where([data-subvariants~="width-full"]) {
       @apply w-full;
     }
   }

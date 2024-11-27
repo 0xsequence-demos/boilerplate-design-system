@@ -20,15 +20,15 @@
     }
 
     /* Modifiers */
-    &:where([data-mods~="min-size-none"]) {
+    &:where([data-subvariants~="min-size-none"]) {
     }
 
-    &:where([data-mods~="min-size-md"]) {
+    &:where([data-subvariants~="min-size-md"]) {
       @apply min-w-[8rem];
     }
 
     /* Padding */
-    &:where([data-mods~="padding-none"]) {
+    &:where([data-subvariants~="padding-none"]) {
       @apply p-0;
     }
   }

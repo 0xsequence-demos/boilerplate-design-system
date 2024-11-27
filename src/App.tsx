@@ -12,6 +12,7 @@ import { Label } from "./components/label/Label";
 import { Input } from "./components/input/Input";
 import { InputControlUnit } from "./components/input-control-unit/InputControlUnit";
 import { Svg } from "./components/svg/Svg";
+import { Divider } from "./components/divider/Divider";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       name="Boilerplate Design System"
       description="Development environment"
     >
-      <Pages initial="root">
+      <Pages initial="inner">
         <RootPage />
         <InnerPage />
       </Pages>
@@ -35,7 +36,7 @@ function RootPage() {
       <Button
         onClick={() => setCurrent("inner")}
         variant="primary"
-        mods={{ size: "lg" }}
+        subvariants={{ size: "lg" }}
       >
         Connect
       </Button>
@@ -46,13 +47,14 @@ function RootPage() {
 function InnerPage() {
   return (
     <Page name="inner">
+      <Divider />
       <Group>
         <Group.Title>User info</Group.Title>
         <Card>
           <Action intent="user_info" className="flex flex-col gap-2">
             <Field name="wallet-address">
               <Label>Wallet address:</Label>
-              <InputControlUnit mods={{ width: "full" }}>
+              <InputControlUnit subvariants={{ width: "full" }}>
                 <div className="flex items-center justify-center py-4 pointer-events-none">
                   <Svg name="Wallet" width="20" />
                 </div>
@@ -60,7 +62,7 @@ function InnerPage() {
                 <Input
                   type="text"
                   variant="transparent"
-                  mods={{ width: "full" }}
+                  subvariants={{ width: "full" }}
                 />
                 <Button
                   variant="tiny"
@@ -75,12 +77,26 @@ function InnerPage() {
 
             <Field name="network">
               <Label>Network:</Label>
-              <Input type="text" mods={{ width: "full" }} />
+              <Input type="text" subvariants={{ width: "full" }} />
             </Field>
 
             <Field name="test-payments">
               <Label>Arbitrum Sepolia balance for test payments:</Label>
-              <Input type="text" mods={{ width: "full" }} />
+              <InputControlUnit subvariants={{ width: "full" }}>
+                <Input
+                  type="text"
+                  variant="transparent"
+                  subvariants={{ width: "full" }}
+                />
+                <Button
+                  variant="tiny"
+                  className="self-center flex-shrink-0"
+                  onClick={() => alert("get test currency")}
+                >
+                  <Svg name="ExternalLink" width="16" />
+                  Get test currency
+                </Button>
+              </InputControlUnit>
             </Field>
 
             <Select>
@@ -105,6 +121,27 @@ function InnerPage() {
             </Action>
           </Card> */}
       </Group>
+      <Divider />
+
+      <Group>
+        <Group.Title>Sequence Kit actions</Group.Title>
+
+        <Card.Collapsable>
+          <Card.Summary>Sign message</Card.Summary>
+          <Card.Body>Sign message items</Card.Body>
+        </Card.Collapsable>
+
+        <Card.Collapsable>
+          <Card.Summary>Verify signature</Card.Summary>
+          <Card.Body>Verify signature items</Card.Body>
+        </Card.Collapsable>
+
+        <Card.Collapsable>
+          <Card.Summary>Send transactions</Card.Summary>
+          <Card.Body>Send transactions items</Card.Body>
+        </Card.Collapsable>
+      </Group>
+      <Divider />
     </Page>
   );
 }

@@ -12,15 +12,25 @@ type SelectProps = {
 } & WithVariants<"div", null, { "min-size"?: "none" | "sm" | "md" | "lg" }>;
 
 function SelectElement(props: SelectProps, ref: PolymorphicRef<"div">) {
-  const { selected, children, variant, mods, icon = "ChevronDown" } = props;
+  const {
+    selected,
+    children,
+    variant,
+    subvariants,
+    icon = "ChevronDown",
+  } = props;
 
-  const defaultMods = {
+  const defaultSubvariants = {
     "min-size": "md",
   };
 
   return (
     <div
-      {...defineComponent("select", variant, Object.assign(defaultMods, mods))}
+      {...defineComponent(
+        "select",
+        variant,
+        Object.assign(defaultSubvariants, subvariants)
+      )}
       ref={ref}
     >
       <div className="absolute w-[2.5rem] z-10 right-0 pointer-events-none top-0 bottom-0 items-center justify-center flex cursor-pointer">

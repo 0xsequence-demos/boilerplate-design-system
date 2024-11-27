@@ -20,16 +20,16 @@
 
     /* Modifiers */
     /* Size */
-    &:where([data-mods~="size-sm"]) {
+    &:where([data-subvariants~="size-sm"]) {
       @apply px-1 py-0.5 text-12;
     }
 
-    &:where([data-mods~="size-lg"]) {
+    &:where([data-subvariants~="size-lg"]) {
       @apply px-8 py-2 text-18;
     }
 
     /* Border Radius */
-    &:where([data-mods~="rounded-none"]) {
+    &:where([data-subvariants~="rounded-none"]) {
       @apply rounded-none;
     }
   }

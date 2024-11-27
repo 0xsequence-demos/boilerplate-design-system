@@ -8,9 +8,9 @@ const SvgProfile = (props: SVGProps<SVGSVGElement>) => (
     role="img"
     {...props}
   >
-    <circle cx={10} cy={7.361} r={3.361} fill="#000" />
+    <circle cx={10} cy={7.361} r={3.361} fill="currentColor" />
     <path
-      fill="#000"
+      fill="currentColor"
       fillRule="evenodd"
       d="M16 16.755H4c.029-2.705 2.704-4.89 6-4.89s5.971 2.185 6 4.89"
       clipRule="evenodd"

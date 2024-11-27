@@ -3,10 +3,10 @@
 @layer components {
   html body [data-component="group"] {
     &:where([data-variant="initial"]) {
-      @apply flex flex-col py-8 gap-2;
+      @apply flex flex-col gap-2;
     }
 
-    &:where([data-mods~="space-lg"]) {
+    &:where([data-subvariants~="space-lg"]) {
       @apply gap-24;
     }
   }

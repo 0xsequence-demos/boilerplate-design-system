@@ -44,5 +44,9 @@ export function Page({
 
   if (name !== current) return null;
 
-  return children;
+  return (
+    <div className="flex flex-col gap-8 max-w-screen-md mx-auto w-full flex-1">
+      {children}
+    </div>
+  );
 }

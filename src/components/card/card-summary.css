@@ -1,0 +1,5 @@
+@layer components {
+  html body [data-component="card-summary"] {
+    @apply flex items-center justify-between text-14 font-bold;
+  }
+}

@@ -15,14 +15,20 @@ type GroupProps = {
 } & WithVariants<"div", null, GroupModifiers>;
 
 function GroupElement(props: GroupProps, ref: PolymorphicRef<"div">) {
-  const { asChild = false, children, variant, mods, ...restProps } = props;
+  const {
+    asChild = false,
+    children,
+    variant,
+    subvariants,
+    ...restProps
+  } = props;
 
   return (
     <Slot
       ref={ref}
       fallbackAs="div"
       asChild={asChild}
-      {...defineComponent("group", variant, mods)}
+      {...defineComponent("group", variant, subvariants)}
       {...restProps}
     >
       {children}

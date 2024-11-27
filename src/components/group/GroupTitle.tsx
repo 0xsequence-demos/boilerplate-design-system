@@ -10,7 +10,11 @@ type TitleProps = {
 } & WithVariants<"h2", null, GroupTitleModifiers>;
 
 export function GroupTitle(props: TitleProps) {
-  const { children, variant, mods } = props;
+  const { children, variant, subvariants } = props;
 
-  return <h2 {...defineComponent("group-title", variant, mods)}>{children}</h2>;
+  return (
+    <h2 {...defineComponent("group-title", variant, subvariants)}>
+      {children}
+    </h2>
+  );
 }
