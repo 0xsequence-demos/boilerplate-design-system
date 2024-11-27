@@ -38,8 +38,8 @@ export function defineComponent(
   mods: Record<string, string>
 ): Record<string, string> {
   return {
-    dataComponent: name,
-    dataVariant: variant,
-    dataMods: applyMods(mods),
+    "data-component": name,
+    "data-variant": variant,
+    "data-mods": applyMods(mods),
   };
 }
