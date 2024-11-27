@@ -1,7 +1,8 @@
-import "./github-corner.css";
 import * as TooltipPrimative from "@radix-ui/react-tooltip";
 
 export function GithubCorner({ to }: { to: string }) {
+  if (!to) return null;
+
   return (
     <TooltipPrimative.Provider delayDuration={100}>
       <TooltipPrimative.Root>

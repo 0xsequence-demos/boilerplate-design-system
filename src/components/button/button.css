@@ -1,0 +1,31 @@
+@layer components {
+  [data-component="button"] {
+    /* Variants */
+    &:where([data-variant="initial"]) {
+      @apply rounded-full bg-grey-800 px-3 py-1;
+    }
+
+    &:where([data-variant="primary"]) {
+      @apply bg-gradientPrimary rounded-full px-3 py-1;
+    }
+
+    &:where([data-variant="secondary"]) {
+      @apply bg-gradientSecondary rounded-full px-3 py-1;
+    }
+
+    /* Modifiers */
+    /* Size */
+    &:where([data-mods~="size-sm"]) {
+      @apply px-1 py-0.5 text-12;
+    }
+
+    &:where([data-mods~="size-lg"]) {
+      @apply px-8 py-2 text-18;
+    }
+
+    /* Border Radius */
+    &:where([data-mods~="rounded-none"]) {
+      @apply rounded-none;
+    }
+  }
+}

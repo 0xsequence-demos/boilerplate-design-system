@@ -1,5 +1,5 @@
-import { SequenceDemoKit } from "./components/sequence-demo-kit/SequenceDemoKit";
-import { SsrRoot } from "./components/sequence-demo-kit/SequenceDemoKit";
+import { SequenceDemoKit } from "./components/sequence-boilerplate/SequenceBoilerplate";
+import { SsrRoot } from "./components/sequence-boilerplate/SequenceBoilerplate";
 import "./index.css";
 
 export { SequenceDemoKit, SsrRoot };
