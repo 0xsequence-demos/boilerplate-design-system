@@ -18,13 +18,13 @@ export function applyVariants<T>(variants: T): string {
     .join(" ");
 }
 
-export function applyMods<T>(mods: T): string {
-  if (!mods) return undefined;
+export function applySubvariants<T>(subvariants: T): string {
+  if (!subvariants) return undefined;
 
-  return Object.keys(mods)
+  return Object.keys(subvariants)
     .reduce((acc, key) => {
-      if (mods[key]) {
-        acc.push(`${key}-${mods[key]}`);
+      if (subvariants[key]) {
+        acc.push(`${key}-${subvariants[key]}`);
       }
 
       return acc;
@@ -35,17 +35,19 @@ export function applyMods<T>(mods: T): string {
 export function defineComponent(
   name: string,
   variant: string,
-  mods: Record<string, string>
+  subvariants: Record<string, string>
 ): Record<string, string> {
   const defaultVariant = import.meta.env.VITE_DEFAULT_VARIANT || "initial";
   const disableVariant =
     import.meta.env.VITE_DISABLE_VARIANT === "true" ? true : false;
-  const disableMods =
-    import.meta.env.VITE_DISABLE_MODS === "true" ? true : false;
+  const disableSubvariants =
+    import.meta.env.VITE_DISABLE_SUBVARIANTS === "true" ? true : false;
 
   return {
     "data-component": name,
     "data-variant": disableVariant ? undefined : variant || defaultVariant,
-    "data-mods": disableMods ? undefined : applyMods(mods),
+    "data-subvariants": disableSubvariants
+      ? undefined
+      : applySubvariants(subvariants),
   };
 }

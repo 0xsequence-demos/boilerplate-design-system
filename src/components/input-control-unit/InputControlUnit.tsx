@@ -12,7 +12,7 @@ type InputControlUnitProps = {
 } & WithVariants<"div", null, InputControlUnitModifiers>;
 
 export function InputControlUnit(props: InputControlUnitProps) {
-  const { children, variant, mods, ...restProps } = props;
+  const { children, variant, subvariants, ...restProps } = props;
 
   function handleInternalFocus(e) {
     const focusable = e?.target?.parentNode?.querySelector("input");
@@ -24,7 +24,7 @@ export function InputControlUnit(props: InputControlUnitProps) {
 
   return (
     <div
-      {...defineComponent("input-control-unit", variant, mods)}
+      {...defineComponent("input-control-unit", variant, subvariants)}
       {...restProps}
     >
       <button

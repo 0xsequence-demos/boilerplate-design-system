@@ -9,7 +9,7 @@ const SvgCopy = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      fill="#000"
+      fill="currentColor"
       fillRule="evenodd"
       d="M14.918 4.5h-6V6h4.5v6.5h1.5zm-1.5 9.5v3h-9V6h3V3h9v11zm-7.5 1.5v-8h6v8z"
       clipRule="evenodd"

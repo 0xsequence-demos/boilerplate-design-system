@@ -14,7 +14,14 @@ type InputProps = {
 } & WithVariants<"input", "transparent", InputModifiers>;
 
 export function Input(props: InputProps) {
-  const { children, variant, mods, asChild = false, id, ...restProps } = props;
+  const {
+    children,
+    variant,
+    subvariants,
+    asChild = false,
+    id,
+    ...restProps
+  } = props;
 
   const { name } = useField();
 
@@ -24,7 +31,7 @@ export function Input(props: InputProps) {
       fallbackAs="input"
       name={name}
       id={id || name}
-      {...defineComponent("input", variant, mods)}
+      {...defineComponent("input", variant, subvariants)}
       {...restProps}
     >
       {children}

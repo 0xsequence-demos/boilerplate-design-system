@@ -9,7 +9,7 @@ const SvgShare = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      fill="#000"
+      fill="currentColor"
       d="M4 6.234a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V10.5L14 9v5.734a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h5.769l-1.516 1.5z"
     />
     <path stroke="#000" strokeWidth={1.25} d="M11 3h5v5" />

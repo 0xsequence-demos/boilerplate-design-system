@@ -10,7 +10,7 @@
     &:where([data-variant="initial"]) {
       @apply bg-transparent border border-grey-500 rounded-[0.5rem] text-gray-200 flex gap-2 focus-within:ring-2 ring-blue-500 px-4;
 
-      & > *:focus {
+      & > input:focus {
         @apply outline-none;
       }
     }
@@ -20,21 +20,21 @@
     } */
 
     /* Modifiers */
-    /* &:where([data-mods~="rounded-none"]) {
+    /* &:where([data-subvariants~="rounded-none"]) {
       @apply rounded-none;
     } */
 
-    &:where([data-mods~="behaviour-text"]) {
+    &:where([data-subvariants~="behaviour-text"]) {
       @apply cursor-text;
     }
 
     /* Padding */
-    &:where([data-mods~="direction-column"]) {
+    &:where([data-subvariants~="direction-column"]) {
       @apply flex-row;
     }
 
     /* Width */
-    &:where([data-mods~="width-full"]) {
+    &:where([data-subvariants~="width-full"]) {
       @apply w-full;
     }
   }

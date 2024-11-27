@@ -9,7 +9,7 @@ const SvgTransaction = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      fill="#000"
+      fill="currentColor"
       fillRule="evenodd"
       d="m12.28 2.856-6.71 8.887h4.134l-1.424 6.2 6.887-8.71h-4.322z"
       clipRule="evenodd"

@@ -9,7 +9,7 @@ const SvgEmail = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      fill="#000"
+      fill="currentColor"
       fillRule="evenodd"
       d="M15.01 6.1H4.99L10 9.68zM3.5 6.88v7.22h13V6.88L10 11.521zM2 15.6v-11h16v11z"
       clipRule="evenodd"

@@ -1,3 +1,7 @@
+@import "./card-body.css";
+@import "./card-collapsable.css";
+@import "./card-summary.css";
+
 @layer components {
   html body [data-component="card"] {
     /* Variants */
@@ -10,12 +14,12 @@
     }
 
     /* Modifiers */
-    &:where([data-mods~="rounded-none"]) {
+    &:where([data-subvariants~="rounded-none"]) {
       @apply rounded-none;
     }
 
     /* Padding */
-    &:where([data-mods~="padding-none"]) {
+    &:where([data-subvariants~="padding-none"]) {
       @apply p-0;
     }
   }

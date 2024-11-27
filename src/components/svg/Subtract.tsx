@@ -9,7 +9,7 @@ const SvgSubtract = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      fill="#000"
+      fill="currentColor"
       fillRule="evenodd"
       d="M16.539 10.75H4.298v-1.5h12.24z"
       clipRule="evenodd"

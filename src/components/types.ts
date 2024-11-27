@@ -27,5 +27,5 @@ export type WithVariants<
   Modifiers extends Record<string, string>
 > = {
   variant?: VariantOptions<Variant>;
-  mods?: { [K in keyof Modifiers]?: Modifiers[K] }; //Partial<Modifiers>;
+  subvariants?: { [K in keyof Modifiers]?: Modifiers[K] }; //Partial<Modifiers>;
 } & ComponentProps<Element>;
