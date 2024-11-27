@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { ModifierOptions, PolymorphicRef, WithVariants } from "../types";
 import { defineComponent } from "../../helpers/define-component";
 
-type ButtonVariant = "primary" | "secondary";
+type ButtonVariant = "primary" | "secondary" | "tiny";
 
 type ButtonModifiers = ModifierOptions<{
   size: "sm" | "md" | "lg";

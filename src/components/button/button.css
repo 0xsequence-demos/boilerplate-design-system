@@ -1,5 +1,6 @@
 @layer components {
   html body [data-component="button"] {
+    @apply inline-flex items-center;
     /* Variants */
     &:where([data-variant="initial"]) {
       @apply rounded-full bg-grey-800 px-3 py-1;
@@ -11,6 +12,10 @@
 
     &:where([data-variant="secondary"]) {
       @apply bg-gradientSecondary rounded-full px-3 py-1;
+    }
+
+    &:where([data-variant="tiny"]) {
+      @apply text-10 font-bold text-white bg-white/10 rounded-[0.5rem] px-3 py-[0.375rem] gap-1;
     }
 
     /* Modifiers */

@@ -1,35 +1,88 @@
 import "./index.css";
 
 import { SequenceBoilerplate } from "./components/sequence-boilerplate/SequenceBoilerplate";
-import { useState } from "react";
 
 // import { Action } from "./components/action/Action";
 // import { Field, Input, Label } from "./components/action/components";
 import { Card, Group, Button, Select } from "./components";
+import { Page, Pages, usePage } from "./Page";
+import { Action } from "./components/action/Action";
+import { Field } from "./components/action/components";
+import { Label } from "./components/label/Label";
+import { Input } from "./components/input/Input";
+import { InputControlUnit } from "./components/input-control-unit/InputControlUnit";
+import { Svg } from "./components/svg/Svg";
 
 function App() {
-  const [currentPage, setPage] = useState("root");
-
   return (
     <SequenceBoilerplate
       githubUrl="https://github.com"
-      name="Sequence Kit Starter - Remix Cloudflare"
-      description="Sequence demo squad"
+      name="Boilerplate Design System"
+      description="Development environment"
     >
-      <Page name="root" current={currentPage}>
-        <Button
-          onClick={() => setPage("inner")}
-          variant="primary"
-          mods={{ size: "lg" }}
-        >
-          Connect
-        </Button>
-      </Page>
+      <Pages initial="root">
+        <RootPage />
+        <InnerPage />
+      </Pages>
+    </SequenceBoilerplate>
+  );
+}
 
-      <Page name="inner" current={currentPage}>
-        <Group>
-          <Group.Title>User info</Group.Title>
-          <Card>
+function RootPage() {
+  const { setCurrent } = usePage();
+  return (
+    <Page name="root">
+      <Button
+        onClick={() => setCurrent("inner")}
+        variant="primary"
+        mods={{ size: "lg" }}
+      >
+        Connect
+      </Button>
+    </Page>
+  );
+}
+
+function InnerPage() {
+  return (
+    <Page name="inner">
+      <Group>
+        <Group.Title>User info</Group.Title>
+        <Card>
+          <Action intent="user_info" className="flex flex-col gap-2">
+            <Field name="wallet-address">
+              <Label>Wallet address:</Label>
+              <InputControlUnit mods={{ width: "full" }}>
+                <div className="flex items-center justify-center py-4 pointer-events-none">
+                  <Svg name="Wallet" width="20" />
+                </div>
+
+                <Input
+                  type="text"
+                  variant="transparent"
+                  mods={{ width: "full" }}
+                />
+                <Button
+                  variant="tiny"
+                  className="self-center"
+                  onClick={() => alert("disconnect")}
+                >
+                  <Svg name="Signout" width="16" />
+                  Disconnect
+                </Button>
+              </InputControlUnit>
+            </Field>
+
+            <Field name="network">
+              <Label>Network:</Label>
+              <Input type="text" mods={{ width: "full" }} />
+            </Field>
+
+            <Field name="test-payments">
+              <Label>Arbitrum Sepolia balance for test payments:</Label>
+              <Input type="text" mods={{ width: "full" }} />
+            </Field>
+
             <Select>
               <Select.Options
                 items={[
@@ -41,8 +94,9 @@ function App() {
                 ]}
               />
             </Select>
-          </Card>
-          {/* <Card>
+          </Action>
+        </Card>
+        {/* <Card>
             <Action intent="update_name" onSubmit={() => alert("submit")}>
               <Field name="name">
                 <Label>Name</Label>
@@ -50,24 +104,9 @@ function App() {
               </Field>
             </Action>
           </Card> */}
-        </Group>
-      </Page>
-    </SequenceBoilerplate>
+      </Group>
+    </Page>
   );
-}
-
-function Page({
-  children,
-  name,
-  current,
-}: {
-  children: React.ReactNode;
-  name: string;
-  current: string;
-}) {
-  if (name !== current) return null;
-
-  return children;
 }
 
 export default App;
