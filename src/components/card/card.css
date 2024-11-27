@@ -2,16 +2,21 @@
   html body [data-component="card"] {
     /* Variants */
     &:where([data-variant="initial"]) {
-      @apply bg-grey-800 rounded-xl;
+      @apply bg-grey-800 rounded-xl p-4;
     }
 
     &:where([data-variant="primary"]) {
-      @apply bg-gradientPrimary rounded-xl;
+      @apply bg-gradientPrimary rounded-xl p-4;
     }
 
     /* Modifiers */
     &:where([data-mods~="rounded-none"]) {
       @apply rounded-none;
+    }
+
+    /* Padding */
+    &:where([data-mods~="padding-none"]) {
+      @apply p-0;
     }
   }
 }

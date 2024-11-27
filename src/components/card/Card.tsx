@@ -5,8 +5,9 @@ import { defineComponent } from "../../helpers/define-component";
 type CardVariant = "primary" | "secondary";
 
 type CardModifiers = {
-  size: "sm" | "md" | "lg";
-  rounded: "none" | "sm" | "full";
+  size?: "sm" | "md" | "lg";
+  rounded?: "none" | "sm" | "full";
+  padding?: "none";
 };
 
 type CardProps = {
