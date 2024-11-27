@@ -24,8 +24,8 @@ export type VariantOptions<BaseTheme extends string> =
 export type WithVariants<
   Element extends ElementType,
   Variant extends string,
-  Modifiers
+  Modifiers extends Record<string, string>
 > = {
   variant?: VariantOptions<Variant>;
-  mods?: Modifiers;
+  mods?: { [K in keyof Modifiers]?: Modifiers[K] }; //Partial<Modifiers>;
 } & ComponentProps<Element>;

@@ -1,8 +1,6 @@
 @layer components {
   html body [data-component="select"] {
-    @apply relative;
-
-    /* Child select element */
+    @apply relative focus-within:ring-2 ring-blue-600;
 
     & > select {
       @apply appearance-none bg-transparent w-full h-full;
