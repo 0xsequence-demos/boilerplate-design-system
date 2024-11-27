@@ -30,7 +30,7 @@ function App() {
       <Page name="inner" current={currentPage}>
         <Group>
           <Group.Title>User info</Group.Title>
-          <Card variant="primary">
+          <Card variant="primary" mods={{ padding: "none" }}>
             <Select>
               <Select.Options
                 items={[
