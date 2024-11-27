@@ -37,9 +37,15 @@ export function defineComponent(
   variant: string,
   mods: Record<string, string>
 ): Record<string, string> {
+  const defaultVariant = import.meta.env.VITE_DEFAULT_VARIANT || "initial";
+  const forceNullVariant =
+    import.meta.env.VITE_FORCE_NULL_VARIANT === "true" ? true : false;
+  const forceNullMods =
+    import.meta.env.VITE_FORCE_NULL_MODS === "true" ? true : false;
+
   return {
     "data-component": name,
-    "data-variant": variant || "initial",
-    "data-mods": applyMods(mods),
+    "data-variant": forceNullVariant ? undefined : variant || defaultVariant,
+    "data-mods": forceNullMods ? undefined : applyMods(mods),
   };
 }
