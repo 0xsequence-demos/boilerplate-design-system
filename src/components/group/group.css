@@ -1,0 +1,11 @@
+@layer components {
+  :where([data-component="group"]) {
+    &:where([data-variant="initial"]) {
+      @apply flex flex-col gap-4 border-t border-white/10 py-4;
+    }
+
+    &:where([data-mods~="space-lg"]) {
+      @apply gap-24;
+    }
+  }
+}

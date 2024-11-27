@@ -1,14 +1,40 @@
+@import "./components/components.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/*
-@layer base {
-  body {
+
+:root {
+  color-scheme: light dark;
+  color: theme(colors.white/87%);
+  background-color: theme(colors.neutral.900);
+}
+
+html {
+  @apply flex flex-col flex-1 min-h-full;
+}
+
+body {
+  @apply flex flex-col flex-1 justify-center bg-fixed;
+
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 50%
+    ),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="%23262626" d="M0 0h12v12H0z"/><path fill="%231D1D1D" d="M12 0h12v12H12zM0 12h12v12H0z"/><path fill="%23262626" d="M12 12h12v12H12z"/></svg>');
+}
+
+#root {
+  @apply max-w-screen-lg mx-auto p-4 text-center w-full;
+}
+
+@layer utilities {
+  .bg-gradient-secondary {
     background-image: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 1) 20%
-      ),
-      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="%23262626" d="M0 0h12v12H0z"/><path fill="%231D1D1D" d="M12 0h12v12H12zM0 12h12v12H0z"/><path fill="%23262626" d="M12 12h12v12H12z"/></svg>');
+      32.51deg,
+      #951990 -15.23%,
+      #3a35b1 48.55%,
+      #20a8b0 100%
+    );
   }
-} */
+}
