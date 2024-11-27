@@ -15,13 +15,7 @@ type ButtonProps = {
 } & WithVariants<"button", ButtonVariant, ButtonModifiers>;
 
 function ButtonComponent(props: ButtonProps, ref: PolymorphicRef<"button">) {
-  const {
-    children,
-    variant = "initial",
-    mods,
-    type = "button",
-    ...restProps
-  } = props;
+  const { children, type = "button", variant, mods, ...restProps } = props;
 
   return (
     <button

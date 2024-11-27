@@ -14,7 +14,7 @@ type CardProps = {
 } & WithVariants<"div", CardVariant, CardModifiers>;
 
 function CardComponent(props: CardProps, ref: PolymorphicRef<"div">) {
-  const { children, mods, variant = "initial", ...restProps } = props;
+  const { children, mods, variant, ...restProps } = props;
 
   return (
     <div ref={ref} {...defineComponent("card", variant, mods)} {...restProps}>
