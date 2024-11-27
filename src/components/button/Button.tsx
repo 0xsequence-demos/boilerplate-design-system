@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { ModifierOptions, PolymorphicRef, WithVariants } from "../types";
-import { applyMods } from "../../helpers/apply-variants";
+import { defineComponent } from "../../helpers/define-component";
 
 type ButtonVariant = "primary" | "secondary";
 
@@ -27,9 +27,7 @@ function ButtonComponent(props: ButtonProps, ref: PolymorphicRef<"button">) {
     <button
       ref={ref}
       type={type}
-      data-component="button"
-      data-variant={variant}
-      data-mods={applyMods<ButtonModifiers>(mods)}
+      {...defineComponent("button", variant, mods)}
       {...restProps}
     >
       {children}

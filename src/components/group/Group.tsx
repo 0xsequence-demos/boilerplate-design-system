@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { applyMods } from "../../helpers/apply-variants";
+import { defineComponent } from "../../helpers/define-component";
 import { Slot } from "../slot/Slot";
 import { WithVariants } from "../types";
 import { PolymorphicRef } from "@0xsequence/design-system";
@@ -28,9 +28,7 @@ function GroupElement(props: GroupProps, ref: PolymorphicRef<"div">) {
       ref={ref}
       fallbackAs="div"
       asChild={asChild}
-      data-component="group"
-      data-variant={variant}
-      data-mods={applyMods<GroupModifiers>(mods)}
+      {...defineComponent("group", variant, mods)}
       {...restProps}
     >
       {children}
