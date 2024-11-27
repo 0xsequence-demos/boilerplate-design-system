@@ -4,7 +4,7 @@ import { SequenceBoilerplateContext } from "./SequenceBoilerplateContext";
 import { Header } from "../header/Header";
 import { Footer } from "../footer/Footer";
 
-export function SequenceDemoKit({
+export function SequenceBoilerplate({
   githubUrl,
   name,
   description,
