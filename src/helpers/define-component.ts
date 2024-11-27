@@ -31,3 +31,15 @@ export function applyMods<T>(mods: T): string {
     }, [])
     .join(" ");
 }
+
+export function defineComponent(
+  name: string,
+  variant: string,
+  mods: Record<string, string>
+): Record<string, string> {
+  return {
+    dataComponent: name,
+    dataVariant: variant,
+    dataMods: applyMods(mods),
+  };
+}

@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import type { PolymorphicRef, WithVariants } from "../types";
-import { applyMods } from "../../helpers/apply-variants";
+import { defineComponent } from "../../helpers/define-component";
 
 type CardVariant = "primary" | "secondary";
 
@@ -17,13 +17,7 @@ function CardComponent(props: CardProps, ref: PolymorphicRef<"div">) {
   const { children, mods, variant = "initial", ...restProps } = props;
 
   return (
-    <div
-      ref={ref}
-      data-component="card"
-      data-variant={variant}
-      data-mods={applyMods<CardModifiers>(mods)}
-      {...restProps}
-    >
+    <div ref={ref} {...defineComponent("card", variant, mods)} {...restProps}>
       {children}
     </div>
   );
