@@ -9,7 +9,7 @@ type LabelProps = {
 } & WithVariants<"label", null, null>;
 
 export function LabelElement(props: LabelProps, ref: PolymorphicRef<"label">) {
-  const { children, variant, mods, ...restProps } = props;
+  const { children, variant, subvariants, ...restProps } = props;
 
   const { name } = useField();
 
@@ -17,7 +17,7 @@ export function LabelElement(props: LabelProps, ref: PolymorphicRef<"label">) {
     <label
       ref={ref}
       htmlFor={name}
-      {...defineComponent("label", variant, mods)}
+      {...defineComponent("label", variant, subvariants)}
       {...restProps}
     >
       {children}

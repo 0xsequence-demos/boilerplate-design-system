@@ -55,23 +55,26 @@ function InnerPage() {
             <Field name="wallet-address">
               <Label>Wallet address:</Label>
               <InputControlUnit subvariants={{ width: "full" }}>
-                <div className="flex items-center justify-center py-4 pointer-events-none">
+                <InputControlUnit.Segment>
                   <Svg name="Wallet" width="20" />
-                </div>
+                </InputControlUnit.Segment>
 
                 <Input
                   type="text"
                   variant="transparent"
                   subvariants={{ width: "full" }}
                 />
-                <Button
-                  variant="tiny"
-                  className="self-center"
-                  onClick={() => alert("disconnect")}
-                >
-                  <Svg name="Signout" width="16" />
-                  Disconnect
-                </Button>
+
+                <InputControlUnit.Segment>
+                  <Button
+                    variant="tiny"
+                    className="self-center"
+                    onClick={() => alert("disconnect")}
+                  >
+                    <Svg name="Signout" width="16" />
+                    Disconnect
+                  </Button>
+                </InputControlUnit.Segment>
               </InputControlUnit>
             </Field>
 
@@ -88,14 +91,16 @@ function InnerPage() {
                   variant="transparent"
                   subvariants={{ width: "full" }}
                 />
-                <Button
-                  variant="tiny"
-                  className="self-center flex-shrink-0"
-                  onClick={() => alert("get test currency")}
-                >
-                  <Svg name="ExternalLink" width="16" />
-                  Get test currency
-                </Button>
+                <InputControlUnit.Segment>
+                  <Button
+                    variant="tiny"
+                    className="self-center flex-shrink-0"
+                    onClick={() => alert("get test currency")}
+                  >
+                    <Svg name="ExternalLink" width="16" />
+                    Get test currency
+                  </Button>
+                </InputControlUnit.Segment>
               </InputControlUnit>
             </Field>
 

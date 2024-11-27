@@ -11,7 +11,7 @@ type InputControlUnitProps = {
   children: React.ReactNode;
 } & WithVariants<"div", null, InputControlUnitModifiers>;
 
-export function InputControlUnit(props: InputControlUnitProps) {
+export function InputControlUnitElement(props: InputControlUnitProps) {
   const { children, variant, subvariants, ...restProps } = props;
 
   function handleInternalFocus(e) {
@@ -38,3 +38,15 @@ export function InputControlUnit(props: InputControlUnitProps) {
     </div>
   );
 }
+
+function InputControlUnitSegment({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center justify-center px-4 flex-shrink-0">
+      {children}
+    </div>
+  );
+}
+
+export const InputControlUnit = Object.assign(InputControlUnitElement, {
+  Segment: InputControlUnitSegment,
+});
