@@ -10,12 +10,12 @@
     }
 
     /* Modifiers */
-    &:where([data-mods~="rounded-none"]) {
+    &:where([data-subvariants~="rounded-none"]) {
       @apply rounded-none;
     }
 
     /* Padding */
-    &:where([data-mods~="padding-none"]) {
+    &:where([data-subvariants~="padding-none"]) {
       @apply p-0;
     }
   }
