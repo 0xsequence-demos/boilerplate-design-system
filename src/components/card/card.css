@@ -1,5 +1,5 @@
 @layer components {
-  :where([data-component="card"]) {
+  html body [data-component="card"] {
     /* Variants */
     &:where([data-variant="initial"]) {
       @apply bg-grey-800 rounded-xl;

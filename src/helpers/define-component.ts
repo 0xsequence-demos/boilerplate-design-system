@@ -39,7 +39,7 @@ export function defineComponent(
 ): Record<string, string> {
   return {
     "data-component": name,
-    "data-variant": variant,
+    "data-variant": variant || "initial",
     "data-mods": applyMods(mods),
   };
 }

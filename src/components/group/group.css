@@ -1,5 +1,7 @@
+@import "./group-title.css";
+
 @layer components {
-  :where([data-component="group"]) {
+  html body [data-component="group"] {
     &:where([data-variant="initial"]) {
       @apply flex flex-col gap-4 border-t border-white/10 py-4;
     }
