@@ -1,42 +1,36 @@
+import { forwardRef } from "react";
 import { Svg } from "../svg/Svg";
+import { SelectOptions } from "./SelectOptions";
+import { PolymorphicRef } from "@0xsequence/design-system";
+import { defineComponent } from "../../helpers/define-component";
+import { WithVariants } from "../types";
 
 type SelectProps = {
   selected?: string;
+  icon?: string;
   children: React.ReactNode;
-};
+} & WithVariants<"div", null, { "min-size"?: "none" | "sm" | "md" | "lg" }>;
 
-function SelectElement({ selected, children }: SelectProps) {
+function SelectElement(props: SelectProps, ref: PolymorphicRef<"div">) {
+  const { selected, children, variant, mods, icon = "ChevronDown" } = props;
+
+  const defaultMods = {
+    "min-size": "md",
+  };
+
   return (
-    <div className="relative border border-white/20 rounded-md overflow-hidden h-[2.5rem] inline-flex">
+    <div
+      {...defineComponent("select", variant, Object.assign(defaultMods, mods))}
+      ref={ref}
+    >
       <div className="absolute w-[2.5rem] z-10 right-0 pointer-events-none top-0 bottom-0 items-center justify-center flex cursor-pointer">
-        <Svg name="ChevronDown" className="w-4 h-4 text-white" />
+        <Svg name={icon} className="w-4 h-4 text-white" />
       </div>
-      <select
-        className="appearance-none bg-transparent pl-3 py-1 truncate w-full h-full pr-[2.5rem] min-w-[8rem]"
-        defaultValue={selected}
-      >
-        {children}
-      </select>
+      <select defaultValue={selected}>{children}</select>
     </div>
   );
 }
 
-interface OptionsProps {
-  items: string[] | { value: string; label: string }[];
-  selected?: string;
-}
-
-export function Options({ items }: OptionsProps) {
-  return items.map((item) => {
-    const value = typeof item === "string" ? item : item.value;
-    const label = typeof item === "string" ? item : item.label;
-
-    return (
-      <option key={value} value={value}>
-        {label}
-      </option>
-    );
-  });
-}
-
-export const Select = Object.assign(SelectElement, { Options });
+export const Select = Object.assign(forwardRef(SelectElement), {
+  Options: SelectOptions,
+});
