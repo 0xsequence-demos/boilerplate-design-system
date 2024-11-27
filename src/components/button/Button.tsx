@@ -9,12 +9,12 @@ type ButtonModifiers = ModifierOptions<{
   rounded: "none" | "sm" | "full";
 }>;
 
-type Props = {
+type ButtonProps = {
   children: React.ReactNode;
   type?: "button" | "submit" | "reset";
 } & WithVariants<"button", ButtonVariant, ButtonModifiers>;
 
-function ButtonComponent(props: Props, ref: PolymorphicRef<"button">) {
+function ButtonComponent(props: ButtonProps, ref: PolymorphicRef<"button">) {
   const {
     children,
     variant = "initial",

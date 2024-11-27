@@ -9,11 +9,11 @@ type CardModifiers = {
   rounded: "none" | "sm" | "full";
 };
 
-type Props = {
+type CardProps = {
   children: React.ReactNode;
 } & WithVariants<"div", CardVariant, CardModifiers>;
 
-function CardComponent(props: Props, ref: PolymorphicRef<"div">) {
+function CardComponent(props: CardProps, ref: PolymorphicRef<"div">) {
   const { children, mods, variant = "initial", ...restProps } = props;
 
   return (
