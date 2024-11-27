@@ -2,12 +2,11 @@ import "./index.css";
 
 import { SequenceDemoKit } from "./components/sequence-boilerplate/SequenceBoilerplate";
 import { useState } from "react";
-import { Button } from "./components/button/Button";
-import { Select } from "./components/select/Select";
+
 import { Action } from "./components/action/Action";
 import { Field, Input, Label } from "./components/action/components";
-import { Card } from "./components/card/Card";
-import { Group } from "./components/group/Group";
+import { Card, Group, Button, Select } from "./components";
+
 function App() {
   const [currentPage, setPage] = useState("root");
 
