@@ -1,17 +1,13 @@
+import { SelectOptions } from './SelectOptions';
+import { WithVariants } from '../types';
 type SelectProps = {
     selected?: string;
+    icon?: string;
     children: React.ReactNode;
-};
-declare function SelectElement({ selected, children }: SelectProps): import("react/jsx-runtime").JSX.Element;
-interface OptionsProps {
-    items: string[] | {
-        value: string;
-        label: string;
-    }[];
-    selected?: string;
-}
-export declare function Options({ items }: OptionsProps): import("react/jsx-runtime").JSX.Element[];
-export declare const Select: typeof SelectElement & {
-    Options: typeof Options;
+} & WithVariants<"div", null, {
+    "min-size"?: "none" | "sm" | "md" | "lg";
+}>;
+export declare const Select: import('react').ForwardRefExoticComponent<Omit<SelectProps, "ref"> & import('react').RefAttributes<HTMLDivElement>> & {
+    Options: typeof SelectOptions;
 };
 export {};
