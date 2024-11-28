@@ -1,3 +1,5 @@
+@import "./input-control-unit-segment.css";
+
 @layer components {
   html body [data-component="input-control-unit"] {
     @apply relative;

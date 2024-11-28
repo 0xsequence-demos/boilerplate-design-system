@@ -1,0 +1,9 @@
+@layer components {
+  html body [data-component="input-control-unit-segment"] {
+    @apply flex items-center justify-center px-4 flex-shrink-0;
+
+    &:where([data-subvariants~="pointer-none"]) {
+      @apply pointer-events-none;
+    }
+  }
+}

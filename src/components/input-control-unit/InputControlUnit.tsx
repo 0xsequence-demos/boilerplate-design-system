@@ -39,9 +39,22 @@ export function InputControlUnitElement(props: InputControlUnitProps) {
   );
 }
 
-function InputControlUnitSegment({ children }: { children: React.ReactNode }) {
+type InputControlUnitSegmentSubvariants = {
+  pointer?: "none";
+};
+
+type InputControlUnitSegmentProps = {
+  children: React.ReactNode;
+} & WithVariants<"div", null, InputControlUnitSegmentSubvariants>;
+
+function InputControlUnitSegment(props: InputControlUnitSegmentProps) {
+  const { children, subvariants, ...restProps } = props;
+
   return (
-    <div className="flex items-center justify-center px-4 flex-shrink-0">
+    <div
+      {...defineComponent("input-control-unit-segment", null, subvariants)}
+      {...restProps}
+    >
       {children}
     </div>
   );

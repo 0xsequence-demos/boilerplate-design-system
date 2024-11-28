@@ -1,5 +1,5 @@
 import { default as React } from 'react';
-export declare function SequenceDemoKit({ githubUrl, name, description, useAuth, children, }: {
+export declare function SequenceBoilerplate({ githubUrl, name, description, useAuth, children, }: {
     githubUrl: string;
     name: string;
     description: string;

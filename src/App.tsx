@@ -55,7 +55,7 @@ function InnerPage() {
             <Field name="wallet-address">
               <Label>Wallet address:</Label>
               <InputControlUnit subvariants={{ width: "full" }}>
-                <InputControlUnit.Segment>
+                <InputControlUnit.Segment subvariants={{ pointer: "none" }}>
                   <Svg name="Wallet" width="20" />
                 </InputControlUnit.Segment>
 
