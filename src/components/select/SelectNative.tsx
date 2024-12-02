@@ -8,6 +8,7 @@ type SelectProps = {
   defaultValue?: string;
   arrowIcon?: string;
   children: React.ReactNode;
+  onValueChange?: (value: string) => void;
 } & WithVariants<"div", null, { "min-size"?: "none" | "sm" | "md" | "lg" }>;
 
 export function SelectElement(props: SelectProps, ref: PolymorphicRef<"div">) {
@@ -26,6 +27,13 @@ export function SelectElement(props: SelectProps, ref: PolymorphicRef<"div">) {
   const [icon, setIcon] = useState(null);
 
   function handleChange(e) {
+    if (props?.onChange) {
+      props.onChange(e);
+    }
+    if (props?.onValueChange) {
+      props.onValueChange(e.target.value);
+    }
+
     const icon = e?.target?.querySelector("option:checked")?.dataset?.icon;
     if (icon) {
       setIcon(icon);

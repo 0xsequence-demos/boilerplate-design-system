@@ -4,6 +4,7 @@ type SelectProps = {
     defaultValue?: string;
     arrowIcon?: string;
     children: React.ReactNode;
+    onValueChange?: (value: string) => void;
 } & WithVariants<"div", null, {
     "min-size"?: "none" | "sm" | "md" | "lg";
 }>;
