@@ -1,13 +1,13 @@
 @layer components {
   html body [data-component="button"] {
-    @apply inline-flex items-center;
+    @apply inline-flex items-center self-center;
     /* Variants */
     &:where([data-variant="initial"]) {
       @apply rounded-full bg-grey-800 px-3 py-1;
     }
 
     &:where([data-variant="primary"]) {
-      @apply bg-gradientPrimary rounded-full px-3 py-1;
+      @apply bg-gradientPrimary rounded-full px-10 py-3 text-14 font-bold;
     }
 
     &:where([data-variant="secondary"]) {
