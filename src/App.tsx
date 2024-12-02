@@ -17,6 +17,7 @@ import { Divider } from "./components/divider/Divider";
 function App() {
   return (
     <SequenceBoilerplate
+      docsUrl="https://docs.sequence.build"
       githubUrl="https://github.com"
       name="Boilerplate Design System"
       description="Development environment"
