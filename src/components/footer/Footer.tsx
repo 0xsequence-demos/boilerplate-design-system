@@ -1,13 +1,13 @@
-export function Footer() {
+export function Footer({ to }: { to: string }) {
   return (
     <div className="text-14 font-medium">
       <p>
         Want to learn more? Read the{"  "}
         <a
-          href="https://docs.sequence.xyz/solutions/wallets/sequence-kit/overview/"
+          href={to}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline"
+          className="underline text-white"
         >
           docs
         </a>
