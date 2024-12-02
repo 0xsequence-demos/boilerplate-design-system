@@ -1,1 +1,3 @@
-export declare function Footer(): import("react/jsx-runtime").JSX.Element;
+export declare function Footer({ to }: {
+    to: string;
+}): import("react/jsx-runtime").JSX.Element;

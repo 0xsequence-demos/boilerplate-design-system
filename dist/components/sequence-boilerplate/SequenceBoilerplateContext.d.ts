@@ -3,5 +3,6 @@ export type SequenceBoilerplateContext = {
     description?: string;
     useAuth?: boolean;
     githubUrl?: string;
+    docsUrl?: string;
 };
 export declare const SequenceBoilerplateContext: import('react').Context<SequenceBoilerplateContext>;
