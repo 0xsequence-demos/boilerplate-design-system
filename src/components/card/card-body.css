@@ -1,0 +1,5 @@
+@layer components {
+  html body [data-component="card-body"] {
+    @apply w-full text-start pt-4;
+  }
+}
