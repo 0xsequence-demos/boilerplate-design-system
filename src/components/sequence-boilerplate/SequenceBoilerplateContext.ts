@@ -5,6 +5,7 @@ export type SequenceBoilerplateContext = {
   description?: string;
   useAuth?: boolean;
   githubUrl?: string;
+  docsUrl?: string;
 };
 
 export const SequenceBoilerplateContext =
