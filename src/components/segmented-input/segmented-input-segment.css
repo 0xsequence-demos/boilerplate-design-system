@@ -1,5 +1,5 @@
 @layer components {
-  html body [data-component="input-control-unit-segment"] {
+  html body [data-component="segmented-input-segment"] {
     @apply flex items-center justify-center px-4 flex-shrink-0;
 
     &:where([data-subvariants~="pointer-none"]) {

@@ -4,7 +4,7 @@ export { Card } from "./components/card/Card";
 export { Divider } from "./components/divider/Divider";
 export { Group } from "./components/group/Group";
 export { Input } from "./components/input/Input";
-export { InputControlUnit } from "./components/input-control-unit/InputControlUnit";
+export { SegmentedInput } from "./components/segmented-input/SegmentedInput";
 export { Label } from "./components/label/Label";
 export { Select } from "./components/select/Select";
 export { Svg } from "./components/svg/Svg";

@@ -4,15 +4,17 @@ import { SequenceBoilerplate } from "./components/sequence-boilerplate/SequenceB
 
 // import { Action } from "./components/action/Action";
 // import { Field, Input, Label } from "./components/action/components";
-import { Card, Group, Button, Select } from ".";
+import { Card, Group, Button } from ".";
+import { Select } from "./components/select/Select";
 import { Page, Pages, usePage } from "./Page";
 import { Action } from "./components/action/Action";
 import { Field } from "./components/action/components";
 import { Label } from "./components/label/Label";
 import { Input } from "./components/input/Input";
-import { InputControlUnit } from "./components/input-control-unit/InputControlUnit";
+import { SegmentedInput } from "./components/segmented-input/SegmentedInput";
 import { Svg } from "./components/svg/Svg";
 import { Divider } from "./components/divider/Divider";
+import { useState, ChangeEvent } from "react";
 
 function App() {
   return (
@@ -22,11 +24,93 @@ function App() {
       name="Boilerplate Design System"
       description="Development environment"
     >
-      <Pages initial="root">
+      <Pages initial="inner">
         <RootPage />
         <InnerPage />
+        <WalletPage />
       </Pages>
     </SequenceBoilerplate>
+  );
+}
+
+function View({ children }: { children: React.ReactNode }) {
+  return <div className="flex flex-col gap-4">{children}</div>;
+}
+
+function WalletPage() {
+  return (
+    <Page name="wallet">
+      <View>
+        <Card.Collapsable>
+          <Card.Summary>Sign message</Card.Summary>
+          <Card.Body>
+            <Action intent="">
+              <Field name="message">
+                <Label>Message</Label>
+                <Input subvariants={{ width: "full" }} />
+              </Field>
+
+              <Button
+                type="submit"
+                variant="primary"
+                subvariants={{ flex: "start" }}
+              >
+                Sign
+              </Button>
+            </Action>
+          </Card.Body>
+        </Card.Collapsable>
+
+        <Card.Collapsable>
+          <Card.Summary>Verify Signature</Card.Summary>
+          <Card.Body>
+            <Action intent="verify_signature">
+              <Field name="address">
+                <Label>Address</Label>
+                <Input subvariants={{ width: "full" }} />
+              </Field>
+              <Field name="message">
+                <Label>Message</Label>
+                <Input subvariants={{ width: "full" }} />
+              </Field>
+
+              <Field name="signature">
+                <Label>Signature</Label>
+                <Input subvariants={{ width: "full" }} />
+              </Field>
+
+              <Button
+                type="submit"
+                variant="primary"
+                subvariants={{ flex: "start" }}
+              >
+                Sign
+              </Button>
+            </Action>
+          </Card.Body>
+        </Card.Collapsable>
+
+        <Card.Collapsable>
+          <Card.Summary>Send Transaction</Card.Summary>
+          <Card.Body>
+            <Action intent="verify_signature">
+              <div className="flex items-center gap-8">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  subvariants={{ flex: "start" }}
+                >
+                  Send transaction
+                </Button>
+                <span className="text-grey-200 text-14">
+                  Send a transaction with your wallet
+                </span>
+              </div>
+            </Action>
+          </Card.Body>
+        </Card.Collapsable>
+      </View>
+    </Page>
   );
 }
 
@@ -51,10 +135,10 @@ function InnerPage() {
           <Action intent="user_info" className="flex flex-col gap-2">
             <Field name="wallet-address">
               <Label>Wallet address:</Label>
-              <InputControlUnit subvariants={{ width: "full" }}>
-                <InputControlUnit.Segment subvariants={{ pointer: "none" }}>
+              <SegmentedInput subvariants={{ width: "full" }}>
+                <SegmentedInput.Segment subvariants={{ pointer: "none" }}>
                   <Svg name="Wallet" width="20" />
-                </InputControlUnit.Segment>
+                </SegmentedInput.Segment>
 
                 <Input
                   type="text"
@@ -62,7 +146,7 @@ function InnerPage() {
                   subvariants={{ width: "full" }}
                 />
 
-                <InputControlUnit.Segment>
+                <SegmentedInput.Segment>
                   <Button
                     variant="tiny"
                     className="self-center"
@@ -71,24 +155,39 @@ function InnerPage() {
                     <Svg name="Signout" width="16" />
                     Disconnect
                   </Button>
-                </InputControlUnit.Segment>
-              </InputControlUnit>
+                </SegmentedInput.Segment>
+              </SegmentedInput>
             </Field>
 
             <Field name="network">
               <Label>Network:</Label>
-              <Input type="text" subvariants={{ width: "full" }} />
+              <Select defaultValue="arbitrum_sepolia">
+                <Select.Options
+                  items={[
+                    {
+                      value: "arbitrum_sepolia",
+                      label: "Arbitrum Sepolia",
+                      icon: "https://assets.sequence.info/images/networks/large/1.webp?v5",
+                    },
+                    {
+                      value: "value2",
+                      label: "Value Number 2",
+                      icon: "https://assets.sequence.info/images/networks/large/3.webp?v5",
+                    },
+                  ]}
+                />
+              </Select>
             </Field>
 
             <Field name="test-payments">
               <Label>Arbitrum Sepolia balance for test payments:</Label>
-              <InputControlUnit subvariants={{ width: "full" }}>
+              <SegmentedInput subvariants={{ width: "full" }}>
                 <Input
                   type="text"
                   variant="transparent"
                   subvariants={{ width: "full" }}
                 />
-                <InputControlUnit.Segment>
+                <SegmentedInput.Segment>
                   <Button
                     variant="tiny"
                     className="self-center flex-shrink-0"
@@ -97,21 +196,9 @@ function InnerPage() {
                     <Svg name="ExternalLink" width="16" />
                     Get test currency
                   </Button>
-                </InputControlUnit.Segment>
-              </InputControlUnit>
+                </SegmentedInput.Segment>
+              </SegmentedInput>
             </Field>
-
-            <Select>
-              <Select.Options
-                items={[
-                  {
-                    value: "value2",
-                    label: "Value2",
-                  },
-                  { value: "value", label: "Value" },
-                ]}
-              />
-            </Select>
           </Action>
         </Card>
         {/* <Card>

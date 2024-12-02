@@ -1,6 +1,6 @@
 @layer components {
   html body [data-component="button"] {
-    @apply inline-flex items-center self-center;
+    @apply inline-flex items-center justify-center text-center;
     /* Variants */
     &:where([data-variant="initial"]) {
       @apply rounded-full bg-grey-800 px-3 py-1;
@@ -19,6 +19,12 @@
     }
 
     /* Modifiers */
+
+    /* Flex */
+    &:where([data-subvariants~="flex-start"]) {
+      @apply self-start;
+    }
+
     /* Size */
     &:where([data-subvariants~="size-sm"]) {
       @apply px-1 py-0.5 text-12;

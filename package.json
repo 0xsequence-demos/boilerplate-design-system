@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@0xsequence/design-system": "^1.8.0",
+    "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-tooltip": "^1.1.4",
     "@svgr/cli": "^8.1.0",
     "clsx": "^2.1.1",
