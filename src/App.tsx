@@ -4,7 +4,7 @@ import { SequenceBoilerplate } from "./components/sequence-boilerplate/SequenceB
 
 // import { Action } from "./components/action/Action";
 // import { Field, Input, Label } from "./components/action/components";
-import { Card, Group, Button, Select } from "./components";
+import { Card, Group, Button, Select } from ".";
 import { Page, Pages, usePage } from "./Page";
 import { Action } from "./components/action/Action";
 import { Field } from "./components/action/components";
