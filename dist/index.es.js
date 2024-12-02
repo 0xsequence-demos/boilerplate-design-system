@@ -6055,8 +6055,13 @@ function Rd({ items: e, native: t }) {
   return t ? /* @__PURE__ */ l.jsx(xl, { items: e }) : /* @__PURE__ */ l.jsx(Sd, { items: e });
 }
 function Ed(e) {
-  const { defaultValue: t, arrowIcon: n = "ChevronDown", children: r } = e;
-  return /* @__PURE__ */ l.jsxs(hd, { defaultValue: t, children: [
+  const {
+    defaultValue: t,
+    arrowIcon: n = "ChevronDown",
+    children: r,
+    ...o
+  } = e;
+  return /* @__PURE__ */ l.jsxs(hd, { defaultValue: t, ...o, children: [
     /* @__PURE__ */ l.jsxs(pd, { className: "flex items-center justify-between w-full bg-transparent border border-grey-500 rounded-[0.5rem] text-gray-200 focus:ring-2 ring-blue-500 px-4 py-3", children: [
       /* @__PURE__ */ l.jsx(vd, {}),
       /* @__PURE__ */ l.jsx(qt, { name: n, width: "20" })
@@ -6080,6 +6085,7 @@ function jd(e, t) {
   }, [c, u] = an(null);
   function d(g) {
     var y, p, x;
+    e != null && e.onChange && e.onChange(g), e != null && e.onValueChange && e.onValueChange(g.target.value);
     const m = (x = (p = (y = g == null ? void 0 : g.target) == null ? void 0 : y.querySelector("option:checked")) == null ? void 0 : p.dataset) == null ? void 0 : x.icon;
     m && u(m);
   }

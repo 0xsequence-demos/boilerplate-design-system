@@ -9,10 +9,15 @@ type SelectProps = {
 };
 
 export function SelectRadix(props: SelectProps) {
-  const { defaultValue, arrowIcon = "ChevronDown", children } = props;
+  const {
+    defaultValue,
+    arrowIcon = "ChevronDown",
+    children,
+    ...restProps
+  } = props;
 
   return (
-    <SelectPrimative.Root defaultValue={defaultValue}>
+    <SelectPrimative.Root defaultValue={defaultValue} {...restProps}>
       <SelectPrimative.Trigger className="flex items-center justify-between w-full bg-transparent border border-grey-500 rounded-[0.5rem] text-gray-200 focus:ring-2 ring-blue-500 px-4 py-3">
         <SelectPrimative.Value />
         <Svg name={arrowIcon} width="20" />

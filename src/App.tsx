@@ -14,7 +14,6 @@ import { Input } from "./components/input/Input";
 import { SegmentedInput } from "./components/segmented-input/SegmentedInput";
 import { Svg } from "./components/svg/Svg";
 import { Divider } from "./components/divider/Divider";
-import { useState, ChangeEvent } from "react";
 
 function App() {
   return (
@@ -167,12 +166,12 @@ function InnerPage() {
                     {
                       value: "arbitrum_sepolia",
                       label: "Arbitrum Sepolia",
-                      icon: "https://assets.sequence.info/images/networks/large/1.webp?v5",
+                      icon: "https://assets.sequence.info/images/networks/medium/421614.webp?v5",
                     },
                     {
-                      value: "value2",
-                      label: "Value Number 2",
-                      icon: "https://assets.sequence.info/images/networks/large/3.webp?v5",
+                      value: "ethereum",
+                      label: "Ethereum",
+                      icon: "https://assets.sequence.info/images/networks/medium/1.webp?v5",
                     },
                   ]}
                 />
