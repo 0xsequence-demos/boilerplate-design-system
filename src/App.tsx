@@ -22,7 +22,7 @@ function App() {
       name="Boilerplate Design System"
       description="Development environment"
     >
-      <Pages initial="inner">
+      <Pages initial="root">
         <RootPage />
         <InnerPage />
       </Pages>
@@ -34,11 +34,7 @@ function RootPage() {
   const { setCurrent } = usePage();
   return (
     <Page name="root">
-      <Button
-        onClick={() => setCurrent("inner")}
-        variant="primary"
-        subvariants={{ size: "lg" }}
-      >
+      <Button onClick={() => setCurrent("inner")} variant="primary">
         Connect
       </Button>
     </Page>

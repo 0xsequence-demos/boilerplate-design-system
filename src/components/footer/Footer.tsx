@@ -1,6 +1,6 @@
 export function Footer({ to }: { to: string }) {
   return (
-    <div className="text-14 font-medium">
+    <div className="text-14 font-medium mt-8">
       <p>
         Want to learn more? Read the{"  "}
         <a
