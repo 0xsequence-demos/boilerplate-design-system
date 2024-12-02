@@ -85,6 +85,7 @@ function ActionComponent({
         method={method}
         onSubmit={handleSubmit}
         noValidate
+        className="flex flex-col gap-4 items-stretch"
         ref={ref}
         {...rest}
       >

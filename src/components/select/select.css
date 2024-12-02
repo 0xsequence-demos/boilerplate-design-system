@@ -1,6 +1,6 @@
 @layer components {
   html body [data-component="select"] {
-    @apply relative focus-within:ring-2 ring-blue-600;
+    @apply relative focus-within:ring-2 ring-blue-600 flex gap-3 items-center text-grey-200 px-4;
 
     & > select {
       @apply appearance-none bg-transparent w-full h-full;

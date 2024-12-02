@@ -1,13 +1,18 @@
+import { default as React } from 'react';
 import { SelectOptions } from './SelectOptions';
 import { WithVariants } from '../types';
 type SelectProps = {
+    defaultValue?: string;
     selected?: string;
+    native?: boolean;
     icon?: string;
-    children: React.ReactNode;
+    children: React.ReactElement<{
+        native: boolean;
+    }>;
 } & WithVariants<"div", null, {
     "min-size"?: "none" | "sm" | "md" | "lg";
 }>;
-export declare const Select: import('react').ForwardRefExoticComponent<Omit<SelectProps, "ref"> & import('react').RefAttributes<HTMLDivElement>> & {
+export declare const Select: React.ForwardRefExoticComponent<Omit<SelectProps, "ref"> & React.RefAttributes<HTMLDivElement>> & {
     Options: typeof SelectOptions;
 };
 export {};

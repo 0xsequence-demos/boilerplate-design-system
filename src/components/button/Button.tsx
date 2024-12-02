@@ -7,6 +7,7 @@ type ButtonVariant = "primary" | "secondary" | "tiny";
 type ButtonModifiers = ModifierOptions<{
   size: "sm" | "md" | "lg";
   rounded: "none" | "sm" | "full";
+  flex: "start";
 }>;
 
 type ButtonProps = {
@@ -22,6 +23,8 @@ function ButtonComponent(props: ButtonProps, ref: PolymorphicRef<"button">) {
     subvariants,
     ...restProps
   } = props;
+
+  console.log(subvariants);
 
   return (
     <button

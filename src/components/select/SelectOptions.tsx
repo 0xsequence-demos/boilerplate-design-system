@@ -1,17 +1,22 @@
-type OptionsProps = {
-  items: string[] | { value: string; label: string }[];
+import { SelectOptionsNative } from "./SelectOptionsNative";
+import { SelectOptionsRadix } from "./SelectOptionsRadix";
+
+export type Option = {
+  icon?: string;
+  value: string;
+  label: string;
+};
+
+export type OptionsProps = {
+  items: string[] | Option[];
+  native?: boolean;
   selected?: string;
 };
 
-export function SelectOptions({ items }: OptionsProps) {
-  return items.map((item) => {
-    const value = typeof item === "string" ? item : item.value;
-    const label = typeof item === "string" ? item : item.label;
-
-    return (
-      <option key={value} value={value}>
-        {label}
-      </option>
-    );
-  });
+export function SelectOptions({ items, native }: OptionsProps) {
+  return native ? (
+    <SelectOptionsNative items={items} />
+  ) : (
+    <SelectOptionsRadix items={items} />
+  );
 }

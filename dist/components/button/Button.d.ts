@@ -3,6 +3,7 @@ type ButtonVariant = "primary" | "secondary" | "tiny";
 type ButtonModifiers = ModifierOptions<{
     size: "sm" | "md" | "lg";
     rounded: "none" | "sm" | "full";
+    flex: "start";
 }>;
 type ButtonProps = {
     children: React.ReactNode;

@@ -4,7 +4,7 @@
 @import "./card/card.css";
 @import "./group/group.css";
 @import "./input/input.css";
-@import "./input-control-unit/input-control-unit.css";
+@import "./segmented-input/segmented-input.css";
 @import "./label/label.css";
 @import "./select/select.css";
 @import "./github-corner/github-corner.css";

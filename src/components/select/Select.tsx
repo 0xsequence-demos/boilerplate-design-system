@@ -1,43 +1,33 @@
-import { forwardRef } from "react";
-import { Svg } from "../svg/Svg";
+import React, { forwardRef } from "react";
 import { SelectOptions } from "./SelectOptions";
 import { PolymorphicRef } from "@0xsequence/design-system";
-import { defineComponent } from "../../helpers/define-component";
 import { WithVariants } from "../types";
+import { SelectRadix } from "./SelectRadix";
+import { SelectNative } from "./SelectNative";
 
 type SelectProps = {
+  defaultValue?: string;
   selected?: string;
+  native?: boolean;
   icon?: string;
-  children: React.ReactNode;
+  children: React.ReactElement<{ native: boolean }>;
 } & WithVariants<"div", null, { "min-size"?: "none" | "sm" | "md" | "lg" }>;
 
 function SelectElement(props: SelectProps, ref: PolymorphicRef<"div">) {
-  const {
-    selected,
-    children,
-    variant,
-    subvariants,
-    icon = "ChevronDown",
-  } = props;
+  const { native = false, children } = props;
 
-  const defaultSubvariants = {
-    "min-size": "md",
-  };
+  const options = React.isValidElement(children)
+    ? React.cloneElement(children, { native }) // Inject the native property
+    : children;
 
-  return (
-    <div
-      {...defineComponent(
-        "select",
-        variant,
-        Object.assign(defaultSubvariants, subvariants)
-      )}
-      ref={ref}
-    >
-      <div className="absolute w-[2.5rem] z-10 right-0 pointer-events-none top-0 bottom-0 items-center justify-center flex cursor-pointer">
-        <Svg name={icon} className="w-4 h-4 text-white" />
-      </div>
-      <select defaultValue={selected}>{children}</select>
-    </div>
+  return native ? (
+    <SelectNative ref={ref} {...props}>
+      {options}
+    </SelectNative>
+  ) : (
+    <SelectRadix ref={ref} {...props}>
+      {options}
+    </SelectRadix>
   );
 }
 

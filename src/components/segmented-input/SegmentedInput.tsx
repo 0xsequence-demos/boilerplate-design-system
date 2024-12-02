@@ -1,17 +1,17 @@
 import { defineComponent } from "../../helpers/define-component";
 import { WithVariants } from "../types";
 
-type InputControlUnitModifiers = {
+type SegmentedInputModifiers = {
   direction?: "row" | "column";
   behaviour?: "text" | "button";
   width?: "full";
 };
 
-type InputControlUnitProps = {
+type SegmentedInputProps = {
   children: React.ReactNode;
-} & WithVariants<"div", null, InputControlUnitModifiers>;
+} & WithVariants<"div", null, SegmentedInputModifiers>;
 
-export function InputControlUnitElement(props: InputControlUnitProps) {
+export function SegmentedInputElement(props: SegmentedInputProps) {
   const { children, variant, subvariants, ...restProps } = props;
 
   function handleInternalFocus(e) {
@@ -24,7 +24,7 @@ export function InputControlUnitElement(props: InputControlUnitProps) {
 
   return (
     <div
-      {...defineComponent("input-control-unit", variant, subvariants)}
+      {...defineComponent("segmented-input", variant, subvariants)}
       {...restProps}
     >
       <button
@@ -39,20 +39,20 @@ export function InputControlUnitElement(props: InputControlUnitProps) {
   );
 }
 
-type InputControlUnitSegmentSubvariants = {
+type SegmentedInputSegmentSubvariants = {
   pointer?: "none";
 };
 
-type InputControlUnitSegmentProps = {
+type SegmentedInputSegmentProps = {
   children: React.ReactNode;
-} & WithVariants<"div", null, InputControlUnitSegmentSubvariants>;
+} & WithVariants<"div", null, SegmentedInputSegmentSubvariants>;
 
-function InputControlUnitSegment(props: InputControlUnitSegmentProps) {
+function SegmentedInputSegment(props: SegmentedInputSegmentProps) {
   const { children, subvariants, ...restProps } = props;
 
   return (
     <div
-      {...defineComponent("input-control-unit-segment", null, subvariants)}
+      {...defineComponent("segmented-input-segment", null, subvariants)}
       {...restProps}
     >
       {children}
@@ -60,6 +60,6 @@ function InputControlUnitSegment(props: InputControlUnitSegmentProps) {
   );
 }
 
-export const InputControlUnit = Object.assign(InputControlUnitElement, {
-  Segment: InputControlUnitSegment,
+export const SegmentedInput = Object.assign(SegmentedInputElement, {
+  Segment: SegmentedInputSegment,
 });
