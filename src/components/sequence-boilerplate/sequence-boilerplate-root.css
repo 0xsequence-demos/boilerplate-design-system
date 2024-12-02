@@ -1,0 +1,22 @@
+@layer components {
+  body:has([data-component="root"][data-variant="initial"]),
+  body:has([data-component="root"][data-subvariants~="bg-included"]) {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 50%
+      ),
+      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="%23262626" d="M0 0h12v12H0z"/><path fill="%231D1D1D" d="M12 0h12v12H12zM0 12h12v12H0z"/><path fill="%23262626" d="M12 12h12v12H12z"/></svg>');
+  }
+
+  html body [data-component="root"] {
+    /* Variants */
+    &:where([data-variant="initial"]) {
+      @apply max-w-screen-lg mx-auto p-4 text-center w-full flex-1;
+    }
+
+    &:where([data-subvariants~="bg-included"]) {
+      /** Include the background image on the body */
+    }
+  }
+}

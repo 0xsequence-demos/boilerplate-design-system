@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { SequenceBoilerplateContext } from "./SequenceBoilerplateContext";
 
-export function useSequenceDemoKit() {
+export function useSequenceBoilerplate() {
   const context = useContext(SequenceBoilerplateContext);
 
   if (!context) {
