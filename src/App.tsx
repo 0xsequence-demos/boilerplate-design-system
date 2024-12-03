@@ -1,7 +1,7 @@
 import "./index.css";
 
 import { SequenceBoilerplate } from "./components/sequence-boilerplate/SequenceBoilerplate";
-import { Card, Group, Button } from ".";
+import { Card, Group, Button, ShowAddressWithDisconnect } from ".";
 import { Page, Pages, usePage } from "./Page";
 import { Form, type FormHandler } from "./components/action/Form";
 import { Field } from "./components/action/components";
@@ -54,6 +54,10 @@ function WalletPage() {
 
         <Card title="Verify Signature" collapsable>
           <Form onAction={handleVerifySignature}>
+            <ShowAddressWithDisconnect
+              address="0x1234"
+              onDisconnect={() => {}}
+            />
             <InputText name="address" />
             <InputText name="message" />
             <InputText name="signature" />

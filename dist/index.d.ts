@@ -12,6 +12,7 @@ export { createFormObjectWithoutValidation, validateAndCreateFormObjectOrThrow, 
 export { Field, FieldError, FormErrors, FormSuccess, } from './components/action/components';
 export { InputText } from './components/input-text/InputText';
 export { InputSelect } from './components/input-select/InputSelect';
+export { ShowAddressWithDisconnect } from './components/show-address-with-disconnect/ShowAddressWithDisconnect';
 export { Footer } from './components/footer/Footer';
 export { Header } from './components/header/Header';
 export { GithubCorner } from './components/github-corner/GithubCorner';
