@@ -23,6 +23,7 @@ export {
 // Compound Components
 export { InputText } from "./components/input-text/InputText";
 export { InputSelect } from "./components/input-select/InputSelect";
+export { Submit } from "./components/submit/Submit";
 
 export { ShowAddressWithDisconnect } from "./components/show-address-with-disconnect/ShowAddressWithDisconnect";
 
@@ -38,7 +39,11 @@ export { SequenceBoilerplateProvider } from "./components/sequence-boilerplate/S
 export { useSequenceBoilerplate } from "./components/sequence-boilerplate/useSequenceBoilerplate";
 
 // Data persistence
-export { useStoreData, setStoreData } from "./helpers/session-store";
+export {
+  useStoreData,
+  setStoreData,
+  useAsyncStoreData,
+} from "./helpers/session-store";
 
 // CSS
 import "./index.css";

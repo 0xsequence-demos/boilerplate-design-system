@@ -1,6 +1,6 @@
 import { ZodSchema } from 'zod';
 import { ComponentProps, FormEvent } from 'react';
-export type FormHandler<T = Record<string, unknown>> = (event: FormEvent<HTMLFormElement>, data: T) => FormHandlerReturn<T>;
+export type FormHandler<T = Record<string, unknown>> = (event: FormEvent<HTMLFormElement>, data: T) => FormHandlerReturn<T> | void;
 type FormHandlerReturn<T = Record<string, unknown>> = [T, boolean];
 declare function FormComponent({ children, name, method, onAction, schema, ...rest }: {
     children: React.ReactNode | (({ errors, data, }: {

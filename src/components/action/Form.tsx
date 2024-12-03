@@ -12,7 +12,7 @@ import { FormEvent } from "react";
 export type FormHandler<T = Record<string, unknown>> = (
   event: FormEvent<HTMLFormElement>,
   data: T
-) => FormHandlerReturn<T>;
+) => FormHandlerReturn<T> | void;
 
 type FormHandlerReturn<T = Record<string, unknown>> = [T, boolean];
 

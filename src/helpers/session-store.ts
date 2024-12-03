@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 const getSnapshotFromSessionStorage = (key: string): string => {
   return sessionStorage.getItem(key);
@@ -23,4 +23,10 @@ export function useStoreData(key: string): Record<string, unknown> {
   ) as string;
 
   return JSON.parse(value);
+}
+
+export function useAsyncStoreData(key: string, value: unknown) {
+  useEffect(() => {
+    setStoreData(key, value);
+  }, [key, value]);
 }
