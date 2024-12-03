@@ -54,15 +54,12 @@ function WalletPage() {
 
         <Card title="Verify Signature" collapsable>
           <Form onAction={handleVerifySignature}>
-            <ShowAddressWithDisconnect
-              address="0x1234"
-              onDisconnect={() => {}}
-            />
             <InputText name="address" />
             <InputText name="message" />
             <InputText name="signature" />
             <Submit label="Verify" />
           </Form>
+          <Card>Output</Card>
         </Card>
 
         <Card title="Send Transaction" collapsable>

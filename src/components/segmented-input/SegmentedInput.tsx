@@ -14,6 +14,8 @@ type SegmentedInputProps = {
 export function SegmentedInputElement(props: SegmentedInputProps) {
   const { children, variant, subvariants, ...restProps } = props;
 
+  // Focus on the text input if there is a click anywhere in the input that doesn't have an already clickable element
+  // Ie, click an icon to focus on the input, but the disconnect button will still work
   function handleInternalFocus(e) {
     const focusable = e?.target?.parentNode?.querySelector("input");
     if (focusable) {
@@ -27,11 +29,11 @@ export function SegmentedInputElement(props: SegmentedInputProps) {
       {...restProps}
     >
       <button
+        // Hit area button spanning the entire parent element
         type="button"
         tabIndex={-1}
         className="absolute w-full h-full inset-0 z-0 cursor-text"
         onClick={handleInternalFocus}
-        data-focus-button
       ></button>
       {children}
     </div>

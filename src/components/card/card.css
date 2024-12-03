@@ -7,4 +7,12 @@
       @apply bg-white/10 backdrop-blur-[24px] rounded-xl p-4;
     }
   }
+
+  /** Adjust rounded corners for nested cards */
+  html body [data-component|="card"] [data-component="card"] {
+    /* Modifiers */
+    &:where([data-variant="initial"]) {
+      @apply rounded-md;
+    }
+  }
 }
