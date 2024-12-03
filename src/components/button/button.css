@@ -1,0 +1,42 @@
+@layer components {
+  html body [data-component="button"] {
+    @apply inline-flex items-center justify-center text-center;
+    /* Variants */
+    &:where([data-variant="initial"]) {
+      @apply rounded-full bg-grey-800 px-3 py-1;
+    }
+
+    &:where([data-variant="primary"]) {
+      @apply bg-gradientPrimary rounded-full px-10 py-3 text-14 font-bold;
+    }
+
+    &:where([data-variant="secondary"]) {
+      @apply bg-gradientSecondary rounded-full px-3 py-1;
+    }
+
+    &:where([data-variant="tiny"]) {
+      @apply text-10 font-bold text-white bg-white/10 rounded-[0.5rem] px-3 py-[0.375rem] gap-1;
+    }
+
+    /* Modifiers */
+
+    /* Flex */
+    &:where([data-subvariants~="flex-start"]) {
+      @apply self-start;
+    }
+
+    /* Size */
+    &:where([data-subvariants~="size-sm"]) {
+      @apply px-1 py-0.5 text-12;
+    }
+
+    &:where([data-subvariants~="size-lg"]) {
+      @apply px-8 py-2 text-18;
+    }
+
+    /* Border Radius */
+    &:where([data-subvariants~="rounded-none"]) {
+      @apply rounded-none;
+    }
+  }
+}

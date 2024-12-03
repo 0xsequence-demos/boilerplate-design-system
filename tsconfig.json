@@ -5,6 +5,7 @@
       "DOM.Iterable",
       "es6"
     ],
+    "module": "esnext",
     "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,

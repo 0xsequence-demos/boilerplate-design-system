@@ -1,18 +1,18 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+
 import dts from "vite-plugin-dts";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { peerDependencies } from "./package.json";
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    tsconfigPaths(),
     react(),
-    cssInjectedByJsPlugin(),
+    tsconfigPaths(),
     dts({
       exclude: ["node_modules", "tests", "**/*.stories.tsx", "**/*.test.tsx"],
-      outDir: "./dist/",
+      outDir: "dist",
     }),
   ],
   build: {
@@ -26,6 +26,7 @@ export default defineConfig({
       output: {
         dir: "dist", // Output directory
       },
+      external: Object.keys(peerDependencies),
       plugins: [],
     },
     watch: {
