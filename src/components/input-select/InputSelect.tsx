@@ -1,5 +1,6 @@
 import { nameToLabel } from "../../helpers/name-to-label";
-import { Field, Label } from "../action/components";
+import { Field } from "../action/components";
+import { Label } from "../label/Label";
 import { Select, type SelectProps } from "../select/Select";
 
 export function InputSelect(

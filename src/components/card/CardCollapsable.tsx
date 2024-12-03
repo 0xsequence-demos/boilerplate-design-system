@@ -13,7 +13,9 @@ export function CardCollapsable(
       {...restProps}
     >
       {title ? <Summary>{title}</Summary> : null}
-      <div className="px-4 pb-4 w-full text-start">{children}</div>
+      <div className="px-4 pb-4 w-full text-start flex flex-col gap-4">
+        {children}
+      </div>
     </details>
   );
 }
