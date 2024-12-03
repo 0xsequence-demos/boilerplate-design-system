@@ -1,8 +1,6 @@
 type FormContext = {
-    intent: string;
     name: string;
-    data?: Record<string, unknown>;
-    success: boolean;
+    data?: string | Record<string, unknown>;
     ref: React.MutableRefObject<HTMLFormElement | null>;
     errors: {
         fieldErrors: {
