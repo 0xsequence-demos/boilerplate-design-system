@@ -24,6 +24,8 @@ export {
 export { InputText } from "./components/input-text/InputText";
 export { InputSelect } from "./components/input-select/InputSelect";
 
+export { ShowAddressWithDisconnect } from "./components/show-address-with-disconnect/ShowAddressWithDisconnect";
+
 // Layout Exports
 export { Footer } from "./components/footer/Footer";
 export { Header } from "./components/header/Header";
