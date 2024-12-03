@@ -8,12 +8,7 @@ export function Submit(props: SubmitProps) {
   const { label, ...restProps } = props;
 
   return (
-    <Button
-      type="submit"
-      variant="primary"
-      subvariants={{ flex: "start" }}
-      {...restProps}
-    >
+    <Button type="submit" variant="primary" variant-flex="start" {...restProps}>
       {label}
     </Button>
   );
