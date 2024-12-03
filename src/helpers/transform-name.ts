@@ -4,6 +4,10 @@ export function transformName(
 ): string {
   let modifiedName = name;
 
+  if (typeof modifiedName !== "string") {
+    return null;
+  }
+
   // Remove the prefix if provided
   if (options?.prefix && modifiedName.startsWith(options.prefix)) {
     modifiedName = modifiedName.slice(options.prefix.length);

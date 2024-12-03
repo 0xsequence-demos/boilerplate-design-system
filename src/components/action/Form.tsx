@@ -39,14 +39,15 @@ function FormComponent({
   const [data, setData] = useState<string | Record<string, unknown>>({});
 
   // Generate a camelCase name from the onAction function name -- handleSignMessage -> signMessage
-  const storeKey = transformName(onAction.name, { prefix: "handle" });
+  const storeKey =
+    onAction && typeof onAction === "function" && onAction.name !== "onAction"
+      ? transformName(onAction.name, { prefix: "handle" })
+      : name || null;
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formdata = new FormData(event.currentTarget);
     try {
-      // const schema = clientAction(formdata, [intent]);
-
       // Validate formdata with the schema, or create a form object without validation
       const data = schema
         ? validateAndCreateFormObjectOrThrow(formdata, schema)
@@ -67,17 +68,17 @@ function FormComponent({
           if (records) setData(records);
 
           // If persist is true, set the store data in the session
-          if (persist) {
+          if (persist && storeKey) {
             setStoreData(storeKey, records);
           }
         }
       }
     } catch (error) {
+      const key = storeKey || name || "unknown";
       if (error instanceof ZodError) {
-        const key = storeKey || name || "unknown";
         setErrors({ [key]: error.flatten() });
       } else {
-        setErrors({ form: "Unknown intent" });
+        setErrors({ [key]: "Unknown intent" });
       }
     }
   }

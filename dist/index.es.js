@@ -8905,7 +8905,7 @@ function tf(e) {
 }
 function nf(e, t) {
   let n = e;
-  return t != null && t.prefix && n.startsWith(t.prefix) && (n = n.slice(t.prefix.length)), t != null && t.suffix && n.endsWith(t.suffix) && (n = n.slice(0, -t.suffix.length)), n.charAt(0).toLowerCase() + n.slice(1);
+  return typeof n != "string" ? null : (t != null && t.prefix && n.startsWith(t.prefix) && (n = n.slice(t.prefix.length)), t != null && t.suffix && n.endsWith(t.suffix) && (n = n.slice(0, -t.suffix.length)), n.charAt(0).toLowerCase() + n.slice(1));
 }
 const rf = (e) => sessionStorage.getItem(e), of = (e) => (window.addEventListener("storage", e), () => {
   window.removeEventListener("storage", e);
@@ -8928,7 +8928,7 @@ function af({
   schema: o,
   ...s
 }) {
-  const [i, a] = sn(), [c, u] = sn({}), d = nf(r.name, { prefix: "handle" });
+  const [i, a] = sn(), [c, u] = sn({}), d = r && typeof r == "function" && r.name !== "onAction" ? nf(r.name, { prefix: "handle" }) : t || null;
   function v(m) {
     m.preventDefault();
     const w = new FormData(m.currentTarget);
@@ -8938,11 +8938,12 @@ function af({
         const x = r(m, p);
         if (x || u(p), x) {
           const [_, y] = x;
-          _ && u(_), y && sf(d, _);
+          _ && u(_), y && d && sf(d, _);
         }
       }
     } catch (p) {
-      p instanceof Ce ? a({ [d || t || "unknown"]: p.flatten() }) : a({ form: "Unknown intent" });
+      const x = d || t || "unknown";
+      p instanceof Ce ? a({ [x]: p.flatten() }) : a({ [x]: "Unknown intent" });
     }
   }
   const g = zi(null);
