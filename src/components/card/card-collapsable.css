@@ -20,21 +20,7 @@
 
     /* Variants */
     &:where([data-variant="initial"]) {
-      @apply bg-white/10 backdrop-blur-[24px] rounded-xl p-4;
-    }
-
-    &:where([data-variant="primary"]) {
-      @apply bg-gradientPrimary rounded-xl p-4;
-    }
-
-    /* Modifiers */
-    &:where([data-subvariants~="rounded-none"]) {
-      @apply rounded-none;
-    }
-
-    /* Padding */
-    &:where([data-subvariants~="padding-none"]) {
-      @apply p-0;
+      @apply bg-white/10 backdrop-blur-[24px] rounded-xl;
     }
   }
 }

@@ -1,4 +1,7 @@
 // import lodash from "lodash";
+
+import { ZodSchema } from "zod";
+
 // const { set } = lodash;
 
 function keyIsArray(key: string) {
@@ -23,7 +26,7 @@ function keyIsArray(key: string) {
 //   }
 // };
 
-export function validateFormdata(
+export function validateAndCreateFormObjectOrThrow(
   formdata: FormData,
   validationSchema: ZodSchema<any>
 ) {
@@ -43,4 +46,17 @@ export function validateFormdata(
   );
 
   return validationSchema.parse(values);
+}
+
+export function createFormObjectWithoutValidation(formdata: FormData) {
+  const keys = Array.from(formdata.keys());
+
+  return keys.reduce((data: Record<string, unknown>, key: string) => {
+    if (formdata.has(key)) {
+      const value = formdata.getAll(key);
+      data[key] = value.length > 1 && keyIsArray(key) ? value : value[0];
+    }
+
+    return data;
+  }, Object.create(null));
 }

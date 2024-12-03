@@ -1,37 +1,29 @@
-import { ElementType, forwardRef } from "react";
-import type { PolymorphicRef, WithVariants } from "../types";
+import { ElementType } from "react";
+import type { WithVariants } from "../types";
 import { defineComponent } from "../../helpers/define-component";
-import { CardCollapsableComponent } from "./CardCollapsable";
-import { CardSummary } from "./CardSummary";
-import { CardBody } from "./CardBody";
-
-type CardVariant = "primary" | "secondary";
-
-type CardModifiers = {
-  size?: "sm" | "md" | "lg";
-  rounded?: "none" | "sm" | "full";
-  padding?: "none";
-};
+import { CardCollapsable } from "./CardCollapsable";
 
 export type CardProps<T extends ElementType = "div"> = {
   children: React.ReactNode;
-} & WithVariants<T, CardVariant, CardModifiers>;
+  collapsable?: boolean;
+} & WithVariants<T, null, null>;
 
-function CardComponent(props: CardProps, ref: PolymorphicRef<"div">) {
+export function Card(props: CardProps<"div" | "details">) {
+  const { collapsable, ...restProps } = props;
+
+  if (collapsable) {
+    return <CardCollapsable {...(restProps as CardProps<"details">)} />;
+  }
+
+  return <CardStatic {...(restProps as CardProps<"div">)} />;
+}
+
+function CardStatic(props: CardProps<"div">) {
   const { children, subvariants, variant, ...restProps } = props;
 
   return (
-    <div
-      ref={ref}
-      {...defineComponent("card", variant, subvariants)}
-      {...restProps}
-    >
+    <div {...defineComponent("card", variant, subvariants)} {...restProps}>
       {children}
     </div>
   );
 }
-export const Card = Object.assign(forwardRef(CardComponent), {
-  Summary: CardSummary,
-  Collapsable: CardCollapsableComponent,
-  Body: CardBody,
-});
