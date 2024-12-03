@@ -1,10 +1,8 @@
 import { createContext, useContext } from "react";
 
 type FormContext = {
-  intent: string;
   name: string;
-  data?: Record<string, unknown>;
-  success: boolean;
+  data?: string | Record<string, unknown>;
   ref: React.MutableRefObject<HTMLFormElement | null>;
   errors: { fieldErrors: { [key: string]: string[] }; formErrors: string[] };
 };
@@ -14,6 +12,7 @@ const FormContext = createContext<null | FormContext>(null);
 export function useForm() {
   const context = useContext(FormContext);
   if (!context) {
+    return {} as FormContext;
     throw new Error("useForm must be used within a Form");
   }
   return context;

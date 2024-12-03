@@ -1,15 +1,32 @@
 import { defineComponent } from "../../helpers/define-component";
+import { Svg } from "../svg/Svg";
 import { CardProps } from "./Card";
 
-export function CardCollapsableComponent(props: CardProps<"details">) {
-  const { children, subvariants, variant, ...restProps } = props;
+export function CardCollapsable(
+  props: CardProps<"details"> & { title?: string }
+) {
+  const { title, children, subvariants, variant, ...restProps } = props;
 
   return (
     <details
       {...defineComponent("card-collapsable", variant, subvariants)}
       {...restProps}
     >
-      {children}
+      {title ? <Summary>{title}</Summary> : null}
+      <div className="px-4 pb-4 w-full text-start">{children}</div>
     </details>
+  );
+}
+
+function Summary(props: { children: React.ReactNode }) {
+  const { children, ...restProps } = props;
+
+  return (
+    <summary
+      className="flex items-center justify-between text-14 font-bold p-4"
+      {...restProps}
+    >
+      {children} <Svg name="ChevronDown" width="20" data-arrow />
+    </summary>
   );
 }

@@ -24,8 +24,6 @@ function ButtonComponent(props: ButtonProps, ref: PolymorphicRef<"button">) {
     ...restProps
   } = props;
 
-  console.log(subvariants);
-
   return (
     <button
       ref={ref}

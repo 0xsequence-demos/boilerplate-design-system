@@ -25,13 +25,20 @@ export function Input(props: InputProps) {
 
   const { name } = useField();
 
+  const defaultSubvariants = Object.assign(
+    {
+      width: "full",
+    },
+    subvariants
+  );
+
   return (
     <Slot
       asChild={asChild}
       fallbackAs="input"
       name={name}
       id={id || name}
-      {...defineComponent("input", variant, subvariants)}
+      {...defineComponent("input", variant, defaultSubvariants)}
       {...restProps}
     >
       {children}

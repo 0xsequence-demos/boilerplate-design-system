@@ -1,19 +1,22 @@
 import "./index.css";
 
 import { SequenceBoilerplate } from "./components/sequence-boilerplate/SequenceBoilerplate";
-
+import { FormEvent, useEffect } from "react";
 // import { Action } from "./components/action/Action";
 // import { Field, Input, Label } from "./components/action/components";
 import { Card, Group, Button } from ".";
-import { Select } from "./components/select/Select";
 import { Page, Pages, usePage } from "./Page";
-import { Action } from "./components/action/Action";
+import { Form } from "./components/action/Form";
 import { Field } from "./components/action/components";
 import { Label } from "./components/label/Label";
 import { Input } from "./components/input/Input";
 import { SegmentedInput } from "./components/segmented-input/SegmentedInput";
 import { Svg } from "./components/svg/Svg";
 import { Divider } from "./components/divider/Divider";
+import { InputText } from "./components/input-text/InputText";
+import { Submit } from "./components/submit/Submit";
+import { InputSelect } from "./components/input-select/InputSelect";
+import { setStoreData, useStoreData } from "./helpers/session-store";
 
 function App() {
   return (
@@ -23,7 +26,7 @@ function App() {
       name="Boilerplate Design System"
       description="Development environment"
     >
-      <Pages initial="inner">
+      <Pages initial="wallet">
         <RootPage />
         <InnerPage />
         <WalletPage />
@@ -36,78 +39,49 @@ function View({ children }: { children: React.ReactNode }) {
   return <div className="flex flex-col gap-4">{children}</div>;
 }
 
+type FormHandler<T = Record<string, unknown>> = (
+  event: FormEvent<HTMLFormElement>,
+  data: T
+) => FormHandlerReturn<T>;
+
+type FormHandlerReturn<T = Record<string, unknown>> = [T, boolean];
+
 function WalletPage() {
+  const handleSignMessage: FormHandler = (event, data) => [data, true];
+
+  const handleVerifySignature: FormHandler = () => null;
+
+  const handleSendTransaction: FormHandler = () => null;
+
   return (
     <Page name="wallet">
       <View>
-        <Card.Collapsable>
-          <Card.Summary>Sign message</Card.Summary>
-          <Card.Body>
-            <Action intent="">
-              <Field name="message">
-                <Label>Message</Label>
-                <Input subvariants={{ width: "full" }} />
-              </Field>
+        <Card title="Sign message" collapsable>
+          <Form onAction={handleSignMessage}>
+            <InputText name="message" />
+            <Submit label="Sign" />
+          </Form>
+        </Card>
 
-              <Button
-                type="submit"
-                variant="primary"
-                subvariants={{ flex: "start" }}
-              >
-                Sign
-              </Button>
-            </Action>
-          </Card.Body>
-        </Card.Collapsable>
+        <Card title="Verify Signature" collapsable>
+          <Form onAction={handleVerifySignature}>
+            <InputText name="address" />
+            <InputText name="message" />
+            <InputText name="signature" />
+            <Submit label="Verify" />
+          </Form>
+        </Card>
 
-        <Card.Collapsable>
-          <Card.Summary>Verify Signature</Card.Summary>
-          <Card.Body>
-            <Action intent="verify_signature">
-              <Field name="address">
-                <Label>Address</Label>
-                <Input subvariants={{ width: "full" }} />
-              </Field>
-              <Field name="message">
-                <Label>Message</Label>
-                <Input subvariants={{ width: "full" }} />
-              </Field>
-
-              <Field name="signature">
-                <Label>Signature</Label>
-                <Input subvariants={{ width: "full" }} />
-              </Field>
-
-              <Button
-                type="submit"
-                variant="primary"
-                subvariants={{ flex: "start" }}
-              >
-                Sign
-              </Button>
-            </Action>
-          </Card.Body>
-        </Card.Collapsable>
-
-        <Card.Collapsable>
-          <Card.Summary>Send Transaction</Card.Summary>
-          <Card.Body>
-            <Action intent="verify_signature">
-              <div className="flex items-center gap-8">
-                <Button
-                  type="submit"
-                  variant="primary"
-                  subvariants={{ flex: "start" }}
-                >
-                  Send transaction
-                </Button>
-                <span className="text-grey-200 text-14">
-                  Send a transaction with your wallet
-                </span>
-              </div>
-            </Action>
-          </Card.Body>
-        </Card.Collapsable>
+        <Card title="Send Transaction" collapsable>
+          <Form onAction={handleSendTransaction}>
+            <div className="flex items-center gap-8">
+              <Submit label="Send transaction" />
+              <span className="text-grey-200 text-14">
+                Send a transaction with your wallet
+              </span>
+            </div>
+          </Form>
+        </Card>
       </View>
     </Page>
   );
@@ -128,10 +102,11 @@ function InnerPage() {
   return (
     <Page name="inner">
       <Divider />
+
       <Group>
         <Group.Title>User info</Group.Title>
         <Card>
-          <Action intent="user_info" className="flex flex-col gap-2">
+          <Form className="flex flex-col gap-2">
             <Field name="wallet-address">
               <Label>Wallet address:</Label>
               <SegmentedInput subvariants={{ width: "full" }}>
@@ -158,25 +133,22 @@ function InnerPage() {
               </SegmentedInput>
             </Field>
 
-            <Field name="network">
-              <Label>Network:</Label>
-              <Select defaultValue="arbitrum_sepolia">
-                <Select.Options
-                  items={[
-                    {
-                      value: "arbitrum_sepolia",
-                      label: "Arbitrum Sepolia",
-                      icon: "https://assets.sequence.info/images/networks/medium/421614.webp?v5",
-                    },
-                    {
-                      value: "ethereum",
-                      label: "Ethereum",
-                      icon: "https://assets.sequence.info/images/networks/medium/1.webp?v5",
-                    },
-                  ]}
-                />
-              </Select>
-            </Field>
+            <InputSelect
+              name="network"
+              defaultValue="arbitrum_sepolia"
+              options={[
+                {
+                  value: "arbitrum_sepolia",
+                  label: "Arbitrum Sepolia",
+                  icon: "https://assets.sequence.info/images/networks/medium/421614.webp?v5",
+                },
+                {
+                  value: "ethereum",
+                  label: "Ethereum",
+                  icon: "https://assets.sequence.info/images/networks/medium/1.webp?v5",
+                },
+              ]}
+            />
 
             <Field name="test-payments">
               <Label>Arbitrum Sepolia balance for test payments:</Label>
@@ -198,7 +170,7 @@ function InnerPage() {
                 </SegmentedInput.Segment>
               </SegmentedInput>
             </Field>
-          </Action>
+          </Form>
         </Card>
         {/* <Card>
             <Action intent="update_name" onSubmit={() => alert("submit")}>
@@ -214,20 +186,17 @@ function InnerPage() {
       <Group>
         <Group.Title>Sequence Kit actions</Group.Title>
 
-        <Card.Collapsable>
-          <Card.Summary>Sign message</Card.Summary>
-          <Card.Body>Sign message items</Card.Body>
-        </Card.Collapsable>
+        <Card collapsable title="Sign message">
+          Sign message items
+        </Card>
 
-        <Card.Collapsable>
-          <Card.Summary>Verify signature</Card.Summary>
-          <Card.Body>Verify signature items</Card.Body>
-        </Card.Collapsable>
+        <Card collapsable title="Verify signature">
+          <Card>Verify signature items</Card>
+        </Card>
 
-        <Card.Collapsable>
-          <Card.Summary>Send transactions</Card.Summary>
-          <Card.Body>Send transactions items</Card.Body>
-        </Card.Collapsable>
+        <Card collapsable title="Send transactions">
+          Send transactions items
+        </Card>
       </Group>
       <Divider />
     </Page>

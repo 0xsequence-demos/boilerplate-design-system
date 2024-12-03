@@ -16,7 +16,6 @@ export function SegmentedInputElement(props: SegmentedInputProps) {
 
   function handleInternalFocus(e) {
     const focusable = e?.target?.parentNode?.querySelector("input");
-    console.log(focusable);
     if (focusable) {
       focusable.focus();
     }
