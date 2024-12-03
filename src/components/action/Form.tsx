@@ -7,6 +7,14 @@ import {
 } from "./validate";
 import { transformName } from "../../helpers/transform-name";
 import { setStoreData } from "../../helpers/session-store";
+import { FormEvent } from "react";
+
+export type FormHandler<T = Record<string, unknown>> = (
+  event: FormEvent<HTMLFormElement>,
+  data: T
+) => FormHandlerReturn<T>;
+
+type FormHandlerReturn<T = Record<string, unknown>> = [T, boolean];
 
 function FormComponent({
   children,

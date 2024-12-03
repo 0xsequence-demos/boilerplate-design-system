@@ -1,12 +1,9 @@
 import "./index.css";
 
 import { SequenceBoilerplate } from "./components/sequence-boilerplate/SequenceBoilerplate";
-import { FormEvent, useEffect } from "react";
-// import { Action } from "./components/action/Action";
-// import { Field, Input, Label } from "./components/action/components";
 import { Card, Group, Button } from ".";
 import { Page, Pages, usePage } from "./Page";
-import { Form } from "./components/action/Form";
+import { Form, type FormHandler } from "./components/action/Form";
 import { Field } from "./components/action/components";
 import { Label } from "./components/label/Label";
 import { Input } from "./components/input/Input";
@@ -16,7 +13,6 @@ import { Divider } from "./components/divider/Divider";
 import { InputText } from "./components/input-text/InputText";
 import { Submit } from "./components/submit/Submit";
 import { InputSelect } from "./components/input-select/InputSelect";
-import { setStoreData, useStoreData } from "./helpers/session-store";
 
 function App() {
   return (
@@ -38,13 +34,6 @@ function App() {
 function View({ children }: { children: React.ReactNode }) {
   return <div className="flex flex-col gap-4">{children}</div>;
 }
-
-type FormHandler<T = Record<string, unknown>> = (
-  event: FormEvent<HTMLFormElement>,
-  data: T
-) => FormHandlerReturn<T>;
-
-type FormHandlerReturn<T = Record<string, unknown>> = [T, boolean];
 
 function WalletPage() {
   const handleSignMessage: FormHandler = (event, data) => [data, true];
