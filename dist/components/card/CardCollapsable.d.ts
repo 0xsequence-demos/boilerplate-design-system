@@ -1,2 +1,4 @@
 import { CardProps } from './Card';
-export declare function CardCollapsableComponent(props: CardProps<"details">): import("react/jsx-runtime").JSX.Element;
+export declare function CardCollapsable(props: CardProps<"details"> & {
+    title?: string;
+}): import("react/jsx-runtime").JSX.Element;
