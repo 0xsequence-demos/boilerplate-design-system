@@ -1,4 +1,5 @@
 import { defineComponent } from "../../helpers/define-component";
+import { getProps } from "../../helpers/get-props";
 import { useField } from "../action/providers/FieldProvider";
 import { Slot } from "../slot/Slot";
 import { WithVariants } from "../types";
@@ -21,7 +22,7 @@ export function Input(props: InputProps) {
     asChild = false,
     id,
     ...restProps
-  } = props;
+  } = getProps<InputProps>(props);
 
   const { name } = useField();
 

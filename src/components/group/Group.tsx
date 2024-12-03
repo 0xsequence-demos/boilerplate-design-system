@@ -4,6 +4,7 @@ import { Slot } from "../slot/Slot";
 import { WithVariants } from "../types";
 import { PolymorphicRef } from "@0xsequence/design-system";
 import { GroupTitle } from "./GroupTitle";
+import { getProps } from "../../helpers/get-props";
 
 type GroupModifiers = {
   space: "lg";
@@ -11,17 +12,19 @@ type GroupModifiers = {
 
 type GroupProps = {
   asChild?: boolean;
+  title?: string;
   children: React.ReactNode;
 } & WithVariants<"div", null, GroupModifiers>;
 
 function GroupElement(props: GroupProps, ref: PolymorphicRef<"div">) {
   const {
     asChild = false,
+    title,
     children,
     variant,
     subvariants,
     ...restProps
-  } = props;
+  } = getProps<GroupProps>(props);
 
   return (
     <Slot
@@ -31,6 +34,7 @@ function GroupElement(props: GroupProps, ref: PolymorphicRef<"div">) {
       {...defineComponent("group", variant, subvariants)}
       {...restProps}
     >
+      {title ? <GroupTitle>{title}</GroupTitle> : null}
       {children}
     </Slot>
   );

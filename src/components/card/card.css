@@ -2,9 +2,14 @@
 
 @layer components {
   html body [data-component="card"] {
-    /* Variants */
-    &:where([data-variant="initial"]) {
-      @apply bg-white/10 backdrop-blur-[24px] rounded-xl p-4;
+    &:where([data-variant|="initial"]) {
+      @apply p-4;
+    }
+  }
+
+  html body [data-component|="card"] {
+    &:where([data-variant|="initial"]) {
+      @apply bg-white/10 backdrop-blur-[24px] rounded-xl;
     }
   }
 

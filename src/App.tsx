@@ -1,7 +1,7 @@
 import "./index.css";
 
 import { SequenceBoilerplate } from "./components/sequence-boilerplate/SequenceBoilerplate";
-import { Card, Group, Button, ShowAddressWithDisconnect } from ".";
+import { Card, Group, Button } from ".";
 import { Page, Pages, usePage } from "./Page";
 import { Form, type FormHandler } from "./components/action/Form";
 import { Field } from "./components/action/components";
@@ -45,6 +45,8 @@ function WalletPage() {
   return (
     <Page name="wallet">
       <View>
+        <Button>Small</Button>
+
         <Card title="Sign message" collapsable>
           <Form onAction={handleSignMessage}>
             <InputText name="message" />
@@ -59,7 +61,7 @@ function WalletPage() {
             <InputText name="signature" />
             <Submit label="Verify" />
           </Form>
-          <Card>Output</Card>
+          <Card></Card>
         </Card>
 
         <Card title="Send Transaction" collapsable>
@@ -93,8 +95,7 @@ function InnerPage() {
     <Page name="inner">
       <Divider />
 
-      <Group>
-        <Group.Title>User info</Group.Title>
+      <Group title="User info">
         <Card>
           <Form className="flex flex-col gap-2">
             <Field name="wallet-address">
