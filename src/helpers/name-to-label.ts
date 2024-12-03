@@ -1,6 +1,6 @@
 export function nameToLabel(input) {
   if (!input || typeof input !== "string") {
-    throw new Error("Input must be a non-empty string");
+    return null;
   }
 
   let result = "";

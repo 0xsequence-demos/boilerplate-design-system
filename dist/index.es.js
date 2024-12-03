@@ -9012,7 +9012,7 @@ function Jf({ message: e = "Success!" }) {
 }
 function ni(e) {
   if (!e || typeof e != "string")
-    throw new Error("Input must be a non-empty string");
+    return null;
   let t = "";
   if (/^[a-z]+(_[a-z]+)*$/.test(e))
     t = e.replace(/_/g, " ");
