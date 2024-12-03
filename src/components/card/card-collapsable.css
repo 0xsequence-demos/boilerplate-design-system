@@ -17,10 +17,5 @@
     &[open] [data-arrow] {
       transform: rotate(0deg);
     }
-
-    /* Variants */
-    &:where([data-variant="initial"]) {
-      @apply bg-white/10 backdrop-blur-[24px] rounded-xl;
-    }
   }
 }

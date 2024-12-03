@@ -1,10 +1,10 @@
-import { ModifierOptions, WithVariants } from '../types';
+import { WithVariants } from '../types';
 type ButtonVariant = "primary" | "secondary" | "tiny";
-type ButtonModifiers = ModifierOptions<{
+type ButtonModifiers = {
     size: "sm" | "md" | "lg";
     rounded: "none" | "sm" | "full";
     flex: "start";
-}>;
+};
 type ButtonProps = {
     children: React.ReactNode;
     type?: "button" | "submit" | "reset";

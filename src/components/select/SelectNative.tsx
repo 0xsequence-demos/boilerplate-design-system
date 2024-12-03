@@ -3,6 +3,7 @@ import { PolymorphicRef } from "@0xsequence/design-system";
 import { defineComponent } from "../../helpers/define-component";
 import { WithVariants } from "../types";
 import { forwardRef, useCallback, useState } from "react";
+import { getProps } from "../../helpers/get-props";
 
 type SelectProps = {
   defaultValue?: string;
@@ -18,7 +19,7 @@ export function SelectElement(props: SelectProps, ref: PolymorphicRef<"div">) {
     variant,
     subvariants,
     arrowIcon = "ChevronDown",
-  } = props;
+  } = getProps<SelectProps>(props);
 
   const defaultSubvariants = {
     "min-size": "md",

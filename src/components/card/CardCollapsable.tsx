@@ -1,12 +1,13 @@
 import { defineComponent } from "../../helpers/define-component";
+import { getProps } from "../../helpers/get-props";
 import { Svg } from "../svg/Svg";
 import { CardProps } from "./Card";
 
 export function CardCollapsable(
   props: CardProps<"details"> & { title?: string }
 ) {
-  const { title, children, subvariants, variant, ...restProps } = props;
-
+  const { title, children, subvariants, variant, ...restProps } =
+    getProps<CardProps<"details">>(props);
   return (
     <details
       {...defineComponent("card-collapsable", variant, subvariants)}

@@ -1,14 +1,15 @@
 import { forwardRef } from "react";
-import { ModifierOptions, PolymorphicRef, WithVariants } from "../types";
+import { PolymorphicRef, WithVariants } from "../types";
 import { defineComponent } from "../../helpers/define-component";
+import { getProps } from "../../helpers/get-props";
 
 type ButtonVariant = "primary" | "secondary" | "tiny";
 
-type ButtonModifiers = ModifierOptions<{
+type ButtonModifiers = {
   size: "sm" | "md" | "lg";
   rounded: "none" | "sm" | "full";
   flex: "start";
-}>;
+};
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -22,7 +23,7 @@ function ButtonComponent(props: ButtonProps, ref: PolymorphicRef<"button">) {
     variant,
     subvariants,
     ...restProps
-  } = props;
+  } = getProps<ButtonProps>(props);
 
   return (
     <button
