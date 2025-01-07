@@ -17,6 +17,8 @@ export { Link } from "./components/link/Link";
 export { ButtonLink } from "./components/button/ButtonLink";
 export { Image } from "./components/image/Image";
 
+export { Toast } from "./components/toast/Toast";
+
 // Validation helpers
 export {
   createFormObjectWithoutValidation,

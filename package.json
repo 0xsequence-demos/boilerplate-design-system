@@ -64,7 +64,8 @@
   },
   "peerDependencies": {
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sonner": "^1.7.1"
   },
   "dependencies": {
     "@0xsequence/design-system": "^1.8.0",
