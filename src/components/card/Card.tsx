@@ -1,8 +1,7 @@
 import { ElementType } from "react";
 import type { WithVariants } from "../types";
-import { defineComponent } from "../../helpers/define-component";
+import { defineComponentFromProps } from "../../helpers/define-component";
 import { CardCollapsable } from "./CardCollapsable";
-import { getProps } from "../../helpers/get-props";
 
 export type CardProps<T extends ElementType = "div"> = {
   children: React.ReactNode;
@@ -20,12 +19,10 @@ export function Card(props: CardProps<"div" | "details">) {
 }
 
 function CardStatic(props: CardProps<"div">) {
-  const { children, subvariants, variant, ...restProps } =
-    getProps<CardProps<"div">>(props);
-
-  return (
-    <div {...defineComponent("card", variant, subvariants)} {...restProps}>
-      {children}
-    </div>
+  const { children, ...restProps } = defineComponentFromProps<CardProps<"div">>(
+    "card",
+    props
   );
+
+  return <div {...restProps}>{children}</div>;
 }

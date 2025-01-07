@@ -1,13 +1,13 @@
 @layer components {
-  html body [data-component="button"] {
-    @apply inline-flex items-center justify-center text-center;
+  html body :where([data-component="button"]) {
+    @apply inline-flex items-center justify-center text-center border border-transparent hover:text-inherit hover:border-indigo-500 transition-all duration-100;
     /* Variants */
     &:where([data-variant="initial"]) {
       @apply rounded-full bg-grey-800 px-3 py-1;
     }
 
     &:where([data-variant="primary"]) {
-      @apply bg-gradientPrimary rounded-full px-10 py-3 text-14 font-bold;
+      @apply bg-gradientPrimary border-none rounded-full px-3 py-3 text-14 font-bold;
     }
 
     &:where([data-variant="secondary"]) {

@@ -8,17 +8,20 @@ export { SegmentedInput } from "./components/segmented-input/SegmentedInput";
 export { Label } from "./components/label/Label";
 export { Select } from "./components/select/Select";
 export { Svg } from "./components/svg/Svg";
-export { Form } from "./components/action/Form";
+export { Form } from "./components/form/Form";
+export { FormErrors } from "./components/form/FormErrors";
+export { FormSuccess } from "./components/form/FormSuccess";
+export { Field } from "./components/field/Field";
+export { FieldError } from "./components/field/FieldError";
+export { Link } from "./components/link/Link";
+export { ButtonLink } from "./components/button/ButtonLink";
+export { Image } from "./components/image/Image";
+
+// Validation helpers
 export {
   createFormObjectWithoutValidation,
   validateAndCreateFormObjectOrThrow,
-} from "./components/action/validate";
-export {
-  Field,
-  FieldError,
-  FormErrors,
-  FormSuccess,
-} from "./components/action/components";
+} from "./helpers/validate";
 
 // Compound Components
 export { InputText } from "./components/input-text/InputText";

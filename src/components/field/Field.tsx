@@ -1,6 +1,6 @@
-import { Slot } from "../../slot/Slot";
-import { FieldProvider } from "../providers/FieldProvider";
-import { useForm } from "../providers/FormProvider";
+import { Slot } from "../slot/Slot";
+import { FieldProvider } from "./FieldProvider";
+import { useForm } from "../form/FormProvider";
 
 export function Field({
   name,

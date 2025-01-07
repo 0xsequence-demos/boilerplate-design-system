@@ -1,4 +1,4 @@
-import { Field } from "../action/components/Field";
+import { Field } from "../field/Field";
 import { Label } from "../label/Label";
 import { Input } from "../input/Input";
 import { nameToLabel } from "../../helpers/name-to-label";
@@ -21,7 +21,7 @@ export function InputText(props: InputTextProps) {
       ) : (
         <>
           <Label>{label}</Label>
-          <Input subvariants={{ width: "full" }} />
+          <Input variant-width="full" />
         </>
       )}
     </Field>

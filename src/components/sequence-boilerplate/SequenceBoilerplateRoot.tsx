@@ -1,4 +1,4 @@
-import { defineComponent } from "../../helpers/define-component";
+import { defineComponentFromProps } from "../../helpers/define-component";
 
 import { WithVariants } from "../types";
 
@@ -13,11 +13,10 @@ type RootProps = {
 } & WithVariants<"input", null, RootSubvariants>;
 
 export function SequenceBoilerplateRoot(props: RootProps) {
-  const { variant, subvariants, children, ...restProps } = props;
-
-  return (
-    <div {...defineComponent("root", variant, subvariants)} {...restProps}>
-      {children}
-    </div>
+  const { children, ...restProps } = defineComponentFromProps<RootProps>(
+    "root",
+    props
   );
+
+  return <div {...restProps}>{children}</div>;
 }

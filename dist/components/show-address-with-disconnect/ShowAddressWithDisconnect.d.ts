@@ -1,5 +1,5 @@
 type ShowAddressWithDisconnectProps = {
-    address: string;
+    address?: string;
     onDisconnect?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     name?: string;
     label?: string;

@@ -1,10 +1,10 @@
 import { ZodError, ZodSchema } from "zod";
 import { useState, useRef, type ComponentProps } from "react";
-import { FormProvider } from "./providers/FormProvider"; //useForm
+import { FormProvider } from "../form/FormProvider"; //useForm
 import {
   createFormObjectWithoutValidation,
   validateAndCreateFormObjectOrThrow,
-} from "./validate";
+} from "../../helpers/validate";
 import { transformName } from "../../helpers/transform-name";
 import { setStoreData } from "../../helpers/session-store";
 import { FormEvent } from "react";
@@ -12,18 +12,11 @@ import { FormEvent } from "react";
 export type FormHandler<T = Record<string, unknown>> = (
   event: FormEvent<HTMLFormElement>,
   data: T
-) => FormHandlerReturn<T> | void;
+) => FormHandlerReturn<T> | Promise<FormHandlerReturn<T> | void> | void;
 
 type FormHandlerReturn<T = Record<string, unknown>> = [T, boolean];
 
-function FormComponent({
-  children,
-  name,
-  method = "POST",
-  onAction,
-  schema,
-  ...rest
-}: {
+type FormProps = {
   children:
     | React.ReactNode
     | (({
@@ -37,24 +30,32 @@ function FormComponent({
       }) => React.ReactNode);
   schema?: ZodSchema;
   method?: "POST" | "GET" | "PUT" | "DELETE";
-  onAction?: (
-    event: React.FormEvent<HTMLFormElement>,
-    data: Record<string, unknown>
-  ) => [Record<string, unknown> | string, boolean?] | void;
+  onAction?: FormHandler;
   name?: string;
-} & ComponentProps<"form">) {
+} & ComponentProps<"form">;
+
+function FormComponent({
+  children,
+  name,
+  method = "POST",
+  onAction,
+  schema,
+  ...rest
+}: FormProps) {
   const [errors, setErrors] = useState();
   const [data, setData] = useState<string | Record<string, unknown>>({});
 
   // Generate a camelCase name from the onAction function name -- handleSignMessage -> signMessage
   const storeKey =
-    onAction && typeof onAction === "function" && onAction.name !== "onAction"
+    name ||
+    (onAction && typeof onAction === "function" && onAction.name !== "onAction")
       ? transformName(onAction.name, { prefix: "handle" })
       : name || null;
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formdata = new FormData(event.currentTarget);
+
     try {
       // Validate formdata with the schema, or create a form object without validation
       const data = schema
@@ -62,7 +63,7 @@ function FormComponent({
         : createFormObjectWithoutValidation(formdata);
 
       if (onAction && typeof onAction === "function") {
-        const result = onAction(event, data);
+        const result = await onAction(event, data);
 
         // If the action doesn't return, set the data to the raw form data
         if (!result) {

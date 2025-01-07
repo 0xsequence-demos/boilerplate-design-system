@@ -1,4 +1,4 @@
-import { useForm } from "../providers/FormProvider";
+import { useForm } from "./FormProvider";
 
 export function FormSuccess({ message = "Success!" }: { message?: string }) {
   const data = useForm();

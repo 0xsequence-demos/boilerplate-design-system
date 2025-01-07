@@ -1,18 +1,18 @@
-import { defineComponent } from "../../helpers/define-component";
-import { getProps } from "../../helpers/get-props";
+import { defineComponentFromProps } from "../../helpers/define-component";
 import { Svg } from "../svg/Svg";
 import { CardProps } from "./Card";
 
 export function CardCollapsable(
-  props: CardProps<"details"> & { title?: string }
+  props: CardProps<"details"> & { title?: string },
 ) {
-  const { title, children, subvariants, variant, ...restProps } =
-    getProps<CardProps<"details">>(props);
+  const { title, children, ...restProps } = defineComponentFromProps<
+    CardProps<"details">
+  >("card-collapsable", props);
+
+  console.log(title);
+
   return (
-    <details
-      {...defineComponent("card-collapsable", variant, subvariants)}
-      {...restProps}
-    >
+    <details {...restProps}>
       {title ? <Summary>{title}</Summary> : null}
       <div className="px-4 pb-4 w-full text-start flex flex-col gap-4">
         {children}

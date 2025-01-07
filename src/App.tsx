@@ -1,10 +1,8 @@
-import "./index.css";
-
 import { SequenceBoilerplate } from "./components/sequence-boilerplate/SequenceBoilerplate";
 import { Card, Group, Button } from ".";
 import { Page, Pages, usePage } from "./Page";
-import { Form, type FormHandler } from "./components/action/Form";
-import { Field } from "./components/action/components";
+import { Form, type FormHandler } from "./components/form/Form";
+import { Field } from "./components/field/Field";
 import { Label } from "./components/label/Label";
 import { Input } from "./components/input/Input";
 import { SegmentedInput } from "./components/segmented-input/SegmentedInput";
@@ -38,7 +36,7 @@ function View({ children }: { children: React.ReactNode }) {
 function WalletPage() {
   const handleSignMessage: FormHandler = (event, data) => [data, true];
 
-  const handleVerifySignature: FormHandler = () => null;
+  const handleVerifySignature: FormHandler = async () => {};
 
   const handleSendTransaction: FormHandler = () => null;
 
@@ -61,7 +59,7 @@ function WalletPage() {
             <InputText name="signature" />
             <Submit label="Verify" />
           </Form>
-          <Card></Card>
+          <Card>1</Card>
         </Card>
 
         <Card title="Send Transaction" collapsable>
