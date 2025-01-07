@@ -12,6 +12,7 @@ export type SelectProps = {
   options?: string[] | Option[];
   native?: boolean;
   icon?: string;
+  onValueChange: (value: string) => void;
   children?: React.ReactElement<{ native: boolean }>;
 } & WithVariants<"div", null, { "min-size"?: "none" | "sm" | "md" | "lg" }>;
 
