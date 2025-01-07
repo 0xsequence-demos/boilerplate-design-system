@@ -1,5 +1,5 @@
 import { nameToLabel } from "../../helpers/name-to-label";
-import { Field } from "../action/components";
+import { Field } from "../field/Field";
 import { Label } from "../label/Label";
 import { Select, type SelectProps } from "../select/Select";
 

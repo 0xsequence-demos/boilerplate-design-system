@@ -1,5 +1,5 @@
-import { Field } from "../action/components";
-import { Label } from "../action/components";
+import { Field } from "../field/Field";
+import { Label } from "../label/Label";
 import { SegmentedInput } from "../segmented-input/SegmentedInput";
 import { Input } from "../input/Input";
 import { Button } from "../button/Button";
@@ -7,14 +7,14 @@ import { Svg } from "../svg/Svg";
 import { nameToLabel } from "../../helpers/name-to-label";
 
 type ShowAddressWithDisconnectProps = {
-  address: string;
+  address?: string;
   onDisconnect?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   name?: string;
   label?: string;
 };
 
 export function ShowAddressWithDisconnect(
-  props: ShowAddressWithDisconnectProps
+  props: ShowAddressWithDisconnectProps,
 ) {
   const { address, onDisconnect } = props;
 
@@ -37,7 +37,7 @@ export function ShowAddressWithDisconnect(
 
         <Input
           type="text"
-          defaultValue={address}
+          defaultValue={address ?? ""}
           variant="transparent"
           subvariants={{ width: "full" }}
           readOnly

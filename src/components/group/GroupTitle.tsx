@@ -1,5 +1,4 @@
-import { defineComponent } from "../../helpers/define-component";
-import { getProps } from "../../helpers/get-props";
+import { defineComponentFromProps } from "../../helpers/define-component";
 import { WithVariants } from "../types";
 
 type GroupTitleModifiers = {
@@ -11,11 +10,10 @@ type TitleProps = {
 } & WithVariants<"h2", null, GroupTitleModifiers>;
 
 export function GroupTitle(props: TitleProps) {
-  const { children, variant, subvariants } = getProps<TitleProps>(props);
-
-  return (
-    <h2 {...defineComponent("group-title", variant, subvariants)}>
-      {children}
-    </h2>
+  const { children, ...restProps } = defineComponentFromProps<TitleProps>(
+    "group-title",
+    props
   );
+
+  return <h2 {...restProps}>{children}</h2>;
 }

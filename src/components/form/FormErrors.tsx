@@ -1,4 +1,4 @@
-import { useForm } from "../providers/FormProvider";
+import { useForm } from "./FormProvider";
 
 export function FormErrors() {
   const { errors } = useForm();

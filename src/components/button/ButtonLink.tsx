@@ -12,21 +12,18 @@ type ButtonModifiers = {
 
 type ButtonProps = {
   children: React.ReactNode;
-  type?: "button" | "submit" | "reset";
-} & WithVariants<"button", ButtonVariant, ButtonModifiers>;
+  href: string;
+} & WithVariants<"a", ButtonVariant, ButtonModifiers>;
 
-function ButtonComponent(props: ButtonProps, ref: PolymorphicRef<"button">) {
-  const {
-    children,
-    type = "button",
-    ...restProps
-  } = defineComponentFromProps<ButtonProps>("button", props);
+function ButtonLinkComponent(props: ButtonProps, ref: PolymorphicRef<"a">) {
+  const { children, href, ...restProps } =
+    defineComponentFromProps<ButtonProps>("button", props);
 
   return (
-    <button ref={ref} type={type} {...restProps}>
+    <a href={href} ref={ref} {...restProps}>
       {children}
-    </button>
+    </a>
   );
 }
 
-export const Button = forwardRef(ButtonComponent);
+export const ButtonLink = forwardRef(ButtonLinkComponent);

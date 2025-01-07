@@ -1,9 +1,8 @@
 import { Svg } from "../svg/Svg";
 import { PolymorphicRef } from "@0xsequence/design-system";
-import { defineComponent } from "../../helpers/define-component";
+import { defineComponentFromProps } from "../../helpers/define-component";
 import { WithVariants } from "../types";
 import { forwardRef, useCallback, useState } from "react";
-import { getProps } from "../../helpers/get-props";
 
 type SelectProps = {
   defaultValue?: string;
@@ -16,14 +15,13 @@ export function SelectElement(props: SelectProps, ref: PolymorphicRef<"div">) {
   const {
     defaultValue,
     children,
-    variant,
-    subvariants,
     arrowIcon = "ChevronDown",
-  } = getProps<SelectProps>(props);
+    ...restProps
+  } = defineComponentFromProps<SelectProps>("select", props);
 
-  const defaultSubvariants = {
-    "min-size": "md",
-  };
+  // const defaultSubvariants = {
+  //   "min-size": "md",
+  // };
 
   const [icon, setIcon] = useState(null);
 
@@ -47,14 +45,7 @@ export function SelectElement(props: SelectProps, ref: PolymorphicRef<"div">) {
   }, []);
 
   return (
-    <div
-      ref={handleLoad}
-      {...defineComponent(
-        "select",
-        variant,
-        Object.assign(defaultSubvariants, subvariants)
-      )}
-    >
+    <div ref={handleLoad} {...restProps}>
       {icon ? <img src={icon} width="20" className="size-5" alt="" /> : null}
       <div className="absolute w-[2.5rem] z-10 right-0 pointer-events-none top-0 bottom-0 items-center justify-center flex cursor-pointer">
         <Svg name={arrowIcon} className="w-4 h-4 text-white" />

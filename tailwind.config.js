@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwwindcss').Config} */
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {

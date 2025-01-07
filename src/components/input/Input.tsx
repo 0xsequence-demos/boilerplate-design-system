@@ -1,6 +1,5 @@
-import { defineComponent } from "../../helpers/define-component";
-import { getProps } from "../../helpers/get-props";
-import { useField } from "../action/providers/FieldProvider";
+import { defineComponentFromProps } from "../../helpers/define-component";
+import { useField } from "../field/FieldProvider";
 import { Slot } from "../slot/Slot";
 import { WithVariants } from "../types";
 
@@ -17,21 +16,12 @@ type InputProps = {
 export function Input(props: InputProps) {
   const {
     children,
-    variant,
-    subvariants,
     asChild = false,
     id,
     ...restProps
-  } = getProps<InputProps>(props);
+  } = defineComponentFromProps<InputProps>("input", props);
 
   const { name } = useField();
-
-  const defaultSubvariants = Object.assign(
-    {
-      width: "full",
-    },
-    subvariants
-  );
 
   return (
     <Slot
@@ -39,7 +29,6 @@ export function Input(props: InputProps) {
       fallbackAs="input"
       name={name}
       id={id || name}
-      {...defineComponent("input", variant, defaultSubvariants)}
       {...restProps}
     >
       {children}

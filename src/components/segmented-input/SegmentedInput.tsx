@@ -1,5 +1,4 @@
-import { defineComponent } from "../../helpers/define-component";
-import { getProps } from "../../helpers/get-props";
+import { defineComponentFromProps } from "../../helpers/define-component";
 import { WithVariants } from "../types";
 
 type SegmentedInputModifiers = {
@@ -13,8 +12,8 @@ type SegmentedInputProps = {
 } & WithVariants<"div", null, SegmentedInputModifiers>;
 
 export function SegmentedInputElement(props: SegmentedInputProps) {
-  const { children, variant, subvariants, ...restProps } =
-    getProps<SegmentedInputProps>(props);
+  const { children, ...restProps } =
+    defineComponentFromProps<SegmentedInputProps>("segmented-input", props);
 
   // Focus on the text input if there is a click anywhere in the input that doesn't have an already clickable element
   // Ie, click an icon to focus on the input, but the disconnect button will still work
@@ -26,10 +25,7 @@ export function SegmentedInputElement(props: SegmentedInputProps) {
   }
 
   return (
-    <div
-      {...defineComponent("segmented-input", variant, subvariants)}
-      {...restProps}
-    >
+    <div {...restProps}>
       <button
         // Hit area button spanning the entire parent element
         type="button"
@@ -51,17 +47,13 @@ type SegmentedInputSegmentProps = {
 } & WithVariants<"div", null, SegmentedInputSegmentSubvariants>;
 
 function SegmentedInputSegment(props: SegmentedInputSegmentProps) {
-  const { children, subvariants, ...restProps } =
-    getProps<SegmentedInputSegmentProps>(props);
+  const { children, ...restProps } =
+    defineComponentFromProps<SegmentedInputSegmentProps>(
+      "segmented-input-segment",
+      props
+    );
 
-  return (
-    <div
-      {...defineComponent("segmented-input-segment", null, subvariants)}
-      {...restProps}
-    >
-      {children}
-    </div>
-  );
+  return <div {...restProps}>{children}</div>;
 }
 
 export const SegmentedInput = Object.assign(SegmentedInputElement, {
