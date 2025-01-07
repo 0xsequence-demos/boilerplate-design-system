@@ -16,8 +16,8 @@ export function Header({
         width="276"
       />
 
-      <h1 className="text-40 font-bold">{name}</h1>
-      <p className="text-14 font-bold">{description}</p>
+      <h1 className="text-32 sm:text-40 font-bold leading-tight">{name}</h1>
+      <p className="text-14 sm:font-bold">{description}</p>
     </div>
   );
 }

@@ -13,6 +13,6 @@ export type SelectProps = {
 } & WithVariants<"div", null, {
     "min-size"?: "none" | "sm" | "md" | "lg";
 }>;
-export declare const Select: React.ForwardRefExoticComponent<Omit<SelectProps, "ref"> & React.RefAttributes<HTMLDivElement>> & {
+export declare const Select: React.ForwardRefExoticComponent<Omit<SelectProps, "ref"> & React.RefAttributes<unknown>> & {
     Options: typeof SelectOptions;
 };

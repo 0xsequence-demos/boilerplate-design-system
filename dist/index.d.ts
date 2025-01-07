@@ -15,6 +15,7 @@ export { FieldError } from './components/field/FieldError';
 export { Link } from './components/link/Link';
 export { ButtonLink } from './components/button/ButtonLink';
 export { Image } from './components/image/Image';
+export { Toast } from './components/toast/Toast';
 export { createFormObjectWithoutValidation, validateAndCreateFormObjectOrThrow, } from './helpers/validate';
 export { InputText } from './components/input-text/InputText';
 export { InputSelect } from './components/input-select/InputSelect';
