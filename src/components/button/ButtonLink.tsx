@@ -1,5 +1,4 @@
-import { forwardRef } from "react";
-import { PolymorphicRef, WithVariants } from "../types";
+import { WithVariants } from "../types";
 import { defineComponentFromProps } from "../../helpers/define-component";
 
 type ButtonVariant = "primary" | "secondary" | "tiny";
@@ -15,15 +14,13 @@ type ButtonProps = {
   href: string;
 } & WithVariants<"a", ButtonVariant, ButtonModifiers>;
 
-function ButtonLinkComponent(props: ButtonProps, ref: PolymorphicRef<"a">) {
+export function ButtonLink(props: ButtonProps) {
   const { children, href, ...restProps } =
     defineComponentFromProps<ButtonProps>("button", props);
 
   return (
-    <a href={href} ref={ref} {...restProps}>
+    <a href={href} {...restProps}>
       {children}
     </a>
   );
 }
-
-export const ButtonLink = forwardRef(ButtonLinkComponent);

@@ -1,7 +1,10 @@
 @layer components {
   html body :where([data-component="button"]) {
-    @apply inline-flex items-center justify-center text-center border border-transparent hover:text-inherit hover:border-indigo-500 transition-all duration-100;
+    @apply inline-flex items-center justify-center text-center;
     /* Variants */
+
+    /* border border-transparent hover:text-inherit hover:border-indigo-500 transition-all duration-100; */
+
     &:where([data-variant="initial"]) {
       @apply rounded-full bg-grey-800 px-3 py-1;
     }
@@ -11,10 +14,10 @@
     }
 
     &:where([data-variant="secondary"]) {
-      @apply bg-gradientSecondary rounded-full px-3 py-1;
+      @apply bg-gradientSecondary rounded-full px-3 py-1 border-none;
     }
 
-    &:where([data-variant="tiny"]) {
+    &:where([data-variant="tertiary"]) {
       @apply text-10 font-bold text-white bg-white/10 rounded-[0.5rem] px-3 py-[0.375rem] gap-1;
     }
 
@@ -37,6 +40,22 @@
     /* Border Radius */
     &:where([data-subvariants~="rounded-none"]) {
       @apply rounded-none;
+    }
+
+    &:where([data-subvariants~="rounded-sm"]) {
+      @apply rounded-sm;
+    }
+
+    &:where([data-subvariants~="rounded-md"]) {
+      @apply rounded-md;
+    }
+
+    &:where([data-subvariants~="rounded-lg"]) {
+      @apply rounded-lg;
+    }
+
+    &:where([data-subvariants~="rounded-full"]) {
+      @apply rounded-full;
     }
   }
 }
