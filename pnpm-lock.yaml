@@ -20,6 +20,9 @@ importers:
       '@svgr/cli':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.6.3)
+      boilerplate-design-system:
+        specifier: github:0xsequence-demos/boilerplate-design-system#073f1ce
+        version: https://codeload.github.com/0xsequence-demos/boilerplate-design-system/tar.gz/073f1ce(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sonner@1.7.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(typescript@5.6.3)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1309,6 +1312,14 @@ packages:
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
+
+  boilerplate-design-system@https://codeload.github.com/0xsequence-demos/boilerplate-design-system/tar.gz/073f1ce:
+    resolution: {tarball: https://codeload.github.com/0xsequence-demos/boilerplate-design-system/tar.gz/073f1ce}
+    version: 0.0.0
+    peerDependencies:
+      react: ^18
+      react-dom: ^18
+      sonner: ^1.7.1
 
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
@@ -3720,6 +3731,25 @@ snapshots:
   balanced-match@1.0.2: {}
 
   binary-extensions@2.3.0: {}
+
+  boilerplate-design-system@https://codeload.github.com/0xsequence-demos/boilerplate-design-system/tar.gz/073f1ce(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sonner@1.7.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(typescript@5.6.3):
+    dependencies:
+      '@0xsequence/design-system': 1.8.0(@types/react-dom@18.3.1)(@types/react@18.3.12)(framer-motion@11.16.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-select': 2.1.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-tooltip': 1.1.4(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@svgr/cli': 8.1.0(typescript@5.6.3)
+      clsx: 2.1.1
+      framer-motion: 11.16.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      sonner: 1.7.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      zod: 3.23.8
+    transitivePeerDependencies:
+      - '@emotion/is-prop-valid'
+      - '@types/react'
+      - '@types/react-dom'
+      - supports-color
+      - typescript
 
   boolbase@1.0.0: {}
 

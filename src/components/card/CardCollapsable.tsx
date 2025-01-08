@@ -9,8 +9,6 @@ export function CardCollapsable(
     CardProps<"details">
   >("card-collapsable", props);
 
-  console.log(title);
-
   return (
     <details {...restProps}>
       {title ? <Summary>{title}</Summary> : null}

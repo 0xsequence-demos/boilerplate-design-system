@@ -1,5 +1,7 @@
 import { Svg } from "../svg/Svg";
 
+// Peer dependency of sonner
+
 export function Toast({
   children,
   status,

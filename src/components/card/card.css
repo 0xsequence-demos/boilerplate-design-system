@@ -1,23 +1,23 @@
 @import "./card-collapsable.css";
 
 @layer components {
-  html body [data-component="card"] {
+  html body :where([data-component="card"]) {
     &:where([data-variant|="initial"]) {
       @apply p-4;
     }
   }
 
-  html body [data-component|="card"] {
+  html body :where([data-component|="card"]) {
     &:where([data-variant|="initial"]) {
-      @apply bg-white/10 backdrop-blur-[24px] rounded-xl;
+      @apply bg-grey-800 rounded-xl;
     }
   }
 
   /** Adjust rounded corners for nested cards */
-  html body [data-component|="card"] [data-component="card"] {
+  html body :where([data-component|="card"]) :where([data-component="card"]) {
     /* Modifiers */
     &:where([data-variant="initial"]) {
-      @apply rounded-md;
+      @apply rounded-md bg-grey-700;
     }
   }
 }
