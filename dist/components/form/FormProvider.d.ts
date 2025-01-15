@@ -10,8 +10,10 @@ type FormContext = {
         };
         formErrors: string[];
     };
+    updateFields: typeof updateFields;
 };
 declare const FormContext: import('react').Context<FormContext>;
+declare function updateFields(name: string, fields: Record<string, string>): void;
 export declare function useForm(): FormContext;
 export declare function FormProvider({ children, value, }: {
     children: React.ReactNode | ((value: FormContext) => React.ReactNode);

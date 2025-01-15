@@ -72,7 +72,6 @@
     "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-tooltip": "^1.1.4",
     "@svgr/cli": "^8.1.0",
-    "boilerplate-design-system": "github:0xsequence-demos/boilerplate-design-system#073f1ce",
     "clsx": "^2.1.1",
     "framer-motion": "^11.16.0",
     "zod": "^3.23.8"

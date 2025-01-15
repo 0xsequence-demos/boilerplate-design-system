@@ -1,6 +1,9 @@
 import { createContext, useContext } from "react";
 
-type FieldContext = { name: string; error?: string[] };
+type FieldContext = {
+  name: string;
+  error?: string[];
+};
 
 const FieldContext = createContext<null | FieldContext>(null);
 

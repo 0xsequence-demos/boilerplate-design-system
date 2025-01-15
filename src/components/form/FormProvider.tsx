@@ -6,17 +6,32 @@ type FormContext = {
   setData: Dispatch<SetStateAction<string | Record<string, unknown>>>;
   ref: React.MutableRefObject<HTMLFormElement | null>;
   errors: { fieldErrors: { [key: string]: string[] }; formErrors: string[] };
+  updateFields: typeof updateFields;
 };
 
 const FormContext = createContext<null | FormContext>(null);
 
+function updateFields(name: string, fields: Record<string, string>) {
+  const event = new CustomEvent("updateFieldValues", {
+    detail: {
+      name,
+      fields,
+    },
+  });
+
+  const el = document.getElementById(name);
+  if (el) {
+    el.dispatchEvent(event);
+  }
+}
+
 export function useForm() {
   const context = useContext(FormContext);
   if (!context) {
-    return {} as FormContext;
+    return { updateFields } as FormContext;
     throw new Error("useForm must be used within a Form");
   }
-  return context;
+  return { ...context, updateFields };
 }
 export function FormProvider({
   children,

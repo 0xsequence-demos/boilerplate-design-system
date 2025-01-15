@@ -1,6 +1,6 @@
 import { ZodObject } from 'zod';
 import { ComponentProps, FormEvent } from 'react';
-export type FormHandler<T = unknown> = (event: FormEvent<HTMLFormElement>, data: T) => FormHandlerReturn<T> | Promise<FormHandlerReturn<T> | void> | void;
+export type FormHandler<T = Record<string, any>> = (event: FormEvent<HTMLFormElement>, data: T) => FormHandlerReturn<T> | Promise<FormHandlerReturn<T> | void> | void;
 type FormHandlerReturn<T = Record<string, unknown>> = [T, boolean];
 type FormProps = {
     children: React.ReactNode | (({ errors, data, }: {
