@@ -46,11 +46,11 @@ function FormComponent({
   const [data, setData] = useState<string | Record<string, unknown>>({});
 
   // Generate a camelCase name from the onAction function name -- handleSignMessage -> signMessage
-  const storeKey =
-    name ||
-    (onAction && typeof onAction === "function" && onAction.name !== "onAction")
-      ? transformName(onAction.name, { prefix: "handle" })
-      : name || null;
+  const storeKey = name;
+  // name ||
+  // (onAction && typeof onAction === "function" && onAction.name !== "onAction")
+  //   ? transformName(onAction.name, { prefix: "handle" })
+  //   : name || null;
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
