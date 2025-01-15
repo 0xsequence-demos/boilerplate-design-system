@@ -23,11 +23,6 @@
 
     /* Modifiers */
 
-    /* Flex */
-    &:where([data-subvariants~="flex-start"]) {
-      @apply self-start;
-    }
-
     /* Size */
     &:where([data-subvariants~="size-sm"]) {
       @apply px-1 py-0.5 text-12;
@@ -35,6 +30,14 @@
 
     &:where([data-subvariants~="size-lg"]) {
       @apply px-8 py-2 text-18;
+    }
+
+    &:where([data-subvariants~="padding-comfortable"]) {
+      @apply px-8;
+    }
+
+    &:where([data-subvariants~="padding-tight"]) {
+      @apply px-2;
     }
 
     /* Border Radius */

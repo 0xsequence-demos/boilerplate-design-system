@@ -21,7 +21,7 @@ export function Card(props: CardProps<"div" | "details">) {
 function CardStatic(props: CardProps<"div">) {
   const { children, ...restProps } = defineComponentFromProps<CardProps<"div">>(
     "card",
-    props
+    props,
   );
 
   return <div {...restProps}>{children}</div>;

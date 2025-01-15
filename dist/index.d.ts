@@ -7,7 +7,7 @@ export { SegmentedInput } from './components/segmented-input/SegmentedInput';
 export { Label } from './components/label/Label';
 export { Select } from './components/select/Select';
 export { Svg } from './components/svg/Svg';
-export { Form } from './components/form/Form';
+export { Form, type FormHandler } from './components/form/Form';
 export { FormErrors } from './components/form/FormErrors';
 export { FormSuccess } from './components/form/FormSuccess';
 export { Field } from './components/field/Field';
@@ -29,3 +29,4 @@ export { SequenceBoilerplateRoot } from './components/sequence-boilerplate/Seque
 export { SequenceBoilerplateProvider } from './components/sequence-boilerplate/SequenceBoilerplateProvider';
 export { useSequenceBoilerplate } from './components/sequence-boilerplate/useSequenceBoilerplate';
 export { useStoreData, setStoreData, useAsyncStoreData, } from './helpers/session-store';
+export { useForm } from './components/form/FormProvider';

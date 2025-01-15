@@ -16,13 +16,17 @@ export function setStoreData(key: string, value: unknown) {
   window.dispatchEvent(new Event("storage"));
 }
 
-export function useStoreData(key: string): Record<string, unknown> {
+export function useStoreData<T>(key: string): T {
   const value = useSyncExternalStore(
     subscribe,
-    getSnapshotFromSessionStorage.bind(null, key)
+    getSnapshotFromSessionStorage.bind(null, key),
   ) as string;
 
-  return JSON.parse(value);
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
 }
 
 export function useAsyncStoreData(key: string, value: unknown) {

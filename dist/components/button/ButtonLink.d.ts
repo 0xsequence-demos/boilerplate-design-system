@@ -1,5 +1,5 @@
 import { WithVariants } from '../types';
-type ButtonVariant = "primary" | "secondary" | "tiny";
+type ButtonVariant = "primary" | "secondary" | "tertiary";
 type ButtonModifiers = {
     size: "sm" | "md" | "lg";
     rounded: "none" | "sm" | "full";
