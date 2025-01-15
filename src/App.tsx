@@ -111,7 +111,7 @@ function InnerPage() {
 
                 <SegmentedInput.Segment>
                   <Button
-                    variant="tiny"
+                    variant="tertiary"
                     className="self-center"
                     onClick={() => alert("disconnect")}
                   >
@@ -149,7 +149,7 @@ function InnerPage() {
                 />
                 <SegmentedInput.Segment>
                   <Button
-                    variant="tiny"
+                    variant="tertiary"
                     className="self-center flex-shrink-0"
                     onClick={() => alert("get test currency")}
                   >

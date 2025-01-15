@@ -1,4 +1,4 @@
-import { ZodError, ZodSchema } from "zod";
+import { ZodObject } from "zod";
 import { useState, useRef, type ComponentProps } from "react";
 import { FormProvider } from "../form/FormProvider"; //useForm
 import {
@@ -9,9 +9,9 @@ import { transformName } from "../../helpers/transform-name";
 import { setStoreData } from "../../helpers/session-store";
 import { FormEvent } from "react";
 
-export type FormHandler<T = Record<string, unknown>> = (
+export type FormHandler<T = unknown> = (
   event: FormEvent<HTMLFormElement>,
-  data: T
+  data: T,
 ) => FormHandlerReturn<T> | Promise<FormHandlerReturn<T> | void> | void;
 
 type FormHandlerReturn<T = Record<string, unknown>> = [T, boolean];
@@ -28,7 +28,7 @@ type FormProps = {
         errors: unknown;
         data: unknown;
       }) => React.ReactNode);
-  schema?: ZodSchema;
+  schema?: ZodObject;
   method?: "POST" | "GET" | "PUT" | "DELETE";
   onAction?: FormHandler;
   name?: string;
@@ -65,6 +65,7 @@ function FormComponent({
       if (onAction && typeof onAction === "function") {
         const result = await onAction(event, data);
 
+        console.log(result);
         // If the action doesn't return, set the data to the raw form data
         if (!result) {
           setData(data);
@@ -74,21 +75,37 @@ function FormComponent({
           const [records, persist] = result;
 
           // If records are returned, set the data to the records
-          if (records) setData(records);
+          if (records.data) setData(records.data);
+
+          console.log(records.error);
+          if (records.error) throw records.error;
 
           // If persist is true, set the store data in the session
           if (persist && storeKey) {
-            setStoreData(storeKey, records);
+            setStoreData(storeKey, records.data);
           }
         }
       }
     } catch (error) {
-      const key = storeKey || name || "unknown";
-      if (error instanceof ZodError) {
-        setErrors({ [key]: error.flatten() });
-      } else {
-        setErrors({ [key]: "Unknown intent" });
+      if (typeof error?.flatten === "function") {
+        setErrors({ [storeKey]: error.flatten() });
+        return;
       }
+
+      if (error.message) {
+        setErrors({
+          [storeKey]: { formErrors: [error.message], fieldErrors: [] },
+        });
+        return;
+      }
+
+      // if (error instanceof ZodError) {
+      //   console.log("zoddle");
+
+      //   setErrors({ [key]: error.flatten() });
+      // } else {
+      //   setErrors({ [key]: "Unknown intent" });
+      // }
     }
   }
 
@@ -99,8 +116,9 @@ function FormComponent({
       value={{
         name,
         data,
+        setData,
         ref,
-        errors: errors && errors?.[name],
+        errors: errors && errors?.[storeKey],
       }}
     >
       <form

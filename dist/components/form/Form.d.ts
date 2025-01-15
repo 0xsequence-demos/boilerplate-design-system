@@ -1,13 +1,13 @@
-import { ZodSchema } from 'zod';
+import { ZodObject } from 'zod';
 import { ComponentProps, FormEvent } from 'react';
-export type FormHandler<T = Record<string, unknown>> = (event: FormEvent<HTMLFormElement>, data: T) => FormHandlerReturn<T> | Promise<FormHandlerReturn<T> | void> | void;
+export type FormHandler<T = unknown> = (event: FormEvent<HTMLFormElement>, data: T) => FormHandlerReturn<T> | Promise<FormHandlerReturn<T> | void> | void;
 type FormHandlerReturn<T = Record<string, unknown>> = [T, boolean];
 type FormProps = {
     children: React.ReactNode | (({ errors, data, }: {
         errors: unknown;
         data: unknown;
     }) => React.ReactNode);
-    schema?: ZodSchema;
+    schema?: ZodObject;
     method?: "POST" | "GET" | "PUT" | "DELETE";
     onAction?: FormHandler;
     name?: string;

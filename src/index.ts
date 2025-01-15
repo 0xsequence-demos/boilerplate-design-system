@@ -8,7 +8,7 @@ export { SegmentedInput } from "./components/segmented-input/SegmentedInput";
 export { Label } from "./components/label/Label";
 export { Select } from "./components/select/Select";
 export { Svg } from "./components/svg/Svg";
-export { Form } from "./components/form/Form";
+export { Form, type FormHandler } from "./components/form/Form";
 export { FormErrors } from "./components/form/FormErrors";
 export { FormSuccess } from "./components/form/FormSuccess";
 export { Field } from "./components/field/Field";
@@ -16,9 +16,7 @@ export { FieldError } from "./components/field/FieldError";
 export { Link } from "./components/link/Link";
 export { ButtonLink } from "./components/button/ButtonLink";
 export { Image } from "./components/image/Image";
-
 export { Toast } from "./components/toast/Toast";
-
 // Validation helpers
 export {
   createFormObjectWithoutValidation,
@@ -49,6 +47,8 @@ export {
   setStoreData,
   useAsyncStoreData,
 } from "./helpers/session-store";
+
+export { useForm } from "./components/form/FormProvider";
 
 // CSS
 import "./index.css";

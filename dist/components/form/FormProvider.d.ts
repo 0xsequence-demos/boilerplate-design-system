@@ -1,6 +1,8 @@
+import { Dispatch, SetStateAction } from 'react';
 type FormContext = {
     name: string;
     data?: string | Record<string, unknown>;
+    setData: Dispatch<SetStateAction<string | Record<string, unknown>>>;
     ref: React.MutableRefObject<HTMLFormElement | null>;
     errors: {
         fieldErrors: {

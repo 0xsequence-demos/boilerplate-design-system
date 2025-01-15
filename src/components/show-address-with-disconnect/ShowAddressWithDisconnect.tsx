@@ -45,7 +45,7 @@ export function ShowAddressWithDisconnect(
 
         <SegmentedInput.Segment>
           <Button
-            variant="tiny"
+            variant="tertiary"
             className="self-center"
             onClick={handleDisconnect}
           >

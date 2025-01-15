@@ -1,5 +1,5 @@
 import { WithVariants } from '../types';
-type LinkVariant = "primary" | "secondary" | "tiny";
+type LinkVariant = "primary" | "secondary" | "tertiary";
 type LinkModifiers = {
     size: "sm" | "md" | "lg";
     rounded: "none" | "sm" | "full";
