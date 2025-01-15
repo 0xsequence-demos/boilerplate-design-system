@@ -1,5 +1,5 @@
 import { ZodObject } from "zod";
-import { useState, useRef, type ComponentProps } from "react";
+import { useState, useRef, type ComponentProps, useEffect } from "react";
 import { FormProvider } from "../form/FormProvider"; //useForm
 import {
   createFormObjectWithoutValidation,
@@ -9,7 +9,7 @@ import { transformName } from "../../helpers/transform-name";
 import { setStoreData } from "../../helpers/session-store";
 import { FormEvent } from "react";
 
-export type FormHandler<T = unknown> = (
+export type FormHandler<T = Record<string, any>> = (
   event: FormEvent<HTMLFormElement>,
   data: T,
 ) => FormHandlerReturn<T> | Promise<FormHandlerReturn<T> | void> | void;
@@ -84,6 +84,8 @@ function FormComponent({
           if (persist && storeKey) {
             setStoreData(storeKey, records.data);
           }
+
+          setErrors({});
         }
       }
     } catch (error) {
@@ -111,6 +113,38 @@ function FormComponent({
 
   const ref = useRef<HTMLFormElement>(null);
 
+  function updateFieldValues(e: CustomEvent) {
+    const data = e.detail;
+
+    if (data.name === storeKey && ref.current) {
+      Object.keys(data.fields).forEach((key) => {
+        const value = data.fields[key];
+        if (ref && ref.current) {
+          const el = ref?.current?.querySelector(
+            `input[name=${key}]`,
+          ) as HTMLInputElement;
+          if (el) {
+            el.value = value;
+          }
+        }
+      });
+    }
+  }
+
+  useEffect(() => {
+    const dom = ref.current;
+
+    if (dom) {
+      dom.addEventListener("updateFieldValues", updateFieldValues);
+    }
+
+    return () => {
+      if (dom) {
+        dom.removeEventListener("updateFieldValues", updateFieldValues);
+      }
+    };
+  }, []);
+
   return (
     <FormProvider
       value={{
@@ -127,6 +161,7 @@ function FormComponent({
         noValidate
         className="flex flex-col gap-4 items-stretch"
         ref={ref}
+        id={storeKey}
         {...rest}
       >
         {name ? <input type="hidden" name="name" value={name} /> : null}

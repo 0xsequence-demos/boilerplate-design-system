@@ -2,6 +2,7 @@ import { Field } from "../field/Field";
 import { Label } from "../label/Label";
 import { Input } from "../input/Input";
 import { nameToLabel } from "../../helpers/name-to-label";
+import { FieldError } from "../field/FieldError";
 
 type InputTextProps = {
   children?: React.ReactNode;
@@ -22,6 +23,7 @@ export function InputText(props: InputTextProps) {
         <>
           <Label>{label}</Label>
           <Input variant-width="full" />
+          <FieldError />
         </>
       )}
     </Field>

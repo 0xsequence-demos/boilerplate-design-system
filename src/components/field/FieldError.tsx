@@ -1,3 +1,4 @@
+import { Svg } from "../svg/Svg";
 import { useField } from "./FieldProvider";
 // import { Icon } from "~/views/icons/Icon";
 
@@ -7,9 +8,9 @@ export function FieldError() {
   const firstError = error?.[0];
 
   return error ? (
-    <div className="text-17 inline-flex gap-2 mt-2 items-center bg-neutral-600 px-3 py-2 rounded-[7px]">
-      <span className=" flex-shrink-0 flex items-center justify-center h-[1.5rem]">
-        {/* <Icon name="alert" className="size-[1.5rem] text-white" /> */}
+    <div className="text-14 leading-tight inline-flex gap-2 mt-2 items-center ">
+      <span className=" flex-shrink-0 flex items-center justify-center h-[1.25em]">
+        <Svg name="Warning" className="size-5" />
         <span className="sr-only">Error</span>
       </span>
       <span className="text-white">{firstError}</span>

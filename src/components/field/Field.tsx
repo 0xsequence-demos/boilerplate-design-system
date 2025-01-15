@@ -14,6 +14,7 @@ export function Field({
   className?: string;
 }) {
   const { errors } = useForm();
+
   const error = errors?.fieldErrors?.[name];
 
   return (
