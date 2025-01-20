@@ -18,32 +18,18 @@ export function Input(props: InputProps) {
   const {
     children,
     asChild = false,
-    controlled = false,
     id,
     ...restProps
   } = defineComponentFromProps<InputProps>("input", props);
 
-  const { name, value, update } = useField();
-
-  console.log(update);
-
-  const defaultValues = controlled
-    ? {
-        value,
-        onChange: () => {
-          // update("yes");
-        },
-      }
-    : {};
+  const { name } = useField();
 
   return (
     <Slot
       asChild={asChild}
       fallbackAs="input"
       name={name}
-      defaultValue={value}
       id={id || name}
-      {...defaultValues}
       {...restProps}
     >
       {children}

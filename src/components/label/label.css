@@ -2,7 +2,7 @@
   html body [data-component="label"] {
     /* Variants */
     &:where([data-variant="initial"]) {
-      @apply text-14 font-medium text-grey-50;
+      @apply text-14 font-medium text-grey-50 text-left leading-snug;
     }
 
     &:where([data-variant="primary"]) {
