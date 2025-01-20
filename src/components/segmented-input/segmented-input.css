@@ -2,7 +2,7 @@
 
 @layer components {
   html body [data-component="segmented-input"] {
-    @apply relative;
+    @apply relative p-4 inline-flex gap-4;
 
     & > *:not([data-focus-button]) {
       @apply z-10;

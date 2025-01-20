@@ -2520,26 +2520,17 @@ function Aa(e) {
   const {
     children: t,
     asChild: n = !1,
-    controlled: r = !1,
-    id: o,
-    ...i
-  } = Se("input", e), { name: s, value: a, update: l } = Ro();
-  console.log(l);
-  const c = r ? {
-    value: a,
-    onChange: () => {
-    }
-  } : {};
+    id: r,
+    ...o
+  } = Se("input", e), { name: i } = Ro();
   return /* @__PURE__ */ d.jsx(
     Jn,
     {
       asChild: n,
       fallbackAs: "input",
-      name: s,
-      defaultValue: a,
-      id: o || s,
-      ...c,
-      ...i,
+      name: i,
+      id: r || i,
+      ...o,
       children: t
     }
   );
