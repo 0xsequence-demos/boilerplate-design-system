@@ -34,7 +34,6 @@ export function ShowAddressWithDisconnect(
         <SegmentedInput.Segment subvariants={{ pointer: "none" }}>
           <Svg name="Wallet" width="20" />
         </SegmentedInput.Segment>
-
         <Input
           type="text"
           defaultValue={address ?? ""}
