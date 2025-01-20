@@ -4,7 +4,7 @@ type InputModifiers = {
 };
 type InputProps = {
     children?: React.ReactNode;
-    asChild?: false;
+    asChild?: boolean;
     controlled?: boolean;
     id?: string;
 } & WithVariants<"input", "transparent", InputModifiers>;
