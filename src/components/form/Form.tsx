@@ -5,7 +5,6 @@ import {
   createFormObjectWithoutValidation,
   validateAndCreateFormObjectOrThrow,
 } from "../../helpers/validate";
-import { transformName } from "../../helpers/transform-name";
 import { setStoreData } from "../../helpers/session-store";
 import { FormEvent } from "react";
 
@@ -14,7 +13,7 @@ export type FormHandler<T = Record<string, any>> = (
   data: T,
 ) => FormHandlerReturn<T> | Promise<FormHandlerReturn<T> | void> | void;
 
-type FormHandlerReturn<T = Record<string, unknown>> = [T, boolean];
+type FormHandlerReturn<T = Record<string, unknown>> = T;
 
 type FormProps = {
   children:
@@ -25,8 +24,9 @@ type FormProps = {
         data,
       }: {
         // success: boolean;
-        errors: unknown;
-        data: unknown;
+        errors?: Record<string, any>;
+        data?: Record<string, any>;
+        persist?: boolean;
       }) => React.ReactNode);
   schema?: ZodObject;
   method?: "POST" | "GET" | "PUT" | "DELETE";
@@ -72,17 +72,14 @@ function FormComponent({
         }
 
         if (result) {
-          const [records, persist] = result;
-
           // If records are returned, set the data to the records
-          if (records.data) setData(records.data);
+          if (result.data) setData(result.data);
 
-          console.log(records.error);
-          if (records.error) throw records.error;
+          if (result.error) throw result.error;
 
           // If persist is true, set the store data in the session
-          if (persist && storeKey) {
-            setStoreData(storeKey, records.data);
+          if (result.persist && storeKey) {
+            setStoreData(storeKey, result.data);
           }
 
           setErrors({});

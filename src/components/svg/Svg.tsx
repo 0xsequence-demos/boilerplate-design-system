@@ -23,6 +23,7 @@ export function Svg({
     <Slot
       fallbackAs="svg"
       name={name}
+      d
       {...{
         preserveAspectRatio: "xMinYMin",
         "aria-hidden": !alt ? true : undefined,
