@@ -24,7 +24,7 @@ export function SelectRadix(props: SelectProps) {
       </SelectPrimative.Trigger>
 
       <SelectPrimative.Portal>
-        <SelectPrimative.Content className="rounded-[0.5rem] overflow-clip text-white border border-white bg-light_buttonGlass backdrop-blur">
+        <SelectPrimative.Content className="rounded-[0.5rem] overflow-clip text-white border border-white bg-light_buttonGlass backdrop-blur z-[1000] isolate">
           <SelectPrimative.Viewport className="flex flex-col">
             {children}
           </SelectPrimative.Viewport>
