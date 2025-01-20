@@ -2433,7 +2433,6 @@ function ze({
     {
       fallbackAs: "svg",
       name: e,
-      d: !0,
       preserveAspectRatio: "xMinYMin",
       "aria-hidden": t ? void 0 : !0,
       role: t ? "img" : "presentation",
