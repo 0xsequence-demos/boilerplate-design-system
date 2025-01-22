@@ -12,7 +12,9 @@ export function MenuPopover({ isOpen, setOpen, children }: PopoverMenuProps) {
   const triggerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div ref={triggerRef}>
+    <>
+      <div ref={triggerRef} className="size-[1px]"></div>
+
       <AnimatePresence>
         {isOpen ? (
           <Popover
@@ -57,6 +59,6 @@ export function MenuPopover({ isOpen, setOpen, children }: PopoverMenuProps) {
           </Popover>
         ) : null}
       </AnimatePresence>
-    </div>
+    </>
   );
 }
