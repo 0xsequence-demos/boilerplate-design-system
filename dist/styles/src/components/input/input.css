@@ -1,0 +1,18 @@
+@layer components {
+  html body :where([data-component="input"]) {
+    /* Variants */
+    &:where([data-variant="initial"]) {
+      @apply bg-transparent border border-grey-500 px-4 py-3 rounded-[0.5rem] text-gray-200 outline-none
+        hover:border-violet-500 focus:border-violet-500;
+    }
+
+    &:where([data-variant="transparent"]) {
+      @apply bg-transparent;
+    }
+
+    /** Subvariants */
+    &:where([data-subvariants~="width-full"]) {
+      @apply w-full;
+    }
+  }
+}

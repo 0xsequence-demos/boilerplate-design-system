@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ComponentPropsWithoutRef } from 'react';
 interface ImageProps extends ComponentPropsWithoutRef<typeof motion.img> {
     disableAnimation?: boolean;

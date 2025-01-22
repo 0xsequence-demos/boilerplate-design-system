@@ -1,0 +1,7 @@
+@layer components {
+  html body [data-component="group-title"] {
+    &:where([data-variant="initial"]) {
+      @apply w-full inline-flex items-start font-bold;
+    }
+  }
+}
