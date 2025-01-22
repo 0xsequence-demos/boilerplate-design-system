@@ -6,5 +6,6 @@ export type SequenceBoilerplateContext = {
     docsUrl?: string;
     faucetUrl?: string;
     wagmi?: Record<string, any>;
+    balance?: string;
 };
 export declare const SequenceBoilerplateContext: import('react').Context<SequenceBoilerplateContext>;

@@ -14,6 +14,7 @@ export function SequenceBoilerplateProvider({
   useAuth,
   faucetUrl,
   wagmi,
+  balance,
   children,
 }: SequenceBoilerplateProps) {
   return (
@@ -26,6 +27,7 @@ export function SequenceBoilerplateProvider({
         faucetUrl,
         wagmi,
         useAuth,
+        balance,
       }}
     >
       {children}
