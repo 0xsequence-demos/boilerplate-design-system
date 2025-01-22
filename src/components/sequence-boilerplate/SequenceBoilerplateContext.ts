@@ -8,6 +8,7 @@ export type SequenceBoilerplateContext = {
   docsUrl?: string;
   faucetUrl?: string;
   wagmi?: Record<string, any>;
+  balance?: string;
 };
 
 export const SequenceBoilerplateContext =

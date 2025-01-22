@@ -14246,7 +14246,8 @@ function Gw({
   useAuth: o,
   faucetUrl: s,
   wagmi: i,
-  children: a
+  balance: a,
+  children: l
 }) {
   return /* @__PURE__ */ d.jsx(
     pp.Provider,
@@ -14258,9 +14259,10 @@ function Gw({
         description: t,
         faucetUrl: s,
         wagmi: i,
-        useAuth: o
+        useAuth: o,
+        balance: a
       },
-      children: a
+      children: l
     }
   );
 }
@@ -15957,7 +15959,7 @@ function q4(e) {
   return /* @__PURE__ */ d.jsx(Gw, { ...e, children: /* @__PURE__ */ d.jsx(g4, { children: t }) });
 }
 function g4({ children: e }) {
-  const { name: t, description: n, githubUrl: r, docsUrl: o, faucetUrl: s, wagmi: i } = Ww(), { chain: a, address: l, isConnected: c } = i.useAccount(), { chains: u, switchChainAsync: f } = i.useSwitchChain(), { disconnect: h } = i.useDisconnect(), p = v4({ chain: a, address: l });
+  const { name: t, description: n, githubUrl: r, docsUrl: o, faucetUrl: s, wagmi: i, balance: a } = Ww(), { chain: l, address: c, isConnected: u } = i.useAccount(), { chains: f, switchChainAsync: h } = i.useSwitchChain(), { disconnect: p } = i.useDisconnect(), v = v4({ chain: l, address: c });
   return /* @__PURE__ */ d.jsxs("div", { className: "flex flex-1 flex-col", children: [
     /* @__PURE__ */ d.jsxs("header", { className: "border-b border-white/10 bg-grey-950/75 sticky top-0 z-[1000] isolate min-h-[3rem] flex items-center px-4", children: [
       /* @__PURE__ */ d.jsx(
@@ -15970,23 +15972,23 @@ function g4({ children: e }) {
           className: "hidden sm:block"
         }
       ),
-      c ? /* @__PURE__ */ d.jsxs("div", { className: "flex gap-2 items-center w-full sm:w-auto sm:ml-auto mr-0", children: [
+      u ? /* @__PURE__ */ d.jsxs("div", { className: "flex gap-2 items-center w-full sm:w-auto sm:ml-auto mr-0", children: [
         /* @__PURE__ */ d.jsx(
           b4,
           {
             faucetUrl: s,
-            chain: a,
-            balance: p,
-            chains: u,
-            switchChainAsync: f
+            chain: l,
+            balance: a || v,
+            chains: f,
+            switchChainAsync: h
           }
         ),
         /* @__PURE__ */ d.jsx(
           w4,
           {
-            chain: a,
-            address: l,
-            disconnect: h
+            chain: l,
+            address: c,
+            disconnect: p
           }
         ),
         r ? /* @__PURE__ */ d.jsx(

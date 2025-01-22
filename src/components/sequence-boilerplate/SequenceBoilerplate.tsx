@@ -31,13 +31,13 @@ export function SequenceBoilerplate(props: SequenceBoilerplateProps) {
 
 // Can create alterative content layout presets as needed
 function Content({ children }: { children: React.ReactNode }) {
-  const { name, description, githubUrl, docsUrl, faucetUrl, wagmi } =
+  const { name, description, githubUrl, docsUrl, faucetUrl, wagmi, balance } =
     useSequenceBoilerplate();
 
   const { chain, address, isConnected } = wagmi.useAccount();
   const { chains, switchChainAsync } = wagmi.useSwitchChain();
   const { disconnect } = wagmi.useDisconnect();
-  const balance = useNativeBalance({ chain, address });
+  const nativeBalance = useNativeBalance({ chain, address });
 
   return (
     <div className="flex flex-1 flex-col">
@@ -54,7 +54,7 @@ function Content({ children }: { children: React.ReactNode }) {
             <NetworkPopup
               faucetUrl={faucetUrl}
               chain={chain}
-              balance={balance}
+              balance={balance || nativeBalance}
               chains={chains}
               switchChainAsync={switchChainAsync}
             />
