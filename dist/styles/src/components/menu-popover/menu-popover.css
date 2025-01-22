@@ -1,0 +1,5 @@
+@layer components {
+  [data-testid="underlay"] {
+    @apply pointer-events-none;
+  }
+}

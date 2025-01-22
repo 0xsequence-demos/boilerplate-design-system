@@ -28,6 +28,7 @@ export { default as Expand } from './Expand';
 export { default as ExternalLink } from './ExternalLink';
 export { default as Facebook } from './Facebook';
 export { default as GasTank } from './GasTank';
+export { default as Github } from './Github';
 export { default as Globe } from './Globe';
 export { default as Google } from './Google';
 export { default as Grid } from './Grid';

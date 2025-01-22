@@ -12,6 +12,8 @@ export function SequenceBoilerplateProvider({
   githubUrl,
   docsUrl,
   useAuth,
+  faucetUrl,
+  wagmi,
   children,
 }: SequenceBoilerplateProps) {
   return (
@@ -21,6 +23,8 @@ export function SequenceBoilerplateProvider({
         docsUrl: docsUrl || DEFAULT_DOCS_URL,
         name,
         description,
+        faucetUrl,
+        wagmi,
         useAuth,
       }}
     >

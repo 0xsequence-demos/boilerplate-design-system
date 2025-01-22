@@ -65,7 +65,6 @@ function FormComponent({
       if (onAction && typeof onAction === "function") {
         const result = await onAction(event, data);
 
-        console.log(result);
         // If the action doesn't return, set the data to the raw form data
         if (!result) {
           setData(data);
@@ -99,8 +98,6 @@ function FormComponent({
       }
 
       // if (error instanceof ZodError) {
-      //   console.log("zoddle");
-
       //   setErrors({ [key]: error.flatten() });
       // } else {
       //   setErrors({ [key]: "Unknown intent" });

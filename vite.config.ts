@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { peerDependencies } from "./package.json";
-
+import { viteStaticCopy } from "vite-plugin-static-copy";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -14,8 +14,22 @@ export default defineConfig({
       exclude: ["node_modules", "tests", "**/*.stories.tsx", "**/*.test.tsx"],
       outDir: "dist",
     }),
+    viteStaticCopy({
+      structured: true,
+      targets: [
+        {
+          src: "src/**/*.css",
+          dest: "styles/",
+        },
+        {
+          src: "./tailwind.config.js",
+          dest: ".",
+        },
+      ],
+    }),
   ],
   build: {
+    emptyOutDir: false,
     lib: {
       entry: "./src/index.ts",
       name: "boilerplate-design-system",

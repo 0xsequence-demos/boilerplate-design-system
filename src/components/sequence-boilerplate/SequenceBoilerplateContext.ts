@@ -6,6 +6,8 @@ export type SequenceBoilerplateContext = {
   useAuth?: boolean;
   githubUrl?: string;
   docsUrl?: string;
+  faucetUrl?: string;
+  wagmi?: Record<string, any>;
 };
 
 export const SequenceBoilerplateContext =

@@ -6,7 +6,11 @@
   "description": "",
   "scripts": {
     "dev": "vite",
+    "!!build": "npm run build:clean && npm run build:css && npm run build:tailwind-preset && npm run build:library",
+    "!!build:clean": "rimraf dist",
     "build": "vite build",
+    "!!build:css": "cpx './src/**/*.css' dist/styles",
+    "!!build:tailwind-preset": "cpx './tailwind.config.js' dist",
     "lint": "eslint .",
     "preview": "vite preview",
     "build-svg": "npx @svgr/cli --typescript --no-dimensions --svg-props role=img --out-dir src/components/svg -- svg"
@@ -26,15 +30,15 @@
       "require": "./dist/style.css",
       "default": "./dist/style.css"
     },
-    "./kit.css": {
-      "import": "./dist/kit.css",
-      "require": "./dist/kit.css",
-      "default": "./dist/kit.css"
+    "./styles/*": {
+      "import": "./dist/styles/src/*",
+      "require": "./dist/styles/src/*",
+      "default": "./dist/styles/src/*"
     },
-    "./components.css": {
-      "import": "./dist/components.css",
-      "require": "./dist/components.css",
-      "default": "./dist/components.css"
+    "./tailwind-config": {
+      "import": "./dist/tailwind.config.js",
+      "require": "./dist/tailwind.config.js",
+      "default": "./dist/tailwind.config.js"
     }
   },
   "author": "",
@@ -44,6 +48,7 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
+    "cpx": "^1.5.0",
     "eslint": "^9.13.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
@@ -57,23 +62,30 @@
     "tailwindcss": "^3.4.15",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.11.0",
+    "viem": "^2.22.11",
     "vite": "^5.4.10",
     "vite-plugin-css-injected-by-js": "^3.5.2",
     "vite-plugin-dts": "^4.3.0",
+    "vite-plugin-static-copy": "^2.2.0",
     "vite-tsconfig-paths": "^5.1.3"
   },
   "peerDependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "sonner": "^1.7.1"
+    "sonner": "^1.7.1",
+    "viem": "^2.22.11"
   },
   "dependencies": {
     "@0xsequence/design-system": "^1.8.0",
+    "@0xsequence/indexer": "^2.2.7",
+    "@0xsequence/network": "^2.2.7",
     "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-tooltip": "^1.1.4",
     "@svgr/cli": "^8.1.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.16.0",
+    "motion": "^12.0.1",
+    "react-aria-components": "^1.6.0",
+    "react-use-measure": "^2.1.1",
     "zod": "^3.23.8"
   }
 }

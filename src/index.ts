@@ -17,6 +17,10 @@ export { Link } from "./components/link/Link";
 export { ButtonLink } from "./components/button/ButtonLink";
 export { Image } from "./components/image/Image";
 export { Toast } from "./components/toast/Toast";
+export { GradientAvatar } from "./components/gradient-avatar/GradientAvatar";
+export { MenuPopover } from "./components/menu-popover/MenuPopover";
+export { MenuPopoverButton } from "./components/menu-popover/MenuPopoverButton";
+export { MenuInfo } from "./components/menu-popover/MenuInfo";
 // Validation helpers
 export {
   createFormObjectWithoutValidation,
@@ -31,8 +35,6 @@ export { Submit } from "./components/submit/Submit";
 export { ShowAddressWithDisconnect } from "./components/show-address-with-disconnect/ShowAddressWithDisconnect";
 
 // Layout Exports
-export { Footer } from "./components/footer/Footer";
-export { Header } from "./components/header/Header";
 export { GithubCorner } from "./components/github-corner/GithubCorner";
 
 // Providers & Presets
@@ -50,5 +52,4 @@ export {
 
 export { useForm } from "./components/form/FormProvider";
 
-// CSS
-import "./index.css";
+export { shortAddress } from "./helpers/short-address";
