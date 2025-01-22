@@ -42,32 +42,34 @@ function Content({ children }: { children: React.ReactNode }) {
           alt="Sequence Boilerplates"
           className="hidden sm:block"
         />
-        {isConnected ? (
-          <div className="flex gap-2 items-center w-full sm:w-auto sm:ml-auto mr-0">
-            <NetworkPopup
-              faucetUrl={faucetUrl}
-              chain={chain}
-              balance={balance || nativeBalance}
-              chains={chains}
-              switchChainAsync={switchChainAsync}
-            />
-            <AccountPopup
-              chain={chain}
-              address={address}
-              disconnect={disconnect}
-            />
-            {githubUrl ? (
-              <a
-                href={githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-[0.5rem] hover:bg-grey-800 border border-grey-800/50 hover:border-grey-700 bg-grey-900 text-grey-100 hover:text-grey-50 flex items-center justify-center  transition-all duration-300 ml-auto mr-0 sm:mx-auto flex-shrink-0 size-9"
-              >
-                <Svg name="Github" className="size-5" />
-              </a>
-            ) : null}
-          </div>
-        ) : null}
+        <div className="flex gap-2 items-center w-full sm:w-auto sm:ml-auto mr-0">
+          {isConnected ? (
+            <>
+              <NetworkPopup
+                faucetUrl={faucetUrl}
+                chain={chain}
+                balance={balance || nativeBalance}
+                chains={chains}
+                switchChainAsync={switchChainAsync}
+              />
+              <AccountPopup
+                chain={chain}
+                address={address}
+                disconnect={disconnect}
+              />
+            </>
+          ) : null}
+          {githubUrl ? (
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-[0.5rem] hover:bg-grey-800 border border-grey-800/50 hover:border-grey-700 bg-grey-900 text-grey-100 hover:text-grey-50 flex items-center justify-center  transition-all duration-300 ml-auto mr-0 sm:mx-auto flex-shrink-0 size-9"
+            >
+              <Svg name="Github" className="size-5" />
+            </a>
+          ) : null}
+        </div>
       </header>
 
       <SequenceBoilerplateRoot>

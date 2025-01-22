@@ -16181,25 +16181,27 @@ function E4({ children: e }) {
           className: "hidden sm:block"
         }
       ),
-      u ? /* @__PURE__ */ d.jsxs("div", { className: "flex gap-2 items-center w-full sm:w-auto sm:ml-auto mr-0", children: [
-        /* @__PURE__ */ d.jsx(
-          f4,
-          {
-            faucetUrl: s,
-            chain: l,
-            balance: a || v,
-            chains: f,
-            switchChainAsync: h
-          }
-        ),
-        /* @__PURE__ */ d.jsx(
-          w4,
-          {
-            chain: l,
-            address: c,
-            disconnect: p
-          }
-        ),
+      /* @__PURE__ */ d.jsxs("div", { className: "flex gap-2 items-center w-full sm:w-auto sm:ml-auto mr-0", children: [
+        u ? /* @__PURE__ */ d.jsxs(d.Fragment, { children: [
+          /* @__PURE__ */ d.jsx(
+            f4,
+            {
+              faucetUrl: s,
+              chain: l,
+              balance: a || v,
+              chains: f,
+              switchChainAsync: h
+            }
+          ),
+          /* @__PURE__ */ d.jsx(
+            w4,
+            {
+              chain: l,
+              address: c,
+              disconnect: p
+            }
+          )
+        ] }) : null,
         r ? /* @__PURE__ */ d.jsx(
           "a",
           {
@@ -16210,7 +16212,7 @@ function E4({ children: e }) {
             children: /* @__PURE__ */ d.jsx(Ne, { name: "Github", className: "size-5" })
           }
         ) : null
-      ] }) : null
+      ] })
     ] }),
     /* @__PURE__ */ d.jsxs(qw, { children: [
       /* @__PURE__ */ d.jsxs("div", { className: "flex flex-1 flex-col items-center justify-center gap-12 py-12 px-4", children: [
