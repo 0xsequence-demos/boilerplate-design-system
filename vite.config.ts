@@ -42,9 +42,6 @@ export default defineConfig({
       },
       external: Object.keys(peerDependencies),
       plugins: [],
-    },
-    watch: {
-      include: "src/**", // Watch for changes in the source directory
-    },
+    }
   },
 });
