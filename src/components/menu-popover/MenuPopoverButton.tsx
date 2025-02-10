@@ -1,16 +1,31 @@
-export function MenuPopoverButton(props: {
+import { defineComponentFromProps } from "../../helpers/define-component";
+import { WithVariants } from "../types";
+
+type ButtonVariant = "primary" | "secondary" | "tertiary" | "text";
+
+type ButtonModifiers = {
+  size: "sm" | "md" | "lg";
+  rounded: "none" | "sm" | "full";
+  padding: "comfortable";
+};
+
+type MenuPopoverButtonProps = {
+  children: React.ReactNode;
   isOpen: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  children: React.ReactNode;
-}) {
-  const { isOpen, setOpen, children } = props;
+} & WithVariants<"button", ButtonVariant, ButtonModifiers>;
+
+export function MenuPopoverButton(props: MenuPopoverButtonProps) {
+  const { isOpen, setOpen, children, ...restProps } =
+    defineComponentFromProps<MenuPopoverButtonProps>(
+      "menuPopoverButton",
+      props,
+    );
 
   return (
     <button
+      {...restProps}
       type="button"
-      className={`ml-auto mr-0 text-14 inline-flex gap-2 hover:bg-grey-800 border border-grey-800/50 hover:border-grey-700 px-2 py-1.5 bg-grey-900 rounded-[0.5rem] overflow-hidden relative ${
-        isOpen ? "grayscale opacity-60 pointer-events-none" : ""
-      } transition-all duration-300`}
       onClick={() => setOpen((state) => !state)}
       disabled={isOpen}
     >

@@ -7,12 +7,8 @@
   "scripts": {
     "preinstall": "npm run build",
     "dev": "vite",
-    "!!build": "npm run build:clean && npm run build:css && npm run build:tailwind-preset && npm run build:library",
-    "!!build:clean": "rimraf dist",
     "build": "vite build",
     "watch": "vite build --watch",
-    "!!build:css": "cpx './src/**/*.css' dist/styles",
-    "!!build:tailwind-preset": "cpx './tailwind.config.js' dist",
     "lint": "eslint .",
     "preview": "vite preview",
     "build-svg": "npx @svgr/cli --typescript --no-dimensions --svg-props role=img --out-dir src/components/svg -- svg"

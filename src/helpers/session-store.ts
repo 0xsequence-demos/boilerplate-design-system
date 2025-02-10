@@ -1,6 +1,6 @@
 import { useEffect, useSyncExternalStore } from "react";
 
-const getSnapshotFromSessionStorage = (key: string): string => {
+export const getSnapshotFromSessionStorage = (key: string): string => {
   return sessionStorage.getItem(key);
 };
 
