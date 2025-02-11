@@ -8,7 +8,7 @@ import { MenuPopover } from "../menu-popover/MenuPopover";
 import { MenuPopoverButton } from "../menu-popover/MenuPopoverButton";
 import { Svg } from "../svg/Svg";
 
-export function AccountPopup({ address, chain, disconnect }) {
+export function AccountPopup({ address, chain, disconnect, walletCallback }) {
   const [isCopying, setIsCopying] = useState(false);
 
   useEffect(() => {
@@ -97,17 +97,31 @@ export function AccountPopup({ address, chain, disconnect }) {
           </div>
         </div>
         <div className="flex flex-col text-14 items-start p-1">
-          <a
-            href={blockExplorerUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex gap-3 items-center px-3 py-2 hover:bg-grey-900 border border-transparent hover:border-grey-800 transition-colors duration-300 w-full rounded-[8px]"
-          >
-            <span className="h-6 w-7 flex items-center justify-center border border-grey-800/50 rounded-[6px]">
-              <Svg name="Wallet" className="text-white size-4" />
-            </span>
-            Open wallet
-          </a>
+          {walletCallback ? (
+            <button
+              type="button"
+              onClick={walletCallback}
+              rel="noopener noreferrer"
+              className="flex gap-3 items-center px-3 py-2 hover:bg-grey-900 border border-transparent hover:border-grey-800 transition-colors duration-300 w-full rounded-[8px]"
+            >
+              <span className="h-6 w-7 flex items-center justify-center border border-grey-800/50 rounded-[6px]">
+                <Svg name="Wallet" className="text-white size-4" />
+              </span>
+              Open wallet
+            </button>
+          ) : (
+            <a
+              href={blockExplorerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex gap-3 items-center px-3 py-2 hover:bg-grey-900 border border-transparent hover:border-grey-800 transition-colors duration-300 w-full rounded-[8px]"
+            >
+              <span className="h-6 w-7 flex items-center justify-center border border-grey-800/50 rounded-[6px]">
+                <Svg name="Wallet" className="text-white size-4" />
+              </span>
+              Open wallet
+            </a>
+          )}
           <button
             type="button"
             className="flex gap-3 items-center px-3 py-2 hover:bg-grey-900 border border-transparent hover:border-grey-800 transition-colors duration-300 w-full rounded-[8px]"
