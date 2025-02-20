@@ -43,11 +43,17 @@ export { SequenceBoilerplateRoot } from "./components/sequence-boilerplate/Seque
 export { SequenceBoilerplateProvider } from "./components/sequence-boilerplate/SequenceBoilerplateProvider";
 export { useSequenceBoilerplate } from "./components/sequence-boilerplate/useSequenceBoilerplate";
 
+export { useField } from "./components/field/FieldProvider";
+
+export { NetworkPopup } from "./components/sequence-boilerplate/network-popup";
+export { AccountPopup } from "./components/sequence-boilerplate/account-popup";
+
 // Data persistence
 export {
   useStoreData,
   setStoreData,
   useAsyncStoreData,
+  getSnapshotFromSessionStorage,
 } from "./helpers/session-store";
 
 export { useForm } from "./components/form/FormProvider";

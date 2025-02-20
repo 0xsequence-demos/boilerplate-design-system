@@ -8,12 +8,12 @@ import {
 import { setStoreData } from "../../helpers/session-store";
 import { FormEvent } from "react";
 
-export type FormHandler<T = Record<string, any>> = (
+export type FormHandler = (
   event: FormEvent<HTMLFormElement>,
-  data: T,
-) => FormHandlerReturn<T> | Promise<FormHandlerReturn<T> | void> | void;
+  data: unknown | Promise<unknown | void> | void,
+) => unknown | Promise<unknown | void> | void; //FormHandlerReturn<T> | Promise<FormHandlerReturn<T> | void> | void;
 
-type FormHandlerReturn<T = Record<string, unknown>> = T;
+// type FormHandlerReturn<T = Record<string, unknown>> = T;
 
 type FormProps = {
   children:
@@ -30,7 +30,10 @@ type FormProps = {
       }) => React.ReactNode);
   schema?: ZodObject;
   method?: "POST" | "GET" | "PUT" | "DELETE";
-  onAction?: FormHandler;
+  onAction?: (
+    event: FormEvent<HTMLFormElement>,
+    data: unknown | Promise<unknown | void> | void,
+  ) => unknown | Promise<unknown | void> | void;
   name?: string;
 } & ComponentProps<"form">;
 
@@ -54,6 +57,7 @@ function FormComponent({
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
     const formdata = new FormData(event.currentTarget);
 
     try {
