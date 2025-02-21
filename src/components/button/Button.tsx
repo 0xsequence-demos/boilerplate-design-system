@@ -1,7 +1,7 @@
 import { WithVariants } from "../types";
 import { defineComponentFromProps } from "../../helpers/define-component";
 
-type ButtonVariant = "primary" | "secondary" | "tertiary";
+type ButtonVariant = "primary" | "secondary" | "tertiary" | "text";
 
 type ButtonModifiers = {
   size: "sm" | "md" | "lg";

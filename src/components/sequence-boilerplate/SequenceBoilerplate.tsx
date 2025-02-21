@@ -11,6 +11,7 @@ import { Svg } from "../svg/Svg";
 import { useNativeBalance } from "../../helpers/useNativeBalance";
 import { NetworkPopup } from "./network-popup";
 import { AccountPopup } from "./account-popup";
+import { formatEther } from "viem";
 
 export function SequenceBoilerplate(props: SequenceBoilerplateProps) {
   const { children } = props;
@@ -32,6 +33,9 @@ function Content({ children }: { children: React.ReactNode }) {
   const { disconnect } = wagmi.useDisconnect();
   const nativeBalance = useNativeBalance({ chain, address });
 
+  const formattedNativeBalance =
+    nativeBalance !== "-" ? formatEther(BigInt(nativeBalance)) : "0";
+
   return (
     <div className="flex flex-1 flex-col">
       <header className="border-b border-white/10 bg-grey-950/75 sticky top-0 z-[1000] isolate min-h-[3rem] flex items-center px-4">
@@ -48,7 +52,7 @@ function Content({ children }: { children: React.ReactNode }) {
               <NetworkPopup
                 faucetUrl={faucetUrl}
                 chain={chain}
-                balance={balance || nativeBalance}
+                balance={balance || formattedNativeBalance}
                 chains={chains}
                 switchChainAsync={switchChainAsync}
               />
