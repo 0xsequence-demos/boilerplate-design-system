@@ -34,7 +34,9 @@ function Content({ children }: { children: React.ReactNode }) {
   const nativeBalance = useNativeBalance({ chain, address });
 
   const formattedNativeBalance =
-    nativeBalance !== "-" ? formatEther(BigInt(nativeBalance)) : "0";
+    nativeBalance && nativeBalance !== "-"
+      ? formatEther(BigInt(nativeBalance))
+      : "0";
 
   return (
     <div className="flex flex-1 flex-col">
