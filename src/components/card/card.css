@@ -1,4 +1,4 @@
-@import "./card-collapsable.css";
+@import './card-collapsable.css';
 
 @layer components {
   html body :where([data-component="card"]) {

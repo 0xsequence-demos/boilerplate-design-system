@@ -23,7 +23,7 @@ export function Toast({
       {status ? (
         <span className="h-[1.25em] flex items-center">
           <span
-            className={`flex-shrink-0 size-6 text-white flex items-center justify-center rounded-full ${statuses[status]?.color}`}
+            className={`shrink-0 size-6 text-white flex items-center justify-center rounded-full ${statuses[status]?.color}`}
           >
             <Svg name={statuses[status]?.icon} className="size-4" />
           </span>
@@ -37,7 +37,7 @@ export function Toast({
         <span className="h-[1.25em] flex items-center">
           <button
             type="button"
-            className="flex-shrink-0 size-6 bg-grey-700 text-white flex items-center justify-center rounded-full"
+            className="shrink-0 size-6 bg-grey-700 text-white flex items-center justify-center rounded-full"
             onClick={handleClose}
           >
             <Svg name="Close" className="size-4" />{" "}

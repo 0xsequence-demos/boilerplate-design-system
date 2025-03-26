@@ -6,7 +6,7 @@
     }
 
     &:where([data-variant="primary"]) {
-      @apply bg-gradientPrimary rounded-xl p-4;
+      @apply bg-gradient-primary rounded-xl p-4;
     }
 
     /* Modifiers */

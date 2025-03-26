@@ -21,10 +21,6 @@ export default defineConfig({
           src: "src/**/*.css",
           dest: "styles/",
         },
-        {
-          src: "./tailwind.config.js",
-          dest: ".",
-        },
       ],
     }),
   ],
@@ -42,6 +38,6 @@ export default defineConfig({
       },
       external: Object.keys(peerDependencies),
       plugins: [],
-    }
+    },
   },
 });

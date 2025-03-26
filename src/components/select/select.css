@@ -16,12 +16,10 @@
     }
 
     &:where([data-variant="primary"]) {
-      @apply bg-gradientPrimary rounded-xl p-4;
+      @apply bg-gradient-primary rounded-xl p-4;
     }
 
     /* Modifiers */
-    &:where([data-subvariants~="min-size-none"]) {
-    }
 
     &:where([data-subvariants~="min-size-md"]) {
       @apply min-w-[8rem];

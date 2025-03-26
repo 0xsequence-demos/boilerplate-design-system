@@ -1,4 +1,4 @@
-@import "./group-title.css";
+@import './group-title.css';
 
 @layer components {
   html body [data-component="group"] {
