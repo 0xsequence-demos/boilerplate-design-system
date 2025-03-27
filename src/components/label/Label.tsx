@@ -1,8 +1,7 @@
 import { useField } from "../field/FieldProvider";
 import { forwardRef } from "react";
-import { WithVariants } from "../types";
+import { WithVariants, PolymorphicRef } from "../types";
 import { defineComponentFromProps } from "../../helpers/define-component";
-import { PolymorphicRef } from "@0xsequence/design-system";
 
 type LabelProps = {
   children: React.ReactNode;
@@ -11,7 +10,7 @@ type LabelProps = {
 export function LabelElement(props: LabelProps, ref: PolymorphicRef<"label">) {
   const { children, ...restProps } = defineComponentFromProps<LabelProps>(
     "label",
-    props
+    props,
   );
 
   const { name } = useField();

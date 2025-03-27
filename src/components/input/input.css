@@ -2,7 +2,7 @@
   html body :where([data-component="input"]) {
     /* Variants */
     &:where([data-variant="initial"]) {
-      @apply bg-transparent border border-grey-500 px-4 py-3 rounded-[0.5rem] text-gray-200 outline-none
+      @apply bg-transparent border border-grey-500 px-4 py-3 rounded-[0.5rem] text-gray-200 outline-hidden
         hover:border-violet-500 focus:border-violet-500;
     }
 

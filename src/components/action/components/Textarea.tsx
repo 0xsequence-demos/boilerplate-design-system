@@ -56,7 +56,7 @@ export function Textarea({
         ref={ref}
         placeholder={placeholder}
         className={clsx([
-          "outline-none resize-none min-h-[8rem] appearance-none border-none bg-transparent",
+          "outline-hidden resize-none min-h-[8rem] appearance-none border-none bg-transparent",
           className,
         ])}
         // className={clsx(["@textarea", className])}

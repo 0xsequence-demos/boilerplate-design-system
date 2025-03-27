@@ -1,7 +1,7 @@
 import { Svg } from "../svg/Svg";
-import { PolymorphicRef } from "@0xsequence/design-system";
+
 import { defineComponentFromProps } from "../../helpers/define-component";
-import { WithVariants } from "../types";
+import { WithVariants, PolymorphicRef } from "../types";
 import { forwardRef, useCallback, useState } from "react";
 
 type SelectProps = {

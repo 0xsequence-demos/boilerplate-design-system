@@ -30,7 +30,7 @@ export function Svg({
         title: alt,
         "aria-label": alt || undefined,
         focusable: "false",
-        className: `${className} flex-shrink-0`.trim(),
+        className: `${className} shrink-0`.trim(),
       }}
       asChild
       {...props}

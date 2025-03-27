@@ -28,7 +28,7 @@
 //           <SegmentedInput.Segment>
 //             <Button
 //               variant="tiny"
-//               className="self-center flex-shrink-0"
+//               className="self-center shrink-0"
 //               // onClick={() => alert("get test currency")}
 //             >
 //               {/* <Svg name="ExternalLink" width="16" /> */}

@@ -13,11 +13,11 @@ html body :where([data-component="button"]) {
   }
 
   &:where([data-variant="primary"]) {
-    @apply bg-gradientPrimary border-none rounded-full px-3 py-3 text-14 font-bold;
+    @apply bg-gradient-primary border-none rounded-full px-3 py-3 text-14 font-bold;
   }
 
   &:where([data-variant="secondary"]) {
-    @apply bg-gradientSecondary rounded-full px-3 py-1 border-none;
+    @apply bg-gradient-secondary rounded-full px-3 py-1 border-none;
   }
 
   &:where([data-variant="tertiary"]) {
@@ -28,11 +28,11 @@ html body :where([data-component="button"]) {
 
   &:where([data-subvariants~="theme-primary"]),
   .theme-primary {
-    @apply bg-gradientPrimary text-white;
+    @apply bg-gradient-primary text-white;
   }
 
   &:where([data-subvariants~="theme-secondary"]) {
-    @apply bg-gradientSecondary text-white;
+    @apply bg-gradient-secondary text-white;
   }
 
   &:where([data-subvariants~="theme-tertiary"]) {
@@ -62,7 +62,7 @@ html body :where([data-component="button"]) {
   }
 
   &:where([data-subvariants~="rounded-sm"]) {
-    @apply rounded-sm;
+    @apply rounded-xs;
   }
 
   &:where([data-subvariants~="rounded-md"]) {

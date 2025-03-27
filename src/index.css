@@ -1,33 +1,255 @@
+@import "tailwindcss";
 @import "./components/components.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@source ".";
 
-:root {
-  color-scheme: light dark;
-  color: theme(colors.white/87%);
-  background-color: theme(colors.neutral.900);
+@theme {
+  --font-*: initial;
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --font-mono: iAWriter Mono, Menlo, Monaco, Consolas, Liberation Mono,
+    Courier New, monospace;
+
+  --text-*: initial;
+  --text-10: calc(0.625rem * var(--font-size-multiplier, 1));
+  --text-10--letter-spacing: 1%;
+  --text-11: calc(0.6875rem * var(--font-size-multiplier, 1));
+  --text-11--letter-spacing: 1%;
+  --text-12: calc(0.75rem * var(--font-size-multiplier, 1));
+  --text-12--letter-spacing: 1%;
+  --text-13: calc(0.8125rem * var(--font-size-multiplier, 1));
+  --text-13--letter-spacing: 1%;
+  --text-14: calc(0.875rem * var(--font-size-multiplier, 1));
+  --text-14--letter-spacing: 1%;
+  --text-15: calc(0.9375rem * var(--font-size-multiplier, 1));
+  --text-15--letter-spacing: 1%;
+  --text-16: calc(1rem * var(--font-size-multiplier, 1));
+  --text-16--letter-spacing: 1%;
+  --text-17: calc(1.0625rem * var(--font-size-multiplier, 1));
+  --text-17--letter-spacing: 1%;
+  --text-18: calc(1.125rem * var(--font-size-multiplier, 1));
+  --text-18--letter-spacing: 1%;
+  --text-19: calc(1.1875rem * var(--font-size-multiplier, 1));
+  --text-19--letter-spacing: 1%;
+  --text-20: calc(1.25rem * var(--font-size-multiplier, 1));
+  --text-20--letter-spacing: 1%;
+  --text-22: calc(1.375rem * var(--font-size-multiplier, 1));
+  --text-22--letter-spacing: 1%;
+  --text-24: calc(1.5rem * var(--font-size-multiplier, 1));
+  --text-24--letter-spacing: 1%;
+  --text-26: calc(1.625rem * var(--font-size-multiplier, 1));
+  --text-26--letter-spacing: 1%;
+  --text-28: calc(1.75rem * var(--font-size-multiplier, 1));
+  --text-28--letter-spacing: 1%;
+  --text-30: calc(1.875rem * var(--font-size-multiplier, 1));
+  --text-30--letter-spacing: 1%;
+  --text-32: calc(2rem * var(--font-size-multiplier, 1));
+  --text-32--letter-spacing: 1%;
+  --text-34: calc(2.125rem * var(--font-size-multiplier, 1));
+  --text-34--letter-spacing: 1%;
+  --text-36: calc(2.25rem * var(--font-size-multiplier, 1));
+  --text-36--letter-spacing: 1%;
+  --text-38: calc(2.375rem * var(--font-size-multiplier, 1));
+  --text-38--letter-spacing: 1%;
+  --text-40: calc(2.5rem * var(--font-size-multiplier, 1));
+  --text-40--letter-spacing: 1%;
+  --text-42: calc(2.625rem * var(--font-size-multiplier, 1));
+  --text-42--letter-spacing: 1%;
+  --text-44: calc(2.75rem * var(--font-size-multiplier, 1));
+  --text-44--letter-spacing: 1%;
+  --text-46: calc(2.875rem * var(--font-size-multiplier, 1));
+  --text-46--letter-spacing: 1%;
+  --text-48: calc(3rem * var(--font-size-multiplier, 1));
+  --text-48--letter-spacing: 1%;
+
+  --tracking-*: initial;
+  --tracking-tighter: 10%;
+  --tracking-tight: 10%;
+  --tracking-normal: 10%;
+  --tracking-wide: 10%;
+  --tracking-wider: 10%;
+  --tracking-widest: 10%;
+
+  --background-image-gradient-backdrop: linear-gradient(
+    243.18deg,
+    rgba(86, 52, 189, 0.85) 0%,
+    rgba(49, 41, 223, 0.85) 63.54%,
+    rgba(7, 98, 149, 0.85) 100%
+  );
+  --background-image-gradient-primary: linear-gradient(
+    89.69deg,
+    #4411e1 0.27%,
+    #7537f9 99.73%
+  );
+  --background-image-gradient-secondary: linear-gradient(
+    32.51deg,
+    #951990 -15.23%,
+    #3a35b1 48.55%,
+    #20a8b0 100%
+  );
+
+  --color-positive: #1fc266;
+  --color-negative: #c2501f;
+  --color-info: #0076cc;
+  --color-warning: #f4b03e;
+  --color-arbitrum-dark: #212d44;
+  --color-arbitrum-light: #93d4ff;
+  --color-avalance-dark: #810c0c;
+  --color-avalance-light: #ff8080;
+  --color-bsc-dark: #584508;
+  --color-bsc-light: #fccf43;
+  --color-ethereum-dark: #132362;
+  --color-ethereum-light: #aabbff;
+  --color-gnosis-dark: #084246;
+  --color-gnosis-light: #8cf6fd;
+  --color-polygon-dark: #350881;
+  --color-polygon-light: #c7a6ff;
+  --color-dark_text100: rgba(255, 255, 255, 1);
+  --color-dark_text80: rgba(255, 255, 255, 0.8);
+  --color-dark_text50: rgba(255, 255, 255, 0.5);
+  --color-dark_text-inverse100: rgba(0, 0, 0, 1);
+  --color-dark_background-primary: rgba(0, 0, 0, 1);
+  --color-dark_background-secondary: rgba(255, 255, 255, 0.1);
+  --color-dark_background-contrast: rgba(0, 0, 0, 0.5);
+  --color-dark_background-muted: rgba(255, 255, 255, 0.05);
+  --color-dark_background-control: rgba(255, 255, 255, 0.25);
+  --color-dark_background-inverse: rgba(255, 255, 255, 1);
+  --color-dark_background-backdrop: rgba(34, 34, 34, 0.9);
+  --color-dark_background-overlay: rgba(0, 0, 0, 0.7);
+  --color-dark_background-raised: rgba(54, 54, 54, 0.7);
+  --color-dark_button-glass: rgba(255, 255, 255, 0.15);
+  --color-dark_button-emphasis: rgba(0, 0, 0, 0.5);
+  --color-dark_button-inverse: rgba(255, 255, 255, 0.8);
+  --color-dark_border-normal: rgba(255, 255, 255, 0.25);
+  --color-dark_border-focus: rgba(255, 255, 255, 0.5);
+  --color-light_text100: rgba(0, 0, 0, 1);
+  --color-light_text80: rgba(0, 0, 0, 0.8);
+  --color-light_text50: rgba(0, 0, 0, 0.5);
+  --color-light_text-inverse100: rgba(255, 255, 255, 1);
+  --color-light_background-primary: rgba(244, 244, 244, 1);
+  --color-light_background-secondary: rgba(0, 0, 0, 0.1);
+  --color-light_background-contrast: rgba(244, 244, 244, 0.5);
+  --color-light_background-muted: rgba(0, 0, 0, 0.05);
+  --color-light_background-control: rgba(0, 0, 0, 0.25);
+  --color-light_background-inverse: rgba(0, 0, 0, 1);
+  --color-light_background-backdrop: rgba(221, 221, 221, 0.9);
+  --color-light_background-overlay: rgba(244, 244, 244, 0.7);
+  --color-light_background-raised: rgba(192, 192, 192, 0.7);
+  --color-light_button-glass: rgba(0, 0, 0, 0.15);
+  --color-light_button-emphasis: rgba(255, 255, 255, 0.5);
+  --color-light_button-inverse: rgba(0, 0, 0, 0.8);
+  --color-light_border-normal: rgba(0, 0, 0, 0.25);
+  --color-light_border-focus: rgba(0, 0, 0, 0.5);
+
+  --color-grey-50: #d1d1d1;
+  --color-grey-100: #b0b0b0;
+  --color-grey-200: #888888;
+  --color-grey-300: #6d6d6d;
+  --color-grey-400: #5d5d5d;
+  --color-grey-500: #4f4f4f;
+  --color-grey-600: #454545;
+  --color-grey-700: #3d3d3d;
+  --color-grey-800: #262626;
+  --color-grey-900: #1b1b1b;
+  --color-grey-950: #101010;
+
+  --color-red-50: #fdf7ef;
+  --color-red-100: #fbecd9;
+  --color-red-200: #f6d7b2;
+  --color-red-300: #f1bb80;
+  --color-red-400: #ea954d;
+  --color-red-500: #e5792a;
+  --color-red-600: #d66020;
+  --color-red-700: #c2501f;
+  --color-red-800: #8e3b1e;
+  --color-red-900: #72331c;
+  --color-red-950: #3e170c;
+
+  --color-green-50: #f0fdf5;
+  --color-green-100: #dcfce9;
+  --color-green-200: #baf8d4;
+  --color-green-300: #85f0b3;
+  --color-green-400: #48e089;
+  --color-green-500: #1fc266;
+  --color-green-600: #14a554;
+  --color-green-700: #148144;
+  --color-green-800: #156639;
+  --color-green-900: #135431;
+  --color-green-950: #042f19;
+
+  --color-yellow-50: #fbfaeb;
+  --color-yellow-100: #f6f2cb;
+  --color-yellow-200: #efe499;
+  --color-yellow-300: #e5ce5f;
+  --color-yellow-400: #ddb938;
+  --color-yellow-500: #cda125;
+  --color-yellow-600: #b07e1e;
+  --color-yellow-700: #8d5c1b;
+  --color-yellow-800: #754a1e;
+  --color-yellow-900: #653f1e;
+  --color-yellow-950: #3a200e;
+
+  --color-blue-50: #f0f8ff;
+  --color-blue-100: #e0f0fe;
+  --color-blue-200: #b9e0fe;
+  --color-blue-300: #7cc8fd;
+  --color-blue-400: #36aefa;
+  --color-blue-500: #0c94eb;
+  --color-blue-600: #0076cc;
+  --color-blue-700: #015ca3;
+  --color-blue-800: #064f86;
+  --color-blue-900: #0b426f;
+  --color-blue-950: #072a4a;
+
+  --color-indigo-50: #f2f2ff;
+  --color-indigo-100: #e9e7ff;
+  --color-indigo-200: #d3d1ff;
+  --color-indigo-300: #b3adff;
+  --color-indigo-400: #8e7eff;
+  --color-indigo-500: #6a4aff;
+  --color-indigo-600: #5826ff;
+  --color-indigo-700: #4411e1;
+  --color-indigo-800: #3d10c7;
+  --color-indigo-900: #340fa3;
+  --color-indigo-950: #1c066f;
+
+  --color-violet-50: #f3f2ff;
+  --color-violet-100: #ebe8ff;
+  --color-violet-200: #d9d3ff;
+  --color-violet-300: #bdb0ff;
+  --color-violet-400: #9d84ff;
+  --color-violet-500: #7f52ff;
+  --color-violet-600: #7537f9;
+  --color-violet-700: #601ce5;
+  --color-violet-800: #5117c0;
+  --color-violet-900: #43159d;
+  --color-violet-950: #270a6b;
 }
 
-html {
-  @apply flex flex-col flex-1 min-h-full;
-}
-
-body {
-  @apply flex flex-col flex-1 bg-fixed;
-}
-
-#root {
-  @apply flex flex-col flex-1;
+@utility bg-gradient-secondary {
+  background-image: linear-gradient(
+    32.51deg,
+    #951990 -15.23%,
+    #3a35b1 48.55%,
+    #20a8b0 100%
+  );
 }
 
 @layer utilities {
-  .bg-gradient-secondary {
-    background-image: linear-gradient(
-      32.51deg,
-      #951990 -15.23%,
-      #3a35b1 48.55%,
-      #20a8b0 100%
-    );
+  :root {
+    color-scheme: light dark;
+    color: --theme(--color-white / 87%);
+    background-color: var(--color-neutral-900);
+  }
+
+  html {
+    @apply flex flex-col flex-1 min-h-full;
+  }
+
+  body {
+    @apply flex flex-col flex-1 bg-fixed;
+  }
+
+  #root {
+    @apply flex flex-col flex-1;
   }
 }

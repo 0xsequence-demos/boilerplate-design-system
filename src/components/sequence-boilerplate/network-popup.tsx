@@ -66,7 +66,7 @@ export function NetworkPopup({
           <AnimatePresence mode="popLayout" initial={false}>
             <motion.span
               key={chain.id}
-              className="inline-flex gap-2 flex-shrink-0 col-start-1 row-start-1"
+              className="inline-flex gap-2 shrink-0 col-start-1 row-start-1"
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 12 }}
@@ -93,7 +93,7 @@ export function NetworkPopup({
       </MenuPopoverButton>
 
       <MenuPopover isOpen={isOpen} setOpen={setOpen}>
-        <div className="flex items-center gap-3 pl-4 pr-3 py-3 border-b border-grey-900 justify-between bg-gradient-to-b to-white/0 from-white/[1%] ">
+        <div className="flex items-center gap-3 pl-4 pr-3 py-3 border-b border-grey-900 justify-between bg-linear-to-b to-white/0 from-white/[1%] ">
           <span className="text-14 text-grey-100">Networks</span>
           {faucetUrl ? (
             <a

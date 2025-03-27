@@ -1,11 +1,11 @@
-@import "./sequence-boilerplate/sequence-boilerplate.css";
+@import './sequence-boilerplate/sequence-boilerplate.css';
 
-@import "./button/button.css";
-@import "./card/card.css";
-@import "./group/group.css";
-@import "./input/input.css";
-@import "./segmented-input/segmented-input.css";
-@import "./label/label.css";
-@import "./select/select.css";
-@import "./github-corner/github-corner.css";
-@import "./menu-popover/menu-popover.css";
+@import './button/button.css';
+@import './card/card.css';
+@import './group/group.css';
+@import './input/input.css';
+@import './segmented-input/segmented-input.css';
+@import './label/label.css';
+@import './select/select.css';
+@import './github-corner/github-corner.css';
+@import './menu-popover/menu-popover.css';

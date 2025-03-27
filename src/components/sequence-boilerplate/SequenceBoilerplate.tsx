@@ -40,7 +40,7 @@ function Content({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex flex-1 flex-col">
-      <header className="border-b border-white/10 bg-grey-950/75 sticky top-0 z-[1000] isolate min-h-[3rem] flex items-center px-4">
+      <header className="border-b border-white/10 bg-grey-950/75 sticky top-0 z-1000 isolate min-h-[3rem] flex items-center px-4">
         <img
           src={logo}
           width="32"
@@ -70,7 +70,7 @@ function Content({ children }: { children: React.ReactNode }) {
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-[0.5rem] hover:bg-grey-800 border border-grey-800/50 hover:border-grey-700 bg-grey-900 text-grey-100 hover:text-grey-50 flex items-center justify-center  transition-all duration-300 ml-auto mr-0 sm:mx-auto flex-shrink-0 size-9"
+              className="rounded-[0.5rem] hover:bg-grey-800 border border-grey-800/50 hover:border-grey-700 bg-grey-900 text-grey-100 hover:text-grey-50 flex items-center justify-center  transition-all duration-300 ml-auto mr-0 sm:mx-auto shrink-0 size-9"
             >
               <Svg name="Github" className="size-5" />
             </a>
@@ -94,7 +94,7 @@ function Content({ children }: { children: React.ReactNode }) {
               <p className="text-14">{description}</p>
             </div>
           </div>
-          <div className="max-w-screen-md mx-auto w-full">{children}</div>
+          <div className="max-w-(--breakpoint-md) mx-auto w-full">{children}</div>
         </div>
 
         <div className="text-14 font-medium text-center border-t border-white/10 bg-grey-950/75 py-4 ">

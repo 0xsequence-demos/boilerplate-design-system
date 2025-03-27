@@ -12,7 +12,7 @@ export function SelectOptionsRadix({ items }: OptionsProps) {
       <SelectPrimative.Item
         value={value}
         key={value}
-        className="min-h-[2rem] px-6 py-3 flex items-center gap-2 hover:outline-none cursor-pointer hover:bg-grey-600"
+        className="min-h-[2rem] px-6 py-3 flex items-center gap-2 hover:outline-hidden cursor-pointer hover:bg-grey-600"
       >
         <SelectPrimative.ItemIndicator className="size-5">
           <Svg name="Checkmark" width="20" />

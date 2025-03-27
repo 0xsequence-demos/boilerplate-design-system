@@ -9,7 +9,7 @@ export function FieldError() {
 
   return error ? (
     <div className="text-14 leading-tight inline-flex gap-2 mt-2 items-center ">
-      <span className=" flex-shrink-0 flex items-center justify-center h-[1.25em]">
+      <span className=" shrink-0 flex items-center justify-center h-[1.25em]">
         <Svg name="Warning" className="size-5" />
         <span className="sr-only">Error</span>
       </span>
