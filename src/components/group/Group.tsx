@@ -1,8 +1,7 @@
 import { forwardRef } from "react";
 import { defineComponentFromProps } from "../../helpers/define-component";
 import { Slot } from "../slot/Slot";
-import { WithVariants } from "../types";
-import { PolymorphicRef } from "@0xsequence/design-system";
+import { WithVariants, PolymorphicRef } from "../types";
 import { GroupTitle } from "./GroupTitle";
 
 type GroupModifiers = {

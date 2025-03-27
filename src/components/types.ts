@@ -17,7 +17,7 @@ export type PolymorphicRef<T extends ElementType = "div"> = BoxProps<T>["ref"];
 // > = Partial<Options>;
 
 export type ModifierOptions<
-  Options extends Record<string, unknown> | null = Record<string, unknown>
+  Options extends Record<string, unknown> | null = Record<string, unknown>,
 > = Options extends Record<string, unknown>
   ? {
       [K in keyof Options as `variant-${string & K}`]?: Options[K];
@@ -45,7 +45,7 @@ export type VariantOptions<BaseTheme extends string> =
 export type WithVariants<
   Element extends ElementType,
   Variant extends string | null,
-  Modifiers extends Record<string, unknown> | null
+  Modifiers extends Record<string, unknown> | null,
 > = {
   variant?: VariantOptions<Variant>; // Single variant
 } & (Modifiers extends null
