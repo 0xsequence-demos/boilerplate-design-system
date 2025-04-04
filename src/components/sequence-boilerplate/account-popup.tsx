@@ -29,7 +29,7 @@ export function AccountPopup({ address, chain, disconnect, walletCallback }) {
   const [isOpen, setOpen] = useState(false);
   const [elementRef, bounds] = useMeasure();
   const blockExplorerUrl =
-    chain?.blockExplorers?.default?.url + "/address/" + address;
+    chain?.blockExplorers?.default?.url + "address/" + address;
 
   const [state, setState] = useState(false);
 
