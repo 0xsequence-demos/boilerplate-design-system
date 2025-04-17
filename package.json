@@ -41,8 +41,8 @@
   },
   "author": "",
   "peerDependencies": {
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^19",
+    "react-dom": "^19",
     "sonner": "^1.7.1",
     "viem": "^2.22.11"
   },
@@ -68,9 +68,7 @@
     "globals": "^15.11.0",
     "motion": "^12.0.1",
     "postcss": "^8.4.49",
-    "react": "^19.1.0",
     "react-aria-components": "^1.6.0",
-    "react-dom": "^19.1.0",
     "react-use-measure": "^2.1.1",
     "rimraf": "^6.0.1",
     "rollup-plugin-dts": "^6.1.1",
