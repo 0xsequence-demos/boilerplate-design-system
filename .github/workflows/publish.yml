@@ -1,4 +1,4 @@
-name: Build and Publish Custom Versioned Package
+name: Build and Publish Custom Pre-release
 
 on:
   push:
@@ -37,25 +37,23 @@ jobs:
       - name: Build project
         run: pnpm build
 
-      - name: Commit any pre-version changes
+      - name: Commit pre-version changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet || git commit -m "chore: commit preversion changes [skip ci]"
+          git diff --cached --quiet || git commit -m "chore: pre-version commit [skip ci]"
 
-      - name: Set custom version from branch and tag it
+      - name: Set manual pre-release version (e.g. 0.0.3-react18)
         run: |
-          BRANCH=${GITHUB_REF##*/}
-          VERSION_BASE=$(jq -r .version package.json)
+          BRANCH=${GITHUB_REF##*/}  # react-18 or react-19
+          BASE_VERSION=$(jq -r .version package.json)  # e.g. 0.0.3
+          PREID=${BRANCH//-}         # e.g. react18
 
-          # Construct final version string like "react-18-0.0.3"
-          CUSTOM_VERSION="${BRANCH}-${VERSION_BASE}"
+          CUSTOM_VERSION="${BASE_VERSION}-${PREID}"
 
-          # Set the version in package.json (without auto-tagging)
           npm version "$CUSTOM_VERSION" --no-git-tag-version
 
-          # Commit updated package.json and tag the release
           git add package.json
           git commit -m "chore: set version to $CUSTOM_VERSION [skip ci]"
           git tag "$CUSTOM_VERSION"
