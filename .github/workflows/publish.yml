@@ -1,4 +1,4 @@
-name: Build and Publish Custom Pre-release
+name: Build and Publish Pre-release
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
       - name: Set up pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 10
+          version: 8
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -37,27 +37,20 @@ jobs:
       - name: Build project
         run: pnpm build
 
-      - name: Commit pre-version changes
+      - name: Commit any pre-version changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet || git commit -m "chore: pre-version commit [skip ci]"
+          git diff --cached --quiet || git commit -m "chore: preversion changes [skip ci]"
 
-      - name: Set manual pre-release version (e.g. 0.0.3-react18)
+      - name: Bump pre-release version
         run: |
-          BRANCH=${GITHUB_REF##*/}  # react-18 or react-19
-          BASE_VERSION=$(jq -r .version package.json)  # e.g. 0.0.3
-          PREID=${BRANCH//-}         # e.g. react18
+          BRANCH=${GITHUB_REF##*/}
+          PREID=${BRANCH//-}  # react-18 → react18
 
-          CUSTOM_VERSION="${BASE_VERSION}-${PREID}"
-
-          npm version "$CUSTOM_VERSION" --no-git-tag-version
-
-          git add package.json
-          git commit -m "chore: set version to $CUSTOM_VERSION [skip ci]"
-          git tag "$CUSTOM_VERSION"
-          git push origin HEAD --tags
+          npm version prerelease --preid=$PREID -m "chore: release %s [$PREID]"
+          git push origin HEAD --follow-tags
 
       - name: Publish to GitHub Packages
         run: pnpm publish --no-git-checks
