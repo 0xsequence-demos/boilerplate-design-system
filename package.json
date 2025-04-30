@@ -1,7 +1,7 @@
 {
   "name": "@0xsequence-demos/boilerplate-design-system",
   "private": false,
-  "version": "0.0.2-react18",
+  "version": "0.1.0-react18",
   "type": "module",
   "description": "",
   "scripts": {
