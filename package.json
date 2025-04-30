@@ -5,7 +5,6 @@
   "type": "module",
   "description": "",
   "scripts": {
-    "preinstall": "npm run build",
     "dev": "vite",
     "build": "vite build",
     "watch": "vite build --watch",
