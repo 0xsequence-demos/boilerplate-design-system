@@ -9,7 +9,9 @@ on:
     #   - "src/**"
     #   - "package.json"
     #   - "pnpm-lock.yaml"
-
+permissions:
+  contents: write # ✅ allows push and tag
+  packages: write # ✅ allows GitHub Packages publish
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
