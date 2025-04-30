@@ -1,4 +1,4 @@
-name: Build and Publish to GitHub Packages
+name: Build and Publish Custom Versioned Package
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
       - react-19
 
 permissions:
-  contents: write # allow git push and version tagging
-  packages: write # allow publish to GitHub Packages
+  contents: write
+  packages: write
 
 jobs:
   build-and-publish:
@@ -37,29 +37,31 @@ jobs:
       - name: Build project
         run: pnpm build
 
-      - name: Commit any build changes (optional)
+      - name: Commit any pre-version changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --quiet || git commit -m "chore: commit preversion changes [skip ci]"
 
-      - name: Bump patch version
-        run: |
-          NEW_VERSION=$(npm version patch -m "chore(release): %s [skip ci]")
-          echo "Version bumped to $NEW_VERSION"
-
-      - name: Push version and tag
-        run: git push origin HEAD --follow-tags
-
-      - name: Determine dist-tag from branch
-        id: tag
+      - name: Set custom version from branch and tag it
         run: |
           BRANCH=${GITHUB_REF##*/}
-          TAG_NAME=$(echo "$BRANCH" | tr '/' '-')
-          echo "tag=$TAG_NAME" >> $GITHUB_OUTPUT
+          VERSION_BASE=$(jq -r .version package.json)
 
-      - name: Publish to GitHub Packages with dist-tag
-        run: pnpm publish --no-git-checks --tag ${{ steps.tag.outputs.tag }}
+          # Construct final version string like "react-18-0.0.3"
+          CUSTOM_VERSION="${BRANCH}-${VERSION_BASE}"
+
+          # Set the version in package.json (without auto-tagging)
+          npm version "$CUSTOM_VERSION" --no-git-tag-version
+
+          # Commit updated package.json and tag the release
+          git add package.json
+          git commit -m "chore: set version to $CUSTOM_VERSION [skip ci]"
+          git tag "$CUSTOM_VERSION"
+          git push origin HEAD --tags
+
+      - name: Publish to GitHub Packages
+        run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
