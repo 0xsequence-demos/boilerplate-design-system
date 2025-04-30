@@ -1,17 +1,15 @@
-name: Build & Publish to GitHub Packages
+name: Build and Publish to GitHub Packages
 
 on:
   push:
     branches:
       - react-18
       - react-19
-    # paths:
-    #   - "src/**"
-    #   - "package.json"
-    #   - "pnpm-lock.yaml"
+
 permissions:
-  contents: write # ✅ allows push and tag
-  packages: write # ✅ allows GitHub Packages publish
+  contents: write # allow git push and version tagging
+  packages: write # allow publish to GitHub Packages
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
@@ -20,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Required to push tags and calculate version bumps
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -34,38 +32,34 @@ jobs:
           version: 8
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Build the project
+      - name: Build project
         run: pnpm build
 
-      - name: Determine version suffix from branch
-        id: version
-        run: |
-          BRANCH_NAME=${GITHUB_REF##*/}
-          echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
-      - name: Commit any working directory changes (e.g., lockfile)
+      - name: Commit any build changes (optional)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet || git commit -m "chore(ci): commit changes before version bump"
-      - name: Bump package version
-        run: |
-          SUFFIX=${{ steps.version.outputs.branch }}
-          NEW_VERSION=$(npm version prerelease --preid=$SUFFIX -m "chore(release): %s [$SUFFIX]")
-          echo "Bumped to $NEW_VERSION"
-        env:
-          GIT_AUTHOR_NAME: github-actions[bot]
-          GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
-          GIT_COMMITTER_NAME: github-actions[bot]
-          GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
+          git diff --cached --quiet || git commit -m "chore: commit preversion changes [skip ci]"
 
-      - name: Push changes and tags
+      - name: Bump patch version
         run: |
-          git push origin HEAD --follow-tags
+          NEW_VERSION=$(npm version patch -m "chore(release): %s [skip ci]")
+          echo "Version bumped to $NEW_VERSION"
 
-      - name: Publish to GitHub Packages
-        run: pnpm publish --no-git-checks
+      - name: Push version and tag
+        run: git push origin HEAD --follow-tags
+
+      - name: Determine dist-tag from branch
+        id: tag
+        run: |
+          BRANCH=${GITHUB_REF##*/}
+          TAG_NAME=$(echo "$BRANCH" | tr '/' '-')
+          echo "tag=$TAG_NAME" >> $GITHUB_OUTPUT
+
+      - name: Publish to GitHub Packages with dist-tag
+        run: pnpm publish --no-git-checks --tag ${{ steps.tag.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
