@@ -5,10 +5,10 @@ on:
     branches:
       - react-18
       - react-19
-    paths:
-      - "src/**"
-      - "package.json"
-      - "pnpm-lock.yaml"
+    # paths:
+    #   - "src/**"
+    #   - "package.json"
+    #   - "pnpm-lock.yaml"
 
 jobs:
   build-and-publish:
