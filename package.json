@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-design-system",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@0xsequence-demos/boilerplate-design-system",
+  "version": "0.0.1",
+  "private": false,
   "type": "module",
   "description": "",
   "scripts": {
