@@ -1,11 +1,10 @@
 {
   "name": "@0xsequence-demos/boilerplate-design-system",
-  "version": "0.0.2-react-19.0",
   "private": false,
+  "version": "0.0.1",
   "type": "module",
   "description": "",
   "scripts": {
-    "preinstall": "npm run build",
     "dev": "vite",
     "build": "vite build",
     "watch": "vite build --watch",
@@ -41,8 +40,8 @@
   },
   "author": "",
   "peerDependencies": {
-    "react": "^19",
-    "react-dom": "^19",
+    "react": "^18",
+    "react-dom": "^18",
     "sonner": "^1.7.1",
     "viem": "^2.22.11"
   },
@@ -51,7 +50,7 @@
     "@0xsequence/network": "^2.2.7",
     "@emotion/is-prop-valid": "^1.3.1",
     "@eslint/js": "^9.13.0",
-    "@radix-ui/react-select": "^2.1.7",
+    "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-tooltip": "^1.1.4",
     "@svgr/cli": "^8.1.0",
     "@tailwindcss/postcss": "^4.0.17",
@@ -68,7 +67,9 @@
     "globals": "^15.11.0",
     "motion": "^12.0.1",
     "postcss": "^8.4.49",
+    "react": "^18.3.1",
     "react-aria-components": "^1.6.0",
+    "react-dom": "^18.3.1",
     "react-use-measure": "^2.1.1",
     "rimraf": "^6.0.1",
     "rollup-plugin-dts": "^6.1.1",
@@ -82,6 +83,9 @@
     "vite-plugin-static-copy": "^2.2.0",
     "vite-tsconfig-paths": "^5.1.3",
     "zod": "^3.23.8"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
 }
