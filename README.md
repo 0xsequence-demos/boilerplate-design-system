@@ -28,7 +28,7 @@ pnpm add @0xsequence-demos/boilerplate-design-system@0.1.0-react19.0
 ### React 18
 
 ```bash
-pnpm add @0xsequence-demos/boilerplate-design-system@0.1.0-react18.0
+pnpm add @0xsequence-demos/boilerplate-design-system@v0.1.0-react18.1
 ```
 
 Ensure you are using the correct version for your React project.
