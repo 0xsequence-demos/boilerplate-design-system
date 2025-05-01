@@ -22,7 +22,7 @@ There are two available packages:
 ### React 19
 
 ```bash
-pnpm add @0xsequence-demos/boilerplate-design-system@0.1.0-react19.0
+pnpm add @0xsequence-demos/boilerplate-design-system@v0.1.0-react19.1
 ```
 
 ### React 18
