@@ -1,67 +1,32 @@
-name: Build and Publish Pre-release
+name: Publish Release
 
 on:
   push:
-    branches:
-      - react-18
-      - react-19
-
-permissions:
-  contents: write
-  packages: write
+    tags:
+      - "react*-v*"
 
 jobs:
-  build-and-publish:
+  release:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Set up Node.js
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          registry-url: https://npm.pkg.github.com/
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 10
+          node-version: "22"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
-      - name: Build project
-        run: pnpm build
+      - name: Build and pack the package
+        run: npm pack
 
-      - name: Bump pre-release version and update README
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          BRANCH=${GITHUB_REF##*/}
-          PREID=${BRANCH//-}
-
-          # Bump version
-          VERSION=$(npm version prerelease --preid=$PREID --no-git-tag-version)
-
-          # Update README
-          if [[ "$PREID" == "react18" ]]; then
-            sed -i "s|@0xsequence-demos/boilerplate-design-system@.*react18.*|@0xsequence-demos/boilerplate-design-system@${VERSION}|" README.md
-          elif [[ "$PREID" == "react19" ]]; then
-            sed -i "s|@0xsequence-demos/boilerplate-design-system@.*react19.*|@0xsequence-demos/boilerplate-design-system@${VERSION}|" README.md
-          fi
-
-          # Commit changes (package.json + README)
-          git add package.json README.md
-          git commit -m "chore: release ${VERSION} [$PREID]"
-          git tag "${VERSION}"
-          git push origin HEAD --tags
-
-      - name: Publish to GitHub Packages
-        run: pnpm publish --no-git-checks
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "*.tgz"
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
