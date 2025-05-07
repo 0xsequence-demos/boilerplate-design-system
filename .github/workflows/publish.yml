@@ -1,65 +1,38 @@
-name: Build and Publish Custom Pre-release
+name: Publish Release with pnpm
 
 on:
   push:
-    branches:
-      - react-18
-      - react-19
-
-permissions:
-  contents: write
-  packages: write
+    tags:
+      - "react18-v*"
+      - "react19-v*"
 
 jobs:
-  build-and-publish:
+  release:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: https://npm.pkg.github.com/
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v2
+      - name: Set up Node.js and pnpm
+        uses: pnpm/action-setup@v3
         with:
           version: 10
+      - name: Install Node.js (explicitly if needed)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 222
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build project
-        run: pnpm build
+      - name: Build and pack
+        run: pnpm pack
 
-      - name: Commit pre-version changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --cached --quiet || git commit -m "chore: pre-version commit [skip ci]"
-
-      - name: Set manual pre-release version (e.g. 0.0.3-react18)
-        run: |
-          BRANCH=${GITHUB_REF##*/}  # react-18 or react-19
-          BASE_VERSION=$(jq -r .version package.json)  # e.g. 0.0.3
-          PREID=${BRANCH//-}         # e.g. react18
-
-          CUSTOM_VERSION="${BASE_VERSION}-${PREID}"
-
-          npm version "$CUSTOM_VERSION" --no-git-tag-version
-
-          git add package.json
-          git commit -m "chore: set version to $CUSTOM_VERSION [skip ci]"
-          git tag "$CUSTOM_VERSION"
-          git push origin HEAD --tags
-
-      - name: Publish to GitHub Packages
-        run: pnpm publish --no-git-checks
+      - name: Create GitHub Release and upload .tgz
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "*.tgz"
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
