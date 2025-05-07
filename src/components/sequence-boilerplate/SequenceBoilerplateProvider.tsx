@@ -4,6 +4,7 @@ import { DEFAULT_DOCS_URL } from "../constants";
 
 export type SequenceBoilerplateProps = {
   children: React.ReactNode;
+  walletCallback?: () => void;
 } & SequenceBoilerplateContext;
 
 export function SequenceBoilerplateProvider({

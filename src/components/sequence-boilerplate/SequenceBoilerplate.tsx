@@ -18,13 +18,19 @@ export function SequenceBoilerplate(props: SequenceBoilerplateProps) {
 
   return (
     <SequenceBoilerplateProvider {...props}>
-      <Content>{children}</Content>
+      <Content walletCallback={props?.walletCallback}>{children}</Content>
     </SequenceBoilerplateProvider>
   );
 }
 
 // Can create alterative content layout presets as needed
-function Content({ children }: { children: React.ReactNode }) {
+function Content({
+  children,
+  walletCallback,
+}: {
+  children: React.ReactNode;
+  walletCallback: () => void;
+}) {
   const { name, description, githubUrl, docsUrl, faucetUrl, wagmi, balance } =
     useSequenceBoilerplate();
 
@@ -62,6 +68,7 @@ function Content({ children }: { children: React.ReactNode }) {
                 chain={chain}
                 address={address}
                 disconnect={disconnect}
+                walletCallback={walletCallback}
               />
             </>
           ) : null}
@@ -94,7 +101,9 @@ function Content({ children }: { children: React.ReactNode }) {
               <p className="text-14">{description}</p>
             </div>
           </div>
-          <div className="max-w-(--breakpoint-md) mx-auto w-full">{children}</div>
+          <div className="max-w-(--breakpoint-md) mx-auto w-full">
+            {children}
+          </div>
         </div>
 
         <div className="text-14 font-medium text-center border-t border-white/10 bg-grey-950/75 py-4 ">
