@@ -1,9 +1,0 @@
-@layer components {
-  html body :where([data-component="menuPopoverButton"]) {
-    @apply overflow-hidden relative transition-all duration-300 disabled:grayscale disabled:opacity-60 disabled:pointer-events-none ml-auto mr-0 inline-flex;
-
-    &:where([data-variant="initial"]) {
-      @apply text-14 gap-2 px-2 py-1.5 hover:bg-grey-800 border border-grey-800/50 hover:border-grey-700 bg-grey-900 rounded-[0.5rem];
-    }
-  }
-}
