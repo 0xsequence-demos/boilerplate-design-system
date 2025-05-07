@@ -82,10 +82,11 @@ export function NetworkPopup({
                 />
               ) : null}
               <span className="text-nowrap">
-                {balance ? <span>{balance} </span> : <span>--</span>}
+                {/* {balance ? <span>{balance} </span> : <span>--</span>}
                 <span className="text-10 font-medium text-grey-100 my-auto inline-block min-w-[4ex]">
                   {chain?.nativeCurrency.symbol}
-                </span>
+                </span> */}
+                {chain?.name}
               </span>
             </motion.span>
           </AnimatePresence>
