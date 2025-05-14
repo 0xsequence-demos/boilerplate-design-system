@@ -49,11 +49,8 @@ export function NetworkPopup({
             alt={chain?.name}
           />
         ) : null}
-        <span>
-          {balance ? <span>{balance} </span> : <span>--</span>}
-          <span className="text-10 font-medium text-grey-100 my-auto">
-            {chain?.nativeCurrency.symbol}
-          </span>
+        <span className="text-10 font-medium text-grey-100 my-auto">
+          {chain?.name}
         </span>
       </MenuInfo>
     );

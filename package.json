@@ -31,11 +31,6 @@
       "import": "./dist/styles/src/*",
       "require": "./dist/styles/src/*",
       "default": "./dist/styles/src/*"
-    },
-    "./tailwind-config": {
-      "import": "./dist/tailwind.config.js",
-      "require": "./dist/tailwind.config.js",
-      "default": "./dist/tailwind.config.js"
     }
   },
   "author": "",
