@@ -24,9 +24,9 @@ export function NetworkPopup({
   chains,
   switchChainAsync,
   chain,
-  balance,
 }: {
   faucetUrl?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   switchChainAsync: any;
   chains: Chain[];
   chain: Chain;
@@ -49,9 +49,7 @@ export function NetworkPopup({
             alt={chain?.name}
           />
         ) : null}
-        <span className="text-10 font-medium text-grey-100 my-auto">
-          {chain?.name}
-        </span>
+        <span>{chain?.name}</span>
       </MenuInfo>
     );
   }
