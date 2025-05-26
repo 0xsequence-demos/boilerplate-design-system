@@ -31,6 +31,16 @@
       "import": "./dist/styles/src/*",
       "require": "./dist/styles/src/*",
       "default": "./dist/styles/src/*"
+    },
+    "./preset": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css",
+      "default": "./dist/style.css"
+    },
+    "./tailwind": {
+      "import": "./dist/styles/src/index.css",
+      "require": "./dist/styles/src/index.css",
+      "default": "./dist/styles/src/index.css"
     }
   },
   "author": "",
@@ -51,6 +61,7 @@
     "@radix-ui/react-tooltip": "^1.1.4",
     "@svgr/cli": "^8.1.0",
     "@tailwindcss/postcss": "^4.0.17",
+    "@tailwindcss/vite": "^4.1.7",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",

@@ -59,3 +59,5 @@ export {
 export { useForm } from "./components/form/FormProvider";
 
 export { shortAddress } from "./helpers/short-address";
+
+export * from "./index.css";
