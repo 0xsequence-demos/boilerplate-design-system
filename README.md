@@ -1,5 +1,7 @@
 # Boilerplate Design System
 
+[![npm version](https://badge.fury.io/js/@0xsequence-demos%2Fboilerplate-design-system.svg)](https://badge.fury.io/js/@0xsequence-demos%2Fboilerplate-design-system)
+
 A reusable design system built with Tailwind CSS and React, available in two versions: legacy support for React 18 and an latest version for React 19.
 
 ## Installation
