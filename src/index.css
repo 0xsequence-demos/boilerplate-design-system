@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./components/components.css";
 @source ".";
+@source "../../";
 
 @theme {
   --font-*: initial;
@@ -251,5 +252,13 @@
 
   #root {
     @apply flex flex-col flex-1;
+  }
+}
+
+@base {
+  button,
+  input[type="button"],
+  input[type="submit"] {
+    @apply cursor-pointer;
   }
 }
