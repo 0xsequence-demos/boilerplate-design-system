@@ -60,7 +60,7 @@ export function NetworkPopup({
         <div className="grid grid-cols-1 grid-rows-1 min-w-[96px]">
           <AnimatePresence mode="popLayout" initial={false}>
             <motion.span
-              key={chain.id}
+              key={chain?.id}
               className="inline-flex gap-2 shrink-0 col-start-1 row-start-1"
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
