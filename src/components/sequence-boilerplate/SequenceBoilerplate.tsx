@@ -39,9 +39,15 @@ function Content({
   const { disconnect } = wagmi.useDisconnect();
   const nativeBalance = useNativeBalance({ chain, address });
 
+  let nativeBalanceBigInt = BigInt(0);
+  try {
+    nativeBalanceBigInt = BigInt(nativeBalance);
+  } catch {
+    console.error(`Invalid native balance value: cannot cast ${nativeBalance} to BigInt`);
+  }
   const formattedNativeBalance =
     nativeBalance && nativeBalance !== "-"
-      ? formatEther(BigInt(nativeBalance))
+      ? formatEther(nativeBalanceBigInt)
       : "0";
 
   return (

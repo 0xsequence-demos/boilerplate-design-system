@@ -8,7 +8,7 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     tailwindcss(),
@@ -29,6 +29,8 @@ export default defineConfig({
   ],
   build: {
     emptyOutDir: false,
+    sourcemap: true,
+    minify: mode === "development" ? false : "esbuild",
     lib: {
       entry: "./src/index.ts",
       name: "boilerplate-design-system",
@@ -43,4 +45,4 @@ export default defineConfig({
       plugins: [],
     },
   },
-});
+}));
