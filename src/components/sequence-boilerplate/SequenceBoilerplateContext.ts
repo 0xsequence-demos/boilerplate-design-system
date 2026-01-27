@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import type { Address, Chain } from "viem";
 
 export type SequenceBoilerplateContext = {
   name?: string;
@@ -7,7 +8,20 @@ export type SequenceBoilerplateContext = {
   githubUrl?: string;
   docsUrl?: string;
   faucetUrl?: string;
-  wagmi?: Record<string, any>;
+  wagmi?: {
+    useAccount: () => {
+      chain?: Chain;
+      address?: Address;
+      isConnected?: boolean;
+    };
+    useSwitchChain: () => {
+      chains: Chain[];
+      switchChainAsync: (args: { chainId: number }) => Promise<unknown>;
+    };
+    useDisconnect: () => {
+      disconnect: () => void;
+    };
+  };
   balance?: string | false;
 };
 

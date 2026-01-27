@@ -1,6 +1,12 @@
-import { ZodObject } from "zod";
-import { useState, useRef, type ComponentProps, useEffect } from "react";
-import { FormProvider } from "../form/FormProvider"; //useForm
+import { ZodObject, ZodRawShape } from "zod";
+import {
+  useState,
+  useRef,
+  type ComponentProps,
+  useEffect,
+  useCallback,
+} from "react";
+import { FormProvider, type FormErrors } from "../form/FormProvider"; //useForm
 import {
   createFormObjectWithoutValidation,
   validateAndCreateFormObjectOrThrow,
@@ -8,9 +14,16 @@ import {
 import { setStoreData } from "../../helpers/session-store";
 import { FormEvent } from "react";
 
+export type FormActionResult = {
+  data?: unknown;
+  error?: unknown;
+  persist?: boolean;
+  success?: boolean;
+};
+
 export type FormHandler = (
   event: FormEvent<HTMLFormElement>,
-  data: unknown | Promise<unknown | void> | void,
+  data: Record<string, unknown>,
 ) => unknown | Promise<unknown | void> | void; //FormHandlerReturn<T> | Promise<FormHandlerReturn<T> | void> | void;
 
 // type FormHandlerReturn<T = Record<string, unknown>> = T;
@@ -24,18 +37,28 @@ type FormProps = {
         data,
       }: {
         // success: boolean;
-        errors?: Record<string, any>;
-        data?: Record<string, any>;
+        errors?: FormErrors;
+        data?: unknown;
         persist?: boolean;
       }) => React.ReactNode);
-  schema?: ZodObject;
+  schema?: ZodObject<ZodRawShape>;
   method?: "POST" | "GET" | "PUT" | "DELETE";
   onAction?: (
     event: FormEvent<HTMLFormElement>,
-    data: unknown | Promise<unknown | void> | void,
+    data: Record<string, unknown>,
   ) => unknown | Promise<unknown | void> | void;
   name?: string;
 } & ComponentProps<"form">;
+
+function isFormActionResult(value: unknown): value is FormActionResult {
+  if (!value || typeof value !== "object") return false;
+  return (
+    "data" in value ||
+    "error" in value ||
+    "persist" in value ||
+    "success" in value
+  );
+}
 
 function FormComponent({
   children,
@@ -45,11 +68,12 @@ function FormComponent({
   schema,
   ...rest
 }: FormProps) {
-  const [errors, setErrors] = useState();
-  const [data, setData] = useState<string | Record<string, unknown>>({});
+  const [errors, setErrors] = useState<Record<string, FormErrors> | undefined>();
+  const [data, setData] = useState<unknown>({});
+  const [success, setSuccess] = useState<boolean | undefined>(undefined);
 
   // Generate a camelCase name from the onAction function name -- handleSignMessage -> signMessage
-  const storeKey = name;
+  const storeKey = name ?? "form";
   // name ||
   // (onAction && typeof onAction === "function" && onAction.name !== "onAction")
   //   ? transformName(onAction.name, { prefix: "handle" })
@@ -62,9 +86,12 @@ function FormComponent({
 
     try {
       // Validate formdata with the schema, or create a form object without validation
-      const data = schema
+      const data = (schema
         ? validateAndCreateFormObjectOrThrow(formdata, schema)
-        : createFormObjectWithoutValidation(formdata);
+        : createFormObjectWithoutValidation(formdata)) as Record<
+        string,
+        unknown
+      >;
 
       if (onAction && typeof onAction === "function") {
         const result = await onAction(event, data);
@@ -72,31 +99,49 @@ function FormComponent({
         // If the action doesn't return, set the data to the raw form data
         if (!result) {
           setData(data);
+          setSuccess(true);
+          setErrors({});
         }
 
-        if (result) {
-          // If records are returned, set the data to the records
-          if (result.data) setData(result.data);
-
-          if (result.error) throw result.error;
+        if (Array.isArray(result)) {
+          const [resultData, resultSuccess] = result;
+          if (typeof resultSuccess === "boolean") {
+            setSuccess(resultSuccess);
+          }
+          if (resultData !== undefined) {
+            setData(resultData);
+          }
+          setErrors({});
+        } else if (isFormActionResult(result)) {
+          if (result.data !== undefined) setData(result.data);
+          if (typeof result.success === "boolean") setSuccess(result.success);
+          if (result.error) {
+            setSuccess(false);
+            throw result.error;
+          }
 
           // If persist is true, set the store data in the session
-          if (result.persist && storeKey) {
+          if (result.persist) {
             setStoreData(storeKey, result.data);
           }
 
           setErrors({});
+        } else if (result) {
+          setData(result);
+          setSuccess(true);
+          setErrors({});
         }
       }
     } catch (error) {
+      setSuccess(false);
       if (typeof error?.flatten === "function") {
-        setErrors({ [storeKey]: error.flatten() });
+        setErrors({ [storeKey]: error.flatten() as FormErrors });
         return;
       }
 
-      if (error.message) {
+      if (error instanceof Error) {
         setErrors({
-          [storeKey]: { formErrors: [error.message], fieldErrors: [] },
+          [storeKey]: { formErrors: [error.message], fieldErrors: {} },
         });
         return;
       }
@@ -111,23 +156,28 @@ function FormComponent({
 
   const ref = useRef<HTMLFormElement>(null);
 
-  function updateFieldValues(e: CustomEvent) {
-    const data = e.detail;
+  const updateFieldValues = useCallback(
+    (event: Event) => {
+      const data = (
+        event as CustomEvent<{ name: string; fields: Record<string, string> }>
+      ).detail;
 
-    if (data.name === storeKey && ref.current) {
-      Object.keys(data.fields).forEach((key) => {
-        const value = data.fields[key];
-        if (ref && ref.current) {
-          const el = ref?.current?.querySelector(
-            `input[name=${key}]`,
-          ) as HTMLInputElement;
-          if (el) {
-            el.value = value;
+      if (data?.name === storeKey && ref.current) {
+        Object.keys(data.fields).forEach((key) => {
+          const value = data.fields[key];
+          if (ref.current) {
+            const el = ref.current.querySelector(
+              `input[name=${key}]`,
+            ) as HTMLInputElement | null;
+            if (el) {
+              el.value = value;
+            }
           }
-        }
-      });
-    }
-  }
+        });
+      }
+    },
+    [storeKey],
+  );
 
   useEffect(() => {
     const dom = ref.current;
@@ -141,7 +191,7 @@ function FormComponent({
         dom.removeEventListener("updateFieldValues", updateFieldValues);
       }
     };
-  }, []);
+  }, [updateFieldValues]);
 
   return (
     <FormProvider
@@ -150,6 +200,7 @@ function FormComponent({
         data,
         setData,
         ref,
+        success,
         errors: errors && errors?.[storeKey],
       }}
     >

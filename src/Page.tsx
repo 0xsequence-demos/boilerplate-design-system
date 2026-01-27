@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useContext, createContext, useState } from "react";
 
 export type PageContext = {

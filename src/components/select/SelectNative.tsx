@@ -39,10 +39,18 @@ export function SelectElement(props: SelectProps, ref: PolymorphicRef<"div">) {
     }
   }
 
-  const handleLoad = useCallback((el) => {
-    handleChange({ target: el });
-    return ref;
-  }, []);
+  const handleLoad = useCallback(
+    (el: HTMLDivElement | null) => {
+      const icon = el
+        ?.querySelector("option:checked")
+        ?.getAttribute("data-icon");
+      if (icon) {
+        setIcon(icon);
+      }
+      return ref;
+    },
+    [ref],
+  );
 
   return (
     <div ref={handleLoad} {...restProps}>

@@ -1,6 +1,6 @@
 // import lodash from "lodash";
 
-import { ZodSchema } from "zod";
+import { ZodObject, ZodRawShape } from "zod";
 
 // const { set } = lodash;
 
@@ -28,10 +28,10 @@ function keyIsArray(key: string) {
 
 export function validateAndCreateFormObjectOrThrow(
   formdata: FormData,
-  validationSchema: ZodSchema<any>
+  validationSchema: ZodObject<ZodRawShape>
 ) {
   // https://github.com/colinhacks/zod/discussions/2134#discussioncomment-9668926
-  const allowedValues = validationSchema.keyof().options;
+  const allowedValues = validationSchema.keyof().options as string[];
 
   const values = allowedValues.reduce(
     (data: Record<string, unknown>, key: string) => {
